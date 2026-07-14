@@ -2,9 +2,8 @@
 <html>
 <head>
     <title>My Hiking Journal</title>
-    <!-- Loads the free interactive map tool -->
-    <link rel="stylesheet" href="https://unpkg.com" />
-    <script src="https://unpkg.com"></script>
+    <!-- We load the official Google Maps tool here -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMCxxUBxZ-a2UyHwu5PbKwYBxvAo0bAAA"></script>
     <style>
         body { font-family: sans-serif; padding: 20px; background-color: #f9f9f9; }
         h1 { text-align: center; color: #2e7d32; }
@@ -16,21 +15,38 @@
     <div id="map"></div>
 
     <script>
-        // Centers map visually between Grand Canyon and Zion
-        var map = L.map('map').setView([36.5, -112.5], 6); 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        function initMap() {
+            // Centers the map between Grand Canyon and Zion
+            var mapOptions = {
+                zoom: 6,
+                center: { lat: 36.5, lng: -112.5 }
+            };
+            
+            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-        // Your 2 Test Trips Data (matches the spreadsheet concept)
-        var trips = [
-            { "id": "grand-canyon", "title": "Grand Canyon Hike", "lat": 36.0544, "lng": -112.1401 },
-            { "id": "zion", "title": "Zion Narrows Hike", "lat": 37.2982, "lng": -112.9475 }
-        ];
+            // Your 2 Test Trips Data
+            var trips = [
+                { "id": "grand-canyon", "title": "Grand Canyon Hike", "lat": 36.0544, "lng": -112.1401 },
+                { "id": "zion", "title": "Zion Narrows Hike", "lat": 37.2982, "lng": -112.9475 }
+            ];
 
-        trips.forEach(function(trip) {
-            L.marker([trip.lat, trip.lng])
-                .addTo(map)
-                .bindPopup('<a href="' + trip.id + '.html"><b>' + trip.title + '</b><br>Click to view journal</a>');
-        });
+            // Loop through data to place Google pins and popups
+            trips.forEach(function(trip) {
+                var marker = new google.maps.Marker({
+                    position: { lat: trip.lat, lng: trip.lng },
+                    map: map,
+                    title: trip.title
+                });
+
+                var infoWindow = new google.maps.InfoWindow({
+                    content: '<a href="' + trip.id + '.html" style="font-family:sans-serif; text-decoration:none; color:#2e7d32; font-weight:bold;"><b>' + trip.title + '</b><br>Click to view journal</a>'
+                });
+
+                marker.addListener('click', function() {
+                    infoWindow.open(map, marker);
+                });
+            });
+        }
     </script>
 </body>
 </html>
