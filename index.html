@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Hiking Journal</title>
+    <!-- Loads the free interactive map tool -->
+    <link rel="stylesheet" href="https://unpkg.com" />
+    <script src="https://unpkg.com"></script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background-color: #f9f9f9; }
+        h1 { text-align: center; color: #2e7d32; }
+        #map { height: 550px; width: 100%; max-width: 1000px; margin: 0 auto; border: 3px solid #2e7d32; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+    <h1>My Hiking Map</h1>
+    <div id="map"></div>
+
+    <script>
+        // Centers map visually between Grand Canyon and Zion
+        var map = L.map('map').setView([36.5, -112.5], 6); 
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+        // Your 2 Test Trips Data (matches the spreadsheet concept)
+        var trips = [
+            { "id": "grand-canyon", "title": "Grand Canyon Hike", "lat": 36.0544, "lng": -112.1401 },
+            { "id": "zion", "title": "Zion Narrows Hike", "lat": 37.2982, "lng": -112.9475 }
+        ];
+
+        trips.forEach(function(trip) {
+            L.marker([trip.lat, trip.lng])
+                .addTo(map)
+                .bindPopup('<a href="' + trip.id + '.html"><b>' + trip.title + '</b><br>Click to view journal</a>');
+        });
+    </script>
+</body>
+</html>
