@@ -1,40 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <title>My Hiking Journal</title>
-    <!-- Pointing directly to the internal files you already uploaded -->
-    <link rel="stylesheet" href="leaflet.css" />
-    <script src="leaflet.js"></script>
     <style>
-        body { font-family: sans-serif; padding: 20px; background-color: #f9f9f9; }
-        h1 { text-align: center; color: #2e7d32; }
-        /* This box height forces the map to remain open and visible */
-        #map { height: 550px; width: 100%; max-width: 1000px; margin: 0 auto; border: 3px solid #2e7d32; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        /* This section forces the map container to be visible on the screen */
+        html, body { height: 100%; margin: 0; padding: 0; font-family: sans-serif; }
+        h1 { text-align: center; color: #2e7d32; margin: 20px 0; }
+        #map-container { width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 20px; box-sizing: border-box; }
+        #map { height: 550px; width: 100%; border: 3px solid #2e7d32; border-radius: 12px; }
+        .popup-link { font-family: sans-serif; text-decoration: none; color: #2e7d32; font-weight: bold; }
     </style>
 </head>
 <body>
+
     <h1>My Hiking Map</h1>
-    <div id="map"></div>
+    <div id="map-container">
+        <div id="map"></div>
+    </div>
 
     <script>
-        // Visual center between Grand Canyon and Zion
-        var map = L.map('map').setView([36.5, -112.5], 6); 
-        
-        // This draws the map image background
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        function initMap() {
+            // Visual center between Grand Canyon and Zion
+            var mapOptions = {
+                zoom: 6,
+                center: { lat: 36.5, lng: -112.5 }
+            };
+            
+            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-        // Your 2 Test Trips Data
-        var trips = [
-            { "id": "grand-canyon", "title": "Grand Canyon Hike", "lat": 36.0544, "lng": -112.1401 },
-            { "id": "zion", "title": "Zion Narrows Hike", "lat": 37.2982, "lng": -112.9475 }
-        ];
+            // Your 2 Test Trips Data
+            var trips = [
+                { "id": "grand-canyon", "title": "Grand Canyon Hike", "lat": 36.0544, "lng": -112.1401 },
+                { "id": "zion", "title": "Zion Narrows Hike", "lat": 37.2982, "lng": -112.9475 }
+            ];
 
-        // Loop through data to drop pins and popups
-        trips.forEach(function(trip) {
-            L.marker([trip.lat, trip.lng])
-                .addTo(map)
-                .bindPopup('<a href="' + trip.id + '.html" style="color:#2e7d32; font-weight:bold; text-decoration:none;"><b>' + trip.title + '</b><br>Click to view journal</a>');
-        });
+            // Loop through the data to drop the pins and link them
+            trips.forEach(function(trip) {
+                var marker = new google.maps.Marker({
+                    position: { lat: trip.lat, lng: trip.lng },
+                    map: map,
+                    title: trip.title
+                });
+
+                var infoWindow = new google.maps.InfoWindow({
+                    content: '<a class="popup-link" href="' + trip.id + '.html"><b>' + trip.title + '</b><br>Click to view journal</a>'
+                });
+
+                marker.addListener('click', function() {
+                    infoWindow.open(map, marker);
+                });
+            });
+        }
     </script>
+
+    <!-- Swapped to the correct script loading order that passes the initMap callback -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMCxxUBxZ-a2UyHwu5PbKwYBxvAo0bAAA" async defer></script>
+
 </body>
 </html>
