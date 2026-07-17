@@ -1,248 +1,656 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Google Map – Side Panel</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Basic:wght@400;600&display=swap" rel="stylesheet">
+<title>Adventures</title>
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Nunito Basic', sans-serif;
-      height: 100%;
-      color: white;
-      background: #1f1f1f;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Basic:wght@400;600&display=swap" rel="stylesheet">
 
-    #wrapper {
-      display: flex;
-      height: 100vh;
-      width: 100%;
-    }
+<link rel="stylesheet" href="assets/css/style.css">
 
-    /* MAP */
-    #map {
-      flex: 1;
-    }
 
-    /* SIDE PANEL (DESKTOP ONLY) */
-    #sidePanel {
-      width: 320px;
-      background: #2b2b2b;
-      border-left: 2px solid #444;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-    }
+<style>
 
-    #sidePanel img {
-      width: 100%;
-      display: block;
-      border-bottom: 1px solid #444;
-    }
+html, body {
 
-    .content {
-      padding: 14px;
-      font-size: 13px;
-    }
+  margin:0;
 
-    .content p {
-      margin: 6px 0;
-    }
+  padding:0;
 
-    .content strong {
-      color: #ffffff;
-    }
+  font-family:'Nunito Basic', sans-serif;
 
-    /* DETAILS BUTTON */
-    .details-btn {
-      margin-top: 12px;
-      padding: 10px;
-      background: #444;
-      color: white;
-      border: 1px solid #666;
-      border-radius: 6px;
-      cursor: pointer;
-      width: 100%;
-      text-align: center;
-      transition: 0.2s ease;
-    }
+  color:white;
 
-    .details-btn:hover {
-      background: #5a5a5a;
-    }
+  background:#1f1f1f;
 
-    /* FILTERS */
-    #filters {
-      position: absolute;
-      z-index: 999;
-      background: white;
-      color: black;
-      padding: 10px;
-      margin: 10px;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      font-family: Arial, sans-serif;
-    }
+}
 
-    /* 🚫 MOBILE: REMOVE SIDEBAR COMPLETELY */
-    @media (max-width: 768px) {
-      #sidePanel {
-        display: none !important;
-      }
 
-      #map {
-        width: 100%;
-        height: 100vh;
-      }
-    }
-  </style>
+/**************************************
+ MAP AREA
+**************************************/
+
+#wrapper {
+
+  display:flex;
+
+  width:100%;
+
+  height:600px;
+
+}
+
+
+#map {
+
+  flex:1;
+
+}
+
+
+
+/**************************************
+ SIDE PANEL
+**************************************/
+
+#sidePanel {
+
+  width:320px;
+
+  background:#2b2b2b;
+
+  border-left:2px solid #444;
+
+  overflow-y:auto;
+
+}
+
+
+#sidePanel img {
+
+  width:100%;
+
+}
+
+
+
+.content {
+
+  padding:14px;
+
+  font-size:13px;
+
+}
+
+
+
+.content p {
+
+  margin:6px 0;
+
+}
+
+
+
+/**************************************
+ BUTTON
+**************************************/
+
+.details-btn {
+
+  margin-top:12px;
+
+  padding:10px;
+
+  background:#444;
+
+  color:white;
+
+  border:1px solid #666;
+
+  border-radius:6px;
+
+  cursor:pointer;
+
+  width:100%;
+
+}
+
+
+
+/**************************************
+ FILTER
+**************************************/
+
+#filters {
+
+  position:absolute;
+
+  z-index:999;
+
+  background:white;
+
+  color:black;
+
+  padding:10px;
+
+  margin:10px;
+
+  border-radius:6px;
+
+}
+
+
+
+@media(max-width:768px){
+
+
+  #sidePanel {
+
+    display:none;
+
+  }
+
+
+  #wrapper {
+
+    height:500px;
+
+  }
+
+
+}
+
+
+
+</style>
+
 </head>
+
+
 
 <body>
 
+
 <div id="filters">
-  <label>Type:
-    <select id="typeFilter">
-      <option value="All">All</option>
-      <option value="Hike">Hike</option>
-      <option value="Backpack">Backpack</option>
-      <option value="Kayak">Kayak</option>
-      <option value="Other">Other</option>
-    </select>
-  </label>
+
+<label>
+
+Type:
+
+<select id="typeFilter">
+
+<option value="All">All</option>
+
+<option value="Hike">Hike</option>
+
+<option value="Backpack">Backpack</option>
+
+<option value="Kayak">Kayak</option>
+
+<option value="Other">Other</option>
+
+</select>
+
+</label>
+
 </div>
+
+
+
 
 <div id="wrapper">
-  <div id="map"></div>
 
-  <div id="sidePanel">
-    <div id="panelContent" class="content">
-      <p>Select a trip</p>
-    </div>
-  </div>
+
+<div id="map"></div>
+
+
+
+<div id="sidePanel">
+
+<div id="panelContent" class="content">
+
+<p>Select a trip</p>
+
 </div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<section class="cards-section">
+
+
+<h2>Latest Adventures</h2>
+
+
+<div id="cards-container" class="cards-grid"></div>
+
+
+</section>
+
+
+
+
+
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMCxxUBxZ-a2UyHwu5PbKwYBxvAo0bAAA"></script>
 
+
+
 <script>
-const map = new google.maps.Map(document.getElementById("map"), {
-  center: { lat: 36.805098, lng: -109.822512 },
-  zoom: 6,
-  mapTypeId: google.maps.MapTypeId.TERRAIN,
-  disableDefaultUI: true,
-  gestureHandling: "greedy"
+
+
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbweollfSW_IlQr6nka0s77-WPu4sIdIDDpmq0Z9NV0egq0c-8dVcO4nevotzZM6jA4T/exec";
+
+
+
+const map =
+new google.maps.Map(
+document.getElementById("map"),
+{
+
+center:{
+lat:36.805098,
+lng:-109.822512
+},
+
+zoom:6,
+
+mapTypeId:
+google.maps.MapTypeId.TERRAIN,
+
+disableDefaultUI:true,
+
+gestureHandling:"greedy"
+
 });
 
-/* DEVICE CHECK */
-function isDesktop() {
-  return window.innerWidth > 768;
+
+
+
+
+function generatePageUrl(title){
+
+
+return "trips/" +
+
+title
+.toLowerCase()
+.replace(/[^\w\s-]/g,"")
+.replace(/\s+/g,"-")
+
++".html";
+
+
 }
 
-function generatePageUrl(title) {
-  return "trips/" +
-    title.toLowerCase()
-      .replace(/[^\w\s-]/g, "")
-      .replace(/\s+/g, "-") +
-    ".html";
-}
-/* SIDE PANEL */
-function updatePanel(data) {
-  if (!isDesktop()) return;
 
-  const panel = document.getElementById("panelContent");
 
-  panel.innerHTML = `
-    ${data.photoUrl ? `<img src="${data.photoUrl}">` : ""}
-    <p><strong>Title:</strong> ${data.title}</p>
-    <p><strong>Area:</strong> ${data.area}</p>
-    <p><strong>Date:</strong> ${data.date}</p>
-    <p><strong>Miles:</strong> ${data.miles}</p>
-    <p><strong>Elevation Gain:</strong> ${data.elevationGain}</p>
-    <p><strong>Overall Ranking:</strong> ${data.overallRanking}</p>
 
-    <button class="details-btn" id="detailsBtn">Details</button>
-  `;
 
-  document.getElementById("detailsBtn").onclick = (e) => {
-    e.stopPropagation();
-    window.open(generatePageUrl(data.title), "_blank");
-  };
+function updatePanel(data){
 
-  panel.onclick = () => {
-    window.open(generatePageUrl(data.title), "_blank");
-  };
-}
 
-/* MARKER ICONS */
-function getMarkerIcon(type) {
-  switch ((type || "").toLowerCase()) {
-    case "hike": return "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
-    case "backpack": return "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
-    case "kayak": return "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
-    case "other": return "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
-    default: return null;
-  }
-}
+const panel =
+document.getElementById("panelContent");
 
-let allMarkers = [];
-let allData = [];
 
-/* LOAD DATA */
-async function loadMarkers() {
-  const res = await fetch("https://script.google.com/macros/s/AKfycbweollfSW_IlQr6nka0s77-WPu4sIdIDDpmq0Z9NV0egq0c-8dVcO4nevotzZM6jA4T/exec");
-  const data = await res.json();
 
-  allData = data.mapMarkers;
+panel.innerHTML = `
 
-  let mostRecent = null;
 
-  allData.forEach((d) => {
-    const marker = new google.maps.Marker({
-      position: d.position,
-      map,
-      icon: getMarkerIcon(d.type)
-    });
+${data.imageUrl ?
+`<img src="${data.imageUrl}">`
+:""}
 
-    marker.type = d.type;
-    marker.data = d;
 
-    marker.addListener("click", () => {
-      updatePanel(d);
-    });
 
-    allMarkers.push(marker);
+<p><strong>Title:</strong>
+${data.title}</p>
 
-    /* FIND MOST RECENT */
-    if (!mostRecent || new Date(d.date) > new Date(mostRecent.date)) {
-      mostRecent = d;
-    }
-  });
 
-  /* DEFAULT PANEL (DESKTOP ONLY) */
-  if (isDesktop() && mostRecent) {
-    updatePanel(mostRecent);
-  }
+<p><strong>Area:</strong>
+${data.area || ""}</p>
+
+
+<p><strong>Date:</strong>
+${data.date || ""}</p>
+
+
+<p><strong>Miles:</strong>
+${data.miles || ""}</p>
+
+
+<p><strong>Elevation:</strong>
+${data.elevationGain || ""}</p>
+
+
+
+<button class="details-btn">
+Details
+</button>
+
+
+`;
+
+
+
+panel.querySelector("button")
+.onclick=()=>{
+
+
+window.open(
+generatePageUrl(data.title),
+"_blank"
+);
+
+
+};
+
+
+
 }
 
-/* FILTER */
-document.getElementById("typeFilter").addEventListener("change", function () {
-  const selected = this.value.toLowerCase();
 
-  allMarkers.forEach(marker => {
-    if (selected === "all") {
-      marker.setMap(map);
-    } else {
-      marker.setMap(
-        marker.type && marker.type.toLowerCase() === selected ? map : null
-      );
-    }
-  });
+
+
+
+
+function getMarkerIcon(type){
+
+
+switch((type||"").toLowerCase()){
+
+
+case "hike":
+return "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
+
+
+case "backpack":
+return "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
+
+
+case "kayak":
+return "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
+
+
+case "other":
+return "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
+
+
+default:
+return null;
+
+
+}
+
+
+}
+
+
+
+
+let allMarkers=[];
+
+let allData=[];
+
+
+
+
+
+function createCards(trips){
+
+
+const container =
+document.getElementById(
+"cards-container"
+);
+
+
+
+container.innerHTML="";
+
+
+
+trips
+
+.sort((a,b)=>
+new Date(b.date)-new Date(a.date)
+)
+
+.slice(0,45)
+
+.forEach(trip=>{
+
+
+const card =
+document.createElement("div");
+
+
+
+card.className="card";
+
+
+
+card.innerHTML=`
+
+<img src="${trip.imageUrl || ""}">
+
+
+<div class="card-content">
+
+
+<div class="card-title">
+
+${trip.title}
+
+</div>
+
+
+
+<div class="card-details">
+
+📍 ${trip.area || ""}<br>
+
+📅 ${trip.date || ""}<br>
+
+🥾 ${trip.miles || ""} miles<br>
+
+⛰ ${trip.elevationGain || ""} ft
+
+
+</div>
+
+
+</div>
+
+`;
+
+
+
+card.onclick=()=>{
+
+window.open(
+generatePageUrl(trip.title),
+"_blank"
+);
+
+};
+
+
+
+container.appendChild(card);
+
+
+
 });
+
+
+}
+
+
+
+
+
+async function loadMarkers(){
+
+
+const res =
+await fetch(SCRIPT_URL);
+
+
+
+const data =
+await res.json();
+
+
+
+allData =
+data.cardItems || data.mapMarkers || data;
+
+
+
+createCards(allData);
+
+
+
+let mostRecent=null;
+
+
+
+allData.forEach(d=>{
+
+
+
+if(!d.position)
+return;
+
+
+
+const marker =
+new google.maps.Marker({
+
+position:d.position,
+
+map,
+
+icon:getMarkerIcon(d.type)
+
+});
+
+
+
+marker.type=d.type;
+
+marker.data=d;
+
+
+
+marker.addListener(
+"click",
+()=>updatePanel(d)
+);
+
+
+
+allMarkers.push(marker);
+
+
+
+
+if(
+!mostRecent ||
+new Date(d.date)>new Date(mostRecent.date)
+)
+
+{
+
+mostRecent=d;
+
+}
+
+
+
+});
+
+
+
+if(mostRecent){
+
+updatePanel(mostRecent);
+
+}
+
+
+}
+
+
+
+
+
+
+document
+.getElementById("typeFilter")
+.addEventListener(
+"change",
+function(){
+
+
+
+const selected =
+this.value.toLowerCase();
+
+
+
+allMarkers.forEach(marker=>{
+
+
+if(selected==="all"){
+
+marker.setMap(map);
+
+}
+
+else{
+
+
+marker.setMap(
+
+marker.type &&
+marker.type.toLowerCase()===selected
+
+?map:null
+
+);
+
+
+}
+
+
+});
+
+
+});
+
+
+
+
 
 loadMarkers();
+
+
+
 </script>
 
+
 </body>
+
 </html>
