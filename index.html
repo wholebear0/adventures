@@ -1,170 +1,247 @@
 <!DOCTYPE html>
 <html>
-
 <head>
+  <title>Google Map – Side Panel</title>
 
-<title>Adventures</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Basic:wght@400;600&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Basic:wght@400;600&display=swap" rel="stylesheet">
+  <style>
 
-<link rel="stylesheet" href="assets/css/style.css">
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Nunito Basic', sans-serif;
+      color: white;
+      background: #1f1f1f;
+    }
 
 
-<style>
+    #wrapper {
+      display: flex;
+      height: 600px;
+      width: 100%;
+    }
 
-html, body {
 
-  margin:0;
+    /* MAP */
+    #map {
+      flex: 1;
+    }
 
-  padding:0;
 
-  font-family:'Nunito Basic', sans-serif;
+    /* SIDE PANEL */
 
-  color:white;
+    #sidePanel {
+      width: 320px;
+      background: #2b2b2b;
+      border-left: 2px solid #444;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
 
-  background:#1f1f1f;
 
-}
+    #sidePanel img {
+      width: 100%;
+      display: block;
+      border-bottom: 1px solid #444;
+    }
 
 
-/**************************************
- MAP AREA
-**************************************/
+    .content {
+      padding: 14px;
+      font-size: 13px;
+    }
 
-#wrapper {
 
-  display:flex;
+    .content p {
+      margin: 6px 0;
+    }
 
-  width:100%;
 
-  height:600px;
+    .content strong {
+      color: #ffffff;
+    }
 
-}
 
 
-#map {
+    /* DETAILS BUTTON */
 
-  flex:1;
+    .details-btn {
 
-}
+      margin-top: 12px;
 
+      padding: 10px;
 
+      background: #444;
 
-/**************************************
- SIDE PANEL
-**************************************/
+      color:white;
 
-#sidePanel {
+      border:1px solid #666;
 
-  width:320px;
+      border-radius:6px;
 
-  background:#2b2b2b;
+      cursor:pointer;
 
-  border-left:2px solid #444;
+      width:100%;
 
-  overflow-y:auto;
+    }
 
-}
 
 
-#sidePanel img {
+    /* FILTERS */
 
-  width:100%;
+    #filters {
 
-}
+      position:absolute;
 
+      z-index:999;
 
+      background:white;
 
-.content {
+      color:black;
 
-  padding:14px;
+      padding:10px;
 
-  font-size:13px;
+      margin:10px;
 
-}
+      border-radius:6px;
 
+      box-shadow:0 2px 6px rgba(0,0,0,.3);
 
+      font-family:Arial,sans-serif;
 
-.content p {
+    }
 
-  margin:6px 0;
 
-}
 
+    /************************************
+       CARDS
+    ************************************/
 
 
-/**************************************
- BUTTON
-**************************************/
+    #cards-section {
 
-.details-btn {
+      padding:40px;
 
-  margin-top:12px;
+    }
 
-  padding:10px;
 
-  background:#444;
+    #cards-section h2 {
 
-  color:white;
+      text-align:center;
 
-  border:1px solid #666;
+      font-size:32px;
 
-  border-radius:6px;
+      margin-bottom:30px;
 
-  cursor:pointer;
+    }
 
-  width:100%;
 
-}
 
+    #cards-container {
 
+      display:grid;
 
-/**************************************
- FILTER
-**************************************/
+      grid-template-columns:
+        repeat(auto-fit,minmax(300px,1fr));
 
-#filters {
+      gap:25px;
 
-  position:absolute;
+    }
 
-  z-index:999;
 
-  background:white;
 
-  color:black;
+    .trip-card {
 
-  padding:10px;
+      background:#2b2b2b;
 
-  margin:10px;
+      border-radius:10px;
 
-  border-radius:6px;
+      overflow:hidden;
 
-}
+      cursor:pointer;
 
+      box-shadow:
+        0 3px 8px rgba(0,0,0,.3);
 
+    }
 
-@media(max-width:768px){
 
 
-  #sidePanel {
+    .trip-card img {
 
-    display:none;
+      width:100%;
 
-  }
+      height:220px;
 
+      object-fit:cover;
 
-  #wrapper {
+    }
 
-    height:500px;
 
-  }
 
+    .trip-card-content {
 
-}
+      padding:18px;
 
+    }
 
 
-</style>
+
+    .trip-card-title {
+
+      font-size:22px;
+
+      font-weight:600;
+
+      margin-bottom:12px;
+
+    }
+
+
+
+    .trip-card-content p {
+
+      margin:5px 0;
+
+      font-size:14px;
+
+    }
+
+
+
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+
+      #sidePanel {
+
+        display:none !important;
+
+      }
+
+
+      #wrapper {
+
+        height:500px;
+
+      }
+
+
+      #cards-section {
+
+        padding:20px;
+
+      }
+
+
+    }
+
+
+  </style>
 
 </head>
 
@@ -173,27 +250,28 @@ html, body {
 <body>
 
 
+
 <div id="filters">
 
-<label>
+  <label>
 
-Type:
+  Type:
 
-<select id="typeFilter">
+    <select id="typeFilter">
 
-<option value="All">All</option>
+      <option value="All">All</option>
 
-<option value="Hike">Hike</option>
+      <option value="Hike">Hike</option>
 
-<option value="Backpack">Backpack</option>
+      <option value="Backpack">Backpack</option>
 
-<option value="Kayak">Kayak</option>
+      <option value="Kayak">Kayak</option>
 
-<option value="Other">Other</option>
+      <option value="Other">Other</option>
 
-</select>
+    </select>
 
-</label>
+  </label>
 
 </div>
 
@@ -203,38 +281,35 @@ Type:
 <div id="wrapper">
 
 
-<div id="map"></div>
+  <div id="map"></div>
 
 
+  <div id="sidePanel">
 
-<div id="sidePanel">
+    <div id="panelContent" class="content">
 
-<div id="panelContent" class="content">
+      <p>Select a trip</p>
 
-<p>Select a trip</p>
+    </div>
+
+  </div>
+
 
 </div>
 
-</div>
-
-
-</div>
 
 
 
-
-
-<section class="cards-section">
+<section id="cards-section">
 
 
 <h2>Latest Adventures</h2>
 
 
-<div id="cards-container" class="cards-grid"></div>
+<div id="cards-container"></div>
 
 
 </section>
-
 
 
 
@@ -244,16 +319,11 @@ Type:
 
 
 
+
 <script>
 
 
-const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbweollfSW_IlQr6nka0s77-WPu4sIdIDDpmq0Z9NV0egq0c-8dVcO4nevotzZM6jA4T/exec";
-
-
-
-const map =
-new google.maps.Map(
+const map = new google.maps.Map(
 document.getElementById("map"),
 {
 
@@ -277,18 +347,25 @@ gestureHandling:"greedy"
 
 
 
-function generatePageUrl(title){
+function isDesktop(){
 
+return window.innerWidth > 768;
+
+}
+
+
+
+
+
+function generatePageUrl(title){
 
 return "trips/" +
 
-title
-.toLowerCase()
+title.toLowerCase()
 .replace(/[^\w\s-]/g,"")
 .replace(/\s+/g,"-")
 
 +".html";
-
 
 }
 
@@ -299,6 +376,11 @@ title
 function updatePanel(data){
 
 
+if(!isDesktop())
+return;
+
+
+
 const panel =
 document.getElementById("panelContent");
 
@@ -307,31 +389,24 @@ document.getElementById("panelContent");
 panel.innerHTML = `
 
 
-${data.imageUrl ?
-`<img src="${data.imageUrl}">`
+${data.photoUrl ?
+`<img src="${data.photoUrl}">`
 :""}
 
 
+<p><strong>Title:</strong> ${data.title}</p>
 
-<p><strong>Title:</strong>
-${data.title}</p>
+<p><strong>Type:</strong> ${data.type || ""}</p>
 
+<p><strong>Where:</strong> ${data.area || ""}</p>
 
-<p><strong>Area:</strong>
-${data.area || ""}</p>
+<p><strong>Date:</strong> ${data.date || ""}</p>
 
+<p><strong>Miles:</strong> ${data.miles || ""}</p>
 
-<p><strong>Date:</strong>
-${data.date || ""}</p>
+<p><strong>Elevation Gain:</strong> ${data.elevationGain || ""}</p>
 
-
-<p><strong>Miles:</strong>
-${data.miles || ""}</p>
-
-
-<p><strong>Elevation:</strong>
-${data.elevationGain || ""}</p>
-
+<p><strong>Overall Ranking:</strong> ${data.overallRanking || ""}</p>
 
 
 <button class="details-btn">
@@ -343,15 +418,26 @@ Details
 
 
 
-panel.querySelector("button")
-.onclick=()=>{
+panel.querySelector(".details-btn")
+.onclick=(e)=>{
 
+e.stopPropagation();
 
 window.open(
 generatePageUrl(data.title),
 "_blank"
 );
 
+};
+
+
+
+panel.onclick=()=>{
+
+window.open(
+generatePageUrl(data.title),
+"_blank"
+);
 
 };
 
@@ -365,7 +451,6 @@ generatePageUrl(data.title),
 
 
 function getMarkerIcon(type){
-
 
 switch((type||"").toLowerCase()){
 
@@ -398,6 +483,7 @@ return null;
 
 
 
+
 let allMarkers=[];
 
 let allData=[];
@@ -410,10 +496,7 @@ function createCards(trips){
 
 
 const container =
-document.getElementById(
-"cards-container"
-);
-
+document.getElementById("cards-container");
 
 
 container.innerHTML="";
@@ -428,7 +511,7 @@ new Date(b.date)-new Date(a.date)
 
 .slice(0,45)
 
-.forEach(trip=>{
+.forEach(d=>{
 
 
 const card =
@@ -436,41 +519,44 @@ document.createElement("div");
 
 
 
-card.className="card";
+card.className="trip-card";
 
 
 
-card.innerHTML=`
-
-<img src="${trip.imageUrl || ""}">
+card.innerHTML = `
 
 
-<div class="card-content">
-
-
-<div class="card-title">
-
-${trip.title}
-
-</div>
+${d.photoUrl ?
+`<img src="${d.photoUrl}">`
+:""}
 
 
 
-<div class="card-details">
+<div class="trip-card-content">
 
-📍 ${trip.area || ""}<br>
 
-📅 ${trip.date || ""}<br>
+<div class="trip-card-title">
 
-🥾 ${trip.miles || ""} miles<br>
-
-⛰ ${trip.elevationGain || ""} ft
-
+${d.title}
 
 </div>
 
 
+<p><strong>Type:</strong> ${d.type || ""}</p>
+
+<p><strong>Where:</strong> ${d.area || ""}</p>
+
+<p><strong>Date:</strong> ${d.date || ""}</p>
+
+<p><strong>Miles:</strong> ${d.miles || ""}</p>
+
+<p><strong>Elevation Gain:</strong> ${d.elevationGain || ""}</p>
+
+<p><strong>Overall Ranking:</strong> ${d.overallRanking || ""}</p>
+
+
 </div>
+
 
 `;
 
@@ -478,10 +564,12 @@ ${trip.title}
 
 card.onclick=()=>{
 
+
 window.open(
-generatePageUrl(trip.title),
+generatePageUrl(d.title),
 "_blank"
 );
+
 
 };
 
@@ -500,11 +588,15 @@ container.appendChild(card);
 
 
 
+
+
 async function loadMarkers(){
 
 
 const res =
-await fetch(SCRIPT_URL);
+await fetch(
+"https://script.google.com/macros/s/AKfycbweollfSW_IlQr6nka0s77-WPu4sIdIDDpmq0Z9NV0egq0c-8dVcO4nevotzZM6jA4T/exec"
+);
 
 
 
@@ -514,7 +606,7 @@ await res.json();
 
 
 allData =
-data.cardItems || data.mapMarkers || data;
+data.mapMarkers;
 
 
 
@@ -526,13 +618,7 @@ let mostRecent=null;
 
 
 
-allData.forEach(d=>{
-
-
-
-if(!d.position)
-return;
-
+allData.forEach((d)=>{
 
 
 const marker =
@@ -550,6 +636,8 @@ icon:getMarkerIcon(d.type)
 
 marker.type=d.type;
 
+
+
 marker.data=d;
 
 
@@ -565,11 +653,8 @@ allMarkers.push(marker);
 
 
 
-
-if(
-!mostRecent ||
-new Date(d.date)>new Date(mostRecent.date)
-)
+if(!mostRecent ||
+new Date(d.date)>new Date(mostRecent.date))
 
 {
 
@@ -583,7 +668,7 @@ mostRecent=d;
 
 
 
-if(mostRecent){
+if(isDesktop() && mostRecent){
 
 updatePanel(mostRecent);
 
@@ -602,7 +687,6 @@ document
 .addEventListener(
 "change",
 function(){
-
 
 
 const selected =
@@ -651,6 +735,6 @@ loadMarkers();
 </script>
 
 
-</body>
 
+</body>
 </html>
