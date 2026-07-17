@@ -1,452 +1,252 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Google Map – Side Panel</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Basic:wght@400;600&display=swap" rel="stylesheet">
-
-  <style>
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Nunito Basic', sans-serif;
-      color: white;
-      background: #1f1f1f;
-    }
-
-
-    #wrapper {
-      display: flex;
-      height: 600px;
-      width: 100%;
-    }
-
-
-    /* MAP */
-    #map {
-      flex: 1;
-    }
-
-
-    /* SIDE PANEL */
-
-    #sidePanel {
-      width: 320px;
-      background: #2b2b2b;
-      border-left: 2px solid #444;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-    }
-
-
-    #sidePanel img {
-      width: 100%;
-      display: block;
-      border-bottom: 1px solid #444;
-    }
-
-
-    .content {
-      padding: 14px;
-      font-size: 13px;
-    }
-
-
-    .content p {
-      margin: 6px 0;
-    }
-
-
-    .content strong {
-      color: #ffffff;
-    }
-
-
-
-    /* DETAILS BUTTON */
-
-    .details-btn {
-
-      margin-top: 12px;
-
-      padding: 10px;
-
-      background: #444;
-
-      color:white;
-
-      border:1px solid #666;
-
-      border-radius:6px;
-
-      cursor:pointer;
-
-      width:100%;
-
-    }
-
-
-
-    /* FILTERS */
-
-    #filters {
-
-      position:absolute;
-
-      z-index:999;
-
-      background:white;
-
-      color:black;
-
-      padding:10px;
-
-      margin:10px;
-
-      border-radius:6px;
-
-      box-shadow:0 2px 6px rgba(0,0,0,.3);
-
-      font-family:Arial,sans-serif;
-
-    }
-
-
-
-    /************************************
-       CARDS
-    ************************************/
-
-
-    #cards-section {
-
-      padding:40px;
-
-    }
-
-
-    #cards-section h2 {
-
-      text-align:center;
-
-      font-size:32px;
-
-      margin-bottom:30px;
-
-    }
-
-
-
-    #cards-container {
-
-      display:grid;
-
-      grid-template-columns:
-        repeat(auto-fit,minmax(300px,1fr));
-
-      gap:25px;
-
-    }
-
-
-
-    .trip-card {
-
-      background:#2b2b2b;
-
-      border-radius:10px;
-
-      overflow:hidden;
-
-      cursor:pointer;
-
-      box-shadow:
-        0 3px 8px rgba(0,0,0,.3);
-
-    }
-
-
-
-    .trip-card img {
-
-      width:100%;
-
-      height:220px;
-
-      object-fit:cover;
-
-    }
-
-
-
-    .trip-card-content {
-
-      padding:18px;
-
-    }
-
-
-
-    .trip-card-title {
-
-      font-size:22px;
-
-      font-weight:600;
-
-      margin-bottom:12px;
-
-    }
-
-
-
-    .trip-card-content p {
-
-      margin:5px 0;
-
-      font-size:14px;
-
-    }
-
-
-
-
-    /* MOBILE */
-
-    @media(max-width:768px){
-
-
-      #sidePanel {
-
-        display:none !important;
-
-      }
-
-
-      #wrapper {
-
-        height:500px;
-
-      }
-
-
-      #cards-section {
-
-        padding:20px;
-
-      }
-
-
-    }
-
-
-  </style>
-
+<title>Google Map – Side Panel</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Basic:wght@400;600&display=swap" rel="stylesheet">
+<style>
+html,body{
+margin:0;
+padding:0;
+font-family:'Nunito Basic',sans-serif;
+color:white;
+background:#1f1f1f;
+}
+#wrapper{
+display:flex;
+height:600px;
+width:100%;
+}
+#map{
+flex:1;
+}
+#sidePanel{
+width:320px;
+background:#2b2b2b;
+border-left:2px solid #444;
+overflow-y:auto;
+display:flex;
+flex-direction:column;
+}
+#sidePanel img{
+width:100%;
+display:block;
+}
+.content{
+padding:14px;
+font-size:13px;
+}
+.content p{
+margin:6px 0;
+}
+.details-btn{
+margin-top:12px;
+padding:10px;
+background:#444;
+color:white;
+border:1px solid #666;
+border-radius:6px;
+cursor:pointer;
+width:100%;
+}
+#filters{
+background:#333;
+padding:12px;
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+align-items:center;
+}
+#filters label{
+font-size:14px;
+}
+#filters select,#filters input{
+padding:5px;
+}
+#cards-section{
+padding:40px;
+}
+#cards-section h2{
+text-align:center;
+font-size:32px;
+margin-bottom:30px;
+}
+#cards-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+}
+.trip-card{
+background:#2b2b2b;
+border-radius:10px;
+overflow:hidden;
+cursor:pointer;
+box-shadow:0 3px 8px rgba(0,0,0,.3);
+}
+.trip-card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+.trip-card-content{
+padding:18px;
+}
+.trip-card-title{
+font-size:22px;
+font-weight:600;
+margin-bottom:12px;
+}
+.trip-card-content p{
+margin:5px 0;
+font-size:14px;
+}
+#pagination{
+text-align:center;
+margin:30px;
+}
+.page-btn{
+margin:3px;
+padding:6px 12px;
+cursor:pointer;
+}
+.page-btn.active{
+background:#666;
+color:white;
+}
+@media(max-width:768px){
+#sidePanel{
+display:none;
+}
+#wrapper{
+height:500px;
+}
+#cards-section{
+padding:20px;
+}
+}
+</style>
 </head>
-
-
-
 <body>
 
+<div id="wrapper">
+<div id="map"></div>
+
+<div id="sidePanel">
+<div id="panelContent" class="content">
+<p>Select a trip</p>
+</div>
+</div>
+</div>
 
 
 <div id="filters">
 
-  <label>
+<label>Type:
+<select id="typeFilter">
+<option value="All">All</option>
+</select>
+</label>
 
-  Type:
+<label>Year:
+<select id="yearFilter">
+<option value="All">All</option>
+</select>
+</label>
 
-    <select id="typeFilter">
+<label>Country:
+<select id="countryFilter">
+<option value="All">All</option>
+</select>
+</label>
 
-      <option value="All">All</option>
+<label>State:
+<select id="stateFilter">
+<option value="All">All</option>
+</select>
+</label>
 
-      <option value="Hike">Hike</option>
+<label>Distance:
+<select id="distanceFilter">
+<option value="All">All</option>
+</select>
+</label>
 
-      <option value="Backpack">Backpack</option>
+<label>Greater than:
+<input id="milesSlider" type="range" min="0" max="50" value="0">
+<span id="milesValue">0</span> mi
+</label>
 
-      <option value="Kayak">Kayak</option>
-
-      <option value="Other">Other</option>
-
-    </select>
-
-  </label>
-
-</div>
-
-
-
-
-<div id="wrapper">
-
-
-  <div id="map"></div>
-
-
-  <div id="sidePanel">
-
-    <div id="panelContent" class="content">
-
-      <p>Select a trip</p>
-
-    </div>
-
-  </div>
-
+<label>Elevation greater than:
+<input id="elevationSlider" type="range" min="0" max="10000" step="1000" value="0">
+<span id="elevationValue">0</span> ft
+</label>
 
 </div>
-
-
 
 
 <section id="cards-section">
-
-
 <h2>Latest Adventures</h2>
-
-
 <div id="cards-container"></div>
-
-
 </section>
-
-
-
 
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMCxxUBxZ-a2UyHwu5PbKwYBxvAo0bAAA"></script>
 
 
-
-
 <script>
 
-
-const map = new google.maps.Map(
-document.getElementById("map"),
-{
-
-center:{
-lat:36.805098,
-lng:-109.822512
-},
-
+const map=new google.maps.Map(document.getElementById("map"),{
+center:{lat:36.805098,lng:-109.822512},
 zoom:6,
-
-mapTypeId:
-google.maps.MapTypeId.TERRAIN,
-
+mapTypeId:google.maps.MapTypeId.TERRAIN,
 disableDefaultUI:true,
-
 gestureHandling:"greedy"
-
 });
 
 
-
-
-
 function isDesktop(){
-
-return window.innerWidth > 768;
-
+return window.innerWidth>768;
 }
-
-
-
 
 
 function generatePageUrl(title){
-
-return "trips/" +
-
-title.toLowerCase()
+return "trips/"+title.toLowerCase()
 .replace(/[^\w\s-]/g,"")
-.replace(/\s+/g,"-")
-
-+".html";
-
+.replace(/\s+/g,"-")+".html";
 }
-
-
-
 
 
 function updatePanel(data){
 
+if(!isDesktop()) return;
 
-if(!isDesktop())
-return;
+const panel=document.getElementById("panelContent");
 
+panel.innerHTML=`
 
-
-const panel =
-document.getElementById("panelContent");
-
-
-
-panel.innerHTML = `
-
-
-${data.photoUrl ?
-`<img src="${data.photoUrl}">`
-:""}
-
+${data.photoUrl ? `<img src="${data.photoUrl}">`:""}
 
 <p><strong>Title:</strong> ${data.title}</p>
+<p><strong>Type:</strong> ${data.type||""}</p>
+<p><strong>Where:</strong> ${data.area||""}</p>
+<p><strong>Date:</strong> ${data.date||""}</p>
+<p><strong>Miles:</strong> ${data.miles||""}</p>
+<p><strong>Elevation Gain:</strong> ${data.elevationGain||""}</p>
+<p><strong>Overall Ranking:</strong> ${data.overallRanking||""}</p>
 
-<p><strong>Type:</strong> ${data.type || ""}</p>
-
-<p><strong>Where:</strong> ${data.area || ""}</p>
-
-<p><strong>Date:</strong> ${data.date || ""}</p>
-
-<p><strong>Miles:</strong> ${data.miles || ""}</p>
-
-<p><strong>Elevation Gain:</strong> ${data.elevationGain || ""}</p>
-
-<p><strong>Overall Ranking:</strong> ${data.overallRanking || ""}</p>
-
-
-<button class="details-btn">
-Details
-</button>
-
+<button class="details-btn">Details</button>
 
 `;
 
-
-
-panel.querySelector(".details-btn")
-.onclick=(e)=>{
-
+panel.querySelector(".details-btn").onclick=(e)=>{
 e.stopPropagation();
-
-window.open(
-generatePageUrl(data.title),
-"_blank"
-);
-
+window.open(generatePageUrl(data.title),"_blank");
 };
-
-
 
 panel.onclick=()=>{
-
-window.open(
-generatePageUrl(data.title),
-"_blank"
-);
-
+window.open(generatePageUrl(data.title),"_blank");
 };
 
-
-
 }
-
-
-
 
 
 
@@ -454,136 +254,299 @@ function getMarkerIcon(type){
 
 switch((type||"").toLowerCase()){
 
-
 case "hike":
 return "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
-
 
 case "backpack":
 return "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
 
-
 case "kayak":
 return "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
-
 
 case "other":
 return "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
 
-
 default:
 return null;
 
-
 }
 
-
 }
-
-
 
 
 
 let allMarkers=[];
-
 let allData=[];
-
-
+let filteredData=[];
+let currentPage=1;
 
 
 
 function createCards(trips){
 
-
-const container =
-document.getElementById("cards-container");
-
-
+const container=document.getElementById("cards-container");
 container.innerHTML="";
 
+const perPage=window.innerWidth<=768?15:45;
+
+const sorted=[...trips].sort((a,b)=>new Date(b.date)-new Date(a.date));
+
+const totalPages=Math.ceil(sorted.length/perPage);
+
+if(currentPage>totalPages) currentPage=1;
+
+const start=(currentPage-1)*perPage;
 
 
-trips
+sorted.slice(start,start+perPage).forEach(d=>{
 
-.sort((a,b)=>
-new Date(b.date)-new Date(a.date)
-)
-
-.slice(0,45)
-
-.forEach(d=>{
-
-
-const card =
-document.createElement("div");
-
-
+const card=document.createElement("div");
 
 card.className="trip-card";
 
+card.innerHTML=`
 
-
-card.innerHTML = `
-
-
-${d.photoUrl ?
-`<img src="${d.photoUrl}">`
-:""}
-
-
+${d.photoUrl ? `<img src="${d.photoUrl}">`:""}
 
 <div class="trip-card-content">
 
+<div class="trip-card-title">${d.title}</div>
 
-<div class="trip-card-title">
-
-${d.title}
-
-</div>
-
-
-<p><strong>Type:</strong> ${d.type || ""}</p>
-
-<p><strong>Where:</strong> ${d.area || ""}</p>
-
-<p><strong>Date:</strong> ${d.date || ""}</p>
-
-<p><strong>Miles:</strong> ${d.miles || ""}</p>
-
-<p><strong>Elevation Gain:</strong> ${d.elevationGain || ""}</p>
-
-<p><strong>Overall Ranking:</strong> ${d.overallRanking || ""}</p>
-
+<p><strong>Type:</strong> ${d.type||""}</p>
+<p><strong>Where:</strong> ${d.area||""}</p>
+<p><strong>Date:</strong> ${d.date||""}</p>
+<p><strong>Miles:</strong> ${d.miles||""}</p>
+<p><strong>Elevation Gain:</strong> ${d.elevationGain||""}</p>
+<p><strong>Overall Ranking:</strong> ${d.overallRanking||""}</p>
 
 </div>
-
-
 `;
 
-
-
 card.onclick=()=>{
-
-
-window.open(
-generatePageUrl(d.title),
-"_blank"
-);
-
-
+window.open(generatePageUrl(d.title),"_blank");
 };
-
-
 
 container.appendChild(card);
 
+});
+
+createPagination(totalPages);
+
+}
+
+function createPagination(totalPages){
+
+let old=document.getElementById("pagination");
+if(old) old.remove();
+
+const div=document.createElement("div");
+div.id="pagination";
+
+for(let i=1;i<=totalPages;i++){
+
+const btn=document.createElement("button");
+
+btn.className="page-btn";
+btn.innerText=i;
+
+if(i===currentPage){
+btn.classList.add("active");
+}
+
+btn.onclick=()=>{
+
+currentPage=i;
+
+createCards(filteredData);
+
+document.getElementById("cards-section")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+};
+
+div.appendChild(btn);
+
+}
+
+document.getElementById("cards-section").appendChild(div);
+
+}
+
+
+
+function populateFilters(){
+
+function addOptions(id,values){
+
+const select=document.getElementById(id);
+
+[...new Set(values.filter(v=>v!==undefined && v!==null && v!==""))]
+.sort()
+.forEach(v=>{
+
+const option=document.createElement("option");
+
+option.value=v;
+option.textContent=v;
+
+select.appendChild(option);
+
+});
+
+}
+
+
+addOptions("typeFilter",allData.map(x=>x.type));
+
+addOptions("yearFilter",
+allData.map(x=>new Date(x.date).getFullYear())
+);
+
+addOptions("stateFilter",allData.map(x=>x.state));
+
+addOptions("countryFilter",allData.map(x=>x.country));
+
+
+addOptions("distanceFilter",
+[
+0,
+5,
+10,
+15,
+20,
+25,
+30,
+35,
+40,
+45,
+50
+]);
+
+}
+
+
+
+
+function applyFilters(){
+
+filteredData=allData.filter(d=>{
+
+
+let type=document.getElementById("typeFilter").value;
+
+let year=document.getElementById("yearFilter").value;
+
+let state=document.getElementById("stateFilter").value;
+
+let country=document.getElementById("countryFilter").value;
+
+let distance=document.getElementById("distanceFilter").value;
+
+let milesSlider=
+Number(document.getElementById("milesSlider").value);
+
+let elevationSlider=
+Number(document.getElementById("elevationSlider").value);
+
+
+let miles=Number(d.miles)||0;
+
+let elevation=parseInt(d.elevationGain)||0;
+
+
+
+if(type!=="All" && d.type!==type)
+return false;
+
+
+if(year!=="All" &&
+new Date(d.date).getFullYear()!=Number(year))
+return false;
+
+
+if(state!=="All" && d.state!==state)
+return false;
+
+
+if(country!=="All" && d.country!==country)
+return false;
+
+
+if(distance!=="All" &&
+miles < Number(distance))
+return false;
+
+
+if(miles < milesSlider)
+return false;
+
+
+if(elevation < elevationSlider)
+return false;
+
+
+return true;
 
 
 });
 
 
+createCards(filteredData);
+
+
+allMarkers.forEach(marker=>{
+
+marker.setMap(
+filteredData.includes(marker.data)
+?map
+:null
+);
+
+});
+
 }
 
+
+
+document.querySelectorAll("#filters select")
+.forEach(select=>{
+
+select.addEventListener("change",()=>{
+
+currentPage=1;
+applyFilters();
+
+});
+
+});
+
+
+
+document.getElementById("milesSlider")
+.addEventListener("input",function(){
+
+document.getElementById("milesValue").innerText=this.value;
+
+currentPage=1;
+
+applyFilters();
+
+});
+
+
+
+document.getElementById("elevationSlider")
+.addEventListener("input",function(){
+
+document.getElementById("elevationValue").innerText=this.value;
+
+currentPage=1;
+
+applyFilters();
+
+});
 
 
 
@@ -592,23 +555,19 @@ container.appendChild(card);
 
 async function loadMarkers(){
 
-
-const res =
-await fetch(
+const res=await fetch(
 "https://script.google.com/macros/s/AKfycbweollfSW_IlQr6nka0s77-WPu4sIdIDDpmq0Z9NV0egq0c-8dVcO4nevotzZM6jA4T/exec"
 );
 
+const data=await res.json();
 
 
-const data =
-await res.json();
+allData=data.mapMarkers;
+
+filteredData=allData;
 
 
-
-allData =
-data.mapMarkers;
-
-
+populateFilters();
 
 createCards(allData);
 
@@ -617,12 +576,10 @@ createCards(allData);
 let mostRecent=null;
 
 
+allData.forEach(d=>{
 
-allData.forEach((d)=>{
 
-
-const marker =
-new google.maps.Marker({
+const marker=new google.maps.Marker({
 
 position:d.position,
 
@@ -633,20 +590,16 @@ icon:getMarkerIcon(d.type)
 });
 
 
-
 marker.type=d.type;
-
-
 
 marker.data=d;
 
 
+marker.addListener("click",()=>{
 
-marker.addListener(
-"click",
-()=>updatePanel(d)
-);
+updatePanel(d);
 
+});
 
 
 allMarkers.push(marker);
@@ -654,14 +607,11 @@ allMarkers.push(marker);
 
 
 if(!mostRecent ||
-new Date(d.date)>new Date(mostRecent.date))
-
-{
+new Date(d.date)>new Date(mostRecent.date)){
 
 mostRecent=d;
 
 }
-
 
 
 });
@@ -679,62 +629,10 @@ updatePanel(mostRecent);
 
 
 
-
-
-
-document
-.getElementById("typeFilter")
-.addEventListener(
-"change",
-function(){
-
-
-const selected =
-this.value.toLowerCase();
-
-
-
-allMarkers.forEach(marker=>{
-
-
-if(selected==="all"){
-
-marker.setMap(map);
-
-}
-
-else{
-
-
-marker.setMap(
-
-marker.type &&
-marker.type.toLowerCase()===selected
-
-?map:null
-
-);
-
-
-}
-
-
-});
-
-
-});
-
-
-
-
-
 loadMarkers();
 
 
-
 </script>
-
-
 
 </body>
 </html>
