@@ -19,6 +19,7 @@ width:100%;
 #map{
 flex:1;
 }
+
 #sidePanel{
 width:320px;
 background:#2b2b2b;
@@ -48,26 +49,231 @@ border-radius:6px;
 cursor:pointer;
 width:100%;
 }
-#filters{
-background:#333;
-padding:12px;
-display:flex;
-flex-wrap:wrap;
-gap:12px;
+
+*{
+box-sizing:border-box;
+}
+
+
+/* Entire top ribbon */
+
+#adventureToolbar{
+position:relative;
+z-index:20;
+
+display:grid;
+grid-template-columns:minmax(540px,1fr) auto minmax(540px,1fr);
 align-items:center;
+gap:20px;
+
+width:100%;
+min-width:1280px;
+height:58px;
+padding:7px 28px 7px 18px;
+
+background:#333;
+border-bottom:1px solid #555;
 }
+
+
+/* Allows the ribbon to scroll rather than overlap */
+
+#toolbarScroll{
+width:100%;
+overflow:visible;
+background:#333;
+}
+
+
+/* Left legend */
+
+.type-legend{
+grid-column:1;
+
+display:flex;
+align-items:center;
+justify-content:flex-start;
+gap:9px;
+
+white-space:nowrap;
+}
+
+.legend-title{
+font-size:13px;
+font-weight:600;
+}
+
+.legend-item{
+display:inline-flex;
+align-items:center;
+gap:5px;
+
+font-size:13px;
+white-space:nowrap;
+}
+
+.legend-dot{
+display:inline-block;
+
+width:13px;
+height:13px;
+
+border:1px solid rgb(37, 35, 35);
+border-radius:50%;
+}
+
+.legend-dot.hike{
+background:#2d72d9;
+}
+
+.legend-dot.backpack{
+background:#d83a34;
+}
+
+.legend-dot.kayak{
+background:#36a852;
+}
+
+.legend-dot.other{
+background:#f2cf3a;
+}
+
+
+/* Truly centered title */
+
+.adventures-title{
+grid-column:2;
+justify-self:center;
+
+margin:0;
+
+font-size:26px;
+font-weight:600;
+line-height:1;
+text-align:center;
+white-space:nowrap;
+}
+
+
+/* Right filters */
+
+#filters{
+grid-column:3;
+
+display:flex;
+align-items:center;
+justify-content:flex-end;
+gap:9px;
+
+padding-right:8px;
+white-space:nowrap;
+}
+
 #filters label{
-font-size:14px;
+display:flex;
+align-items:center;
+gap:5px;
+
+margin:0;
+
+font-size:13px;
+white-space:nowrap;
 }
-#filters select,#filters input{
-padding:5px;
+
+#filters select,
+#filters input,
+#otherFiltersButton{
+font-family:inherit;
+font-size:13px;
 }
+
+#filters select{
+height:32px;
+min-width:76px;
+padding:4px 7px;
+
+font-size:13px;
+color:white;
+background:#242424;
+
+border:1px solid #666;
+border-radius:5px;
+}
+
+.miles-filter input[type="range"]{
+width:82px;
+padding:0;
+}
+
+#milesValue{
+display:inline-block;
+min-width:15px;
+text-align:right;
+}
+
+
+/* Other Filters dropdown */
+
+.other-filters{
+position:relative;
+flex:0 0 auto;
+}
+
+#otherFiltersButton{
+height:30px;
+margin:0;
+padding:4px 9px;
+
+color:white;
+background:#242424;
+
+border:1px solid #666;
+border-radius:5px;
+
+cursor:pointer;
+white-space:nowrap;
+}
+
+#otherFiltersMenu{
+position:absolute;
+top:calc(100% + 8px);
+right:0;
+
+display:none;
+width:280px;
+padding:15px;
+
+background:#2b2b2b;
+border:1px solid #666;
+border-radius:8px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.4);
+}
+
+#otherFiltersMenu.open{
+display:grid;
+gap:14px;
+}
+
+#otherFiltersMenu label{
+display:grid;
+align-items:stretch;
+gap:5px;
+
+font-size:12px;
+}
+
+#otherFiltersMenu select,
+#otherFiltersMenu input[type="range"]{
+width:100%;
+}
+
 #cards-section{
 padding:40px;
 }
 #cards-section h2{
 text-align:center;
-font-size:32px;
+font-size:26px;
 margin-bottom:30px;
 }
 #cards-container{
@@ -86,6 +292,11 @@ box-shadow:0 3px 8px rgba(0,0,0,.3);
 width:100%;
 height:220px;
 object-fit:cover;
+}
+.trip-card-type-bar{
+height:4px;
+width:100%;
+border-radius:10px 10px 0 0;
 }
 .trip-card-content{
 padding:18px;
@@ -127,59 +338,164 @@ padding:20px;
 </head>
 <body>
 
+<div id="toolbarScroll">
+
+<header id="adventureToolbar">
+
+<!-- LEFT: Marker legend -->
+
+<div class="type-legend">
+
+<span class="legend-title"></span>
+
+<span class="legend-item">
+<span class="legend-dot hike"></span>
+Hike
+</span>
+
+<span class="legend-item">
+<span class="legend-dot backpack"></span>
+Backpack
+</span>
+
+<span class="legend-item">
+<span class="legend-dot kayak"></span>
+Kayak
+</span>
+
+<span class="legend-item">
+<span class="legend-dot other"></span>
+Other
+</span>
+
+</div>
+
+
+<!-- CENTER: Title -->
+
+<h1 class="adventures-title">Adventures</h1>
+
+
+<!-- RIGHT: Filters -->
+
+<div id="filters">
+
+<label>
+<span>Type:</span>
+
+<select id="typeFilter">
+<option value="All">All</option>
+</select>
+</label>
+
+
+<label>
+<span>Year:</span>
+
+<select id="yearFilter">
+<option value="All">All</option>
+</select>
+</label>
+
+
+<label class="miles-filter">
+
+<span>Miles greater than:</span>
+
+<input
+id="milesSlider"
+type="range"
+min="0"
+max="50"
+value="0"
+>
+
+<span>
+<span id="milesValue">0</span> mi
+</span>
+
+</label>
+
+
+<div class="other-filters">
+
+<button
+id="otherFiltersButton"
+type="button"
+aria-expanded="false"
+aria-controls="otherFiltersMenu"
+>
+Other Filters ▾
+</button>
+
+
+<div id="otherFiltersMenu">
+
+<label>
+
+<span>State:</span>
+
+<select id="stateFilter">
+<option value="All">All</option>
+</select>
+
+</label>
+
+
+<label>
+
+<span>Country:</span>
+
+<select id="countryFilter">
+<option value="All">All</option>
+</select>
+
+</label>
+
+
+<label>
+
+<span>Elevation Gain greater than:</span>
+
+<input
+id="elevationSlider"
+type="range"
+min="0"
+max="10000"
+step="1000"
+value="0"
+>
+
+<span>
+<span id="elevationValue">0</span> ft
+</span>
+
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+</div>    
+
 <div id="wrapper">
-<div id="map"></div>
+<div id="map">
+
+<div id="mapLoading" class="loading-message">
+Loading map…
+</div>
+
+</div>
 
 <div id="sidePanel">
 <div id="panelContent" class="content">
 <p>Select a trip</p>
 </div>
 </div>
-</div>
-
-
-<div id="filters">
-
-<label>Type:
-<select id="typeFilter">
-<option value="All">All</option>
-</select>
-</label>
-
-<label>Year:
-<select id="yearFilter">
-<option value="All">All</option>
-</select>
-</label>
-
-<label>Country:
-<select id="countryFilter">
-<option value="All">All</option>
-</select>
-</label>
-
-<label>State:
-<select id="stateFilter">
-<option value="All">All</option>
-</select>
-</label>
-
-<label>Distance:
-<select id="distanceFilter">
-<option value="All">All</option>
-</select>
-</label>
-
-<label>Greater than:
-<input id="milesSlider" type="range" min="0" max="50" value="0">
-<span id="milesValue">0</span> mi
-</label>
-
-<label>Elevation greater than:
-<input id="elevationSlider" type="range" min="0" max="10000" step="1000" value="0">
-<span id="elevationValue">0</span> ft
-</label>
-
 </div>
 
 
@@ -306,6 +622,17 @@ card.className="trip-card";
 
 card.innerHTML=`
 
+<div
+class="trip-card-type-bar"
+style="background:${
+d.type === "Hike" ? "#2d72d9" :
+d.type === "Backpack" ? "#d83a34" :
+d.type === "Kayak" ? "#36a852" :
+d.type === "Other" ? "#f2cf3a" :
+"#777"
+};">
+</div>
+
 ${d.photoUrl ? `<img src="${d.photoUrl}">`:""}
 
 <div class="trip-card-content">
@@ -408,26 +735,7 @@ addOptions("stateFilter",allData.map(x=>x.state));
 
 addOptions("countryFilter",allData.map(x=>x.country));
 
-
-addOptions("distanceFilter",
-[
-0,
-5,
-10,
-15,
-20,
-25,
-30,
-35,
-40,
-45,
-50
-]);
-
 }
-
-
-
 
 function applyFilters(){
 
@@ -441,8 +749,6 @@ let year=document.getElementById("yearFilter").value;
 let state=document.getElementById("stateFilter").value;
 
 let country=document.getElementById("countryFilter").value;
-
-let distance=document.getElementById("distanceFilter").value;
 
 let milesSlider=
 Number(document.getElementById("milesSlider").value);
@@ -474,11 +780,6 @@ if(country!=="All" && d.country!==country)
 return false;
 
 
-if(distance!=="All" &&
-miles < Number(distance))
-return false;
-
-
 if(miles < milesSlider)
 return false;
 
@@ -496,10 +797,14 @@ return true;
 createCards(filteredData);
 
 
+/* Make marker filtering faster */
+
+const filteredSet=new Set(filteredData);
+
 allMarkers.forEach(marker=>{
 
 marker.setMap(
-filteredData.includes(marker.data)
+filteredSet.has(marker.data)
 ?map
 :null
 );
@@ -628,7 +933,61 @@ updatePanel(mostRecent);
 }
 
 
+const otherFiltersButton=
+document.getElementById("otherFiltersButton");
 
+const otherFiltersMenu=
+document.getElementById("otherFiltersMenu");
+
+
+otherFiltersButton.addEventListener("click",function(event){
+
+event.stopPropagation();
+
+const isOpen=
+otherFiltersMenu.classList.toggle("open");
+
+otherFiltersButton.setAttribute(
+"aria-expanded",
+String(isOpen)
+);
+
+});
+
+
+otherFiltersMenu.addEventListener("click",function(event){
+
+event.stopPropagation();
+
+});
+
+
+document.addEventListener("click",function(){
+
+otherFiltersMenu.classList.remove("open");
+
+otherFiltersButton.setAttribute(
+"aria-expanded",
+"false"
+);
+
+});
+
+
+document.addEventListener("keydown",function(event){
+
+if(event.key==="Escape"){
+
+otherFiltersMenu.classList.remove("open");
+
+otherFiltersButton.setAttribute(
+"aria-expanded",
+"false"
+);
+
+}
+
+});
 loadMarkers();
 
 
