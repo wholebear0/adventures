@@ -82,28 +82,77 @@
 
     /* FILTERS */
 
-    #filters {
+#topRibbon {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 
-      position:absolute;
+    height: 80px;
 
-      z-index:999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-      background:white;
+    padding: 0 25px;
 
-      color:black;
+    background: #1f1f1f;
+    border-bottom: 2px solid #444;
+}
 
-      padding:10px;
 
-      margin:10px;
+#legend {
+    display:flex;
+    gap:15px;
+    font-size:14px;
+}
 
-      border-radius:6px;
 
-      box-shadow:0 2px 6px rgba(0,0,0,.3);
+#legend span {
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
 
-      font-family:Arial,sans-serif;
 
-    }
+.marker {
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    display:inline-block;
+}
 
+
+.marker.hike {
+    background:#4285F4;
+}
+
+
+.marker.backpack {
+    background:#EA4335;
+}
+
+
+.marker.kayak {
+    background:#34A853;
+}
+
+
+.marker.other {
+    background:#FBBC05;
+}
+
+
+#siteTitle {
+    font-size:36px;
+    font-weight:600;
+}
+
+
+#ribbonFilters {
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
 
 
     /************************************
