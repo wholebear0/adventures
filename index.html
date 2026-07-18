@@ -1,11 +1,129 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Google Map – Side Panel</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Basic:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="index.css">
-
+<title>Google Map – Side Panel</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Basic:wght@400;600&display=swap" rel="stylesheet">
+<style>
+html,body{
+margin:0;
+padding:0;
+font-family:'Nunito Basic',sans-serif;
+color:white;
+background:#1f1f1f;
+}
+#wrapper{
+display:flex;
+height:600px;
+width:100%;
+}
+#map{
+flex:1;
+}
+#sidePanel{
+width:320px;
+background:#2b2b2b;
+border-left:2px solid #444;
+overflow-y:auto;
+display:flex;
+flex-direction:column;
+}
+#sidePanel img{
+width:100%;
+display:block;
+}
+.content{
+padding:14px;
+font-size:13px;
+}
+.content p{
+margin:6px 0;
+}
+.details-btn{
+margin-top:12px;
+padding:10px;
+background:#444;
+color:white;
+border:1px solid #666;
+border-radius:6px;
+cursor:pointer;
+width:100%;
+}
+#filters{
+background:#333;
+padding:12px;
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+align-items:center;
+}
+#filters label{
+font-size:14px;
+}
+#filters select,#filters input{
+padding:5px;
+}
+#cards-section{
+padding:40px;
+}
+#cards-section h2{
+text-align:center;
+font-size:32px;
+margin-bottom:30px;
+}
+#cards-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+}
+.trip-card{
+background:#2b2b2b;
+border-radius:10px;
+overflow:hidden;
+cursor:pointer;
+box-shadow:0 3px 8px rgba(0,0,0,.3);
+}
+.trip-card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+.trip-card-content{
+padding:18px;
+}
+.trip-card-title{
+font-size:22px;
+font-weight:600;
+margin-bottom:12px;
+}
+.trip-card-content p{
+margin:5px 0;
+font-size:14px;
+}
+#pagination{
+text-align:center;
+margin:30px;
+}
+.page-btn{
+margin:3px;
+padding:6px 12px;
+cursor:pointer;
+}
+.page-btn.active{
+background:#666;
+color:white;
+}
+@media(max-width:768px){
+#sidePanel{
+display:none;
+}
+#wrapper{
+height:500px;
+}
+#cards-section{
+padding:20px;
+}
+}
+</style>
 </head>
 <body>
 
@@ -19,55 +137,51 @@
 </div>
 </div>
 
-<div id="topRibbon">
 
-  <div id="legend">
+<div id="filters">
 
-    <span><i class="marker hike"></i>Hike</span>
-    <span><i class="marker backpack"></i>Backpack</span>
-    <span><i class="marker kayak"></i>Kayak</span>
-    <span><i class="marker other"></i>Other</span>
+<label>Type:
+<select id="typeFilter">
+<option value="All">All</option>
+</select>
+</label>
 
-  </div>
+<label>Year:
+<select id="yearFilter">
+<option value="All">All</option>
+</select>
+</label>
 
+<label>Country:
+<select id="countryFilter">
+<option value="All">All</option>
+</select>
+</label>
 
-  <div id="siteTitle">
-    Adventures
-  </div>
+<label>State:
+<select id="stateFilter">
+<option value="All">All</option>
+</select>
+</label>
 
+<label>Distance:
+<select id="distanceFilter">
+<option value="All">All</option>
+</select>
+</label>
 
-  <div id="ribbonFilters">
+<label>Greater than:
+<input id="milesSlider" type="range" min="0" max="50" value="0">
+<span id="milesValue">0</span> mi
+</label>
 
-    <label>
-      Type:
-      <select id="typeFilter">
-        <option value="All">All</option>
-      </select>
-    </label>
-
-
-    <label>
-      Year:
-      <select id="yearFilter">
-        <option value="All">All</option>
-      </select>
-    </label>
-
-
-    <label>
-      Greater:
-      <input id="milesSlider" type="range" min="0" max="50" value="0">
-      <span id="milesValue">0</span> mi
-    </label>
-
-
-    <button id="moreFilters">
-      More ▼
-    </button>
-
-  </div>
+<label>Elevation greater than:
+<input id="elevationSlider" type="range" min="0" max="10000" step="1000" value="0">
+<span id="elevationValue">0</span> ft
+</label>
 
 </div>
+
 
 <section id="cards-section">
 <h2>Latest Adventures</h2>
