@@ -9,19 +9,20 @@ margin:0;
 padding:0;
 font-family:'Nunito Basic',sans-serif;
 color:white;
-background:#1f1f1f;
+background:#333;
 }
 #wrapper{
 display:flex;
-height:600px;
-width:100%;
+height:700px;
+max-width:1600px;
+margin:0 auto;
 }
 #map{
 flex:1;
 }
 
 #sidePanel{
-width:320px;
+width:340px;
 background:#2b2b2b;
 border-left:2px solid #444;
 overflow-y:auto;
@@ -58,8 +59,12 @@ box-sizing:border-box;
 /* Entire top ribbon */
 
 #adventureToolbar{
-position:relative;
-z-index:20;
+max-width:1600px;
+margin:0 auto;
+box-sizing:border-box;
+position:sticky;
+top:0;
+z-index:1000;
 
 display:grid;
 grid-template-columns:minmax(540px,1fr) auto minmax(540px,1fr);
@@ -278,8 +283,32 @@ margin-bottom:30px;
 }
 #cards-container{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+grid-template-columns:repeat(4,340px);
+justify-content:center;
 gap:25px;
+}
+@media(max-width:1400px){
+
+#cards-container{
+grid-template-columns:repeat(3,320px);
+}
+
+}
+
+@media(max-width:1050px){
+
+#cards-container{
+grid-template-columns:repeat(2,320px);
+}
+
+}
+
+@media(max-width:720px){
+
+#cards-container{
+grid-template-columns:minmax(0,320px);
+}
+
 }
 .trip-card{
 background:#2b2b2b;
@@ -603,7 +632,7 @@ function createCards(trips){
 const container=document.getElementById("cards-container");
 container.innerHTML="";
 
-const perPage=window.innerWidth<=768?15:45;
+const perPage=16;
 
 const sorted=[...trips].sort((a,b)=>new Date(b.date)-new Date(a.date));
 
@@ -697,7 +726,7 @@ div.appendChild(btn);
 
 }
 
-document.getElementById("cards-section").appendChild(div);
+document.getElementById("cards-container").before(div);
 
 }
 
@@ -861,7 +890,7 @@ applyFilters();
 async function loadMarkers(){
 
 const res=await fetch(
-"https://script.google.com/macros/s/AKfycbweollfSW_IlQr6nka0s77-WPu4sIdIDDpmq0Z9NV0egq0c-8dVcO4nevotzZM6jA4T/exec"
+"https://script.google.com/macros/s/AKfycbxmcar1lRakOBIXfemcSlT_9yMDL5ZVcrEeKs1tr7cuEoD6I8T6Y8_wLR-FHGbAm0zF/exec"
 );
 
 const data=await res.json();
@@ -883,16 +912,16 @@ let mostRecent=null;
 
 allData.forEach(d=>{
 
+  if (!d.position) {
+    console.warn("Missing map position:", d.title);
+    return;
+  }
 
-const marker=new google.maps.Marker({
-
-position:d.position,
-
-map,
-
-icon:getMarkerIcon(d.type)
-
-});
+  const marker=new google.maps.Marker({
+    position:d.position,
+    map,
+    icon:getMarkerIcon(d.type)
+  });
 
 
 marker.type=d.type;
