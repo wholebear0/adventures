@@ -94,54 +94,35 @@ background:#333;
 /* Left legend */
 
 .type-legend{
-grid-column:1;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    justify-self:start;
 
-display:flex;
-align-items:center;
-justify-content:flex-start;
-gap:9px;
-
-white-space:nowrap;
+    font-family:"Playwrite NZ Basic", cursive;
+    font-size:15px;
+    font-weight:700;
 }
 
-.legend-title{
-font-size:13px;
-font-weight:600;
+.legend-hike{
+    color:#6fa8dc;
 }
 
-.legend-item{
-display:inline-flex;
-align-items:center;
-gap:7px;
-
-font-size:13px;
-white-space:nowrap;
+.legend-backpack{
+    color:#e06666;
 }
 
-.legend-dot{
-display:inline-block;
-
-width:13px;
-height:13px;
-
-border:1px solid rgb(37, 35, 35);
-border-radius:50%;
+.legend-kayak{
+    color:#6aa84f;
 }
 
-.legend-dot.hike{
-background:#2d72d9;
+.legend-other{
+    color:#ffd966;
 }
 
-.legend-dot.backpack{
-background:#d83a34;
-}
-
-.legend-dot.kayak{
-background:#36a852;
-}
-
-.legend-dot.other{
-background:#f2cf3a;
+.legend-separator{
+    color:#cfcfcf;
+    font-weight:500;
 }
 
 
@@ -164,15 +145,20 @@ white-space:nowrap;
 /* Right filters */
 
 #filters{
-grid-column:3;
+    width:calc(100% - 80px);
+    max-width:1400px;
+    margin:0 auto 10px;
+    padding:16px 20px;
+    box-sizing:border-box;
 
-display:flex;
-align-items:center;
-justify-content:flex-end;
-gap:9px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:18px;
 
-padding-right:8px;
-white-space:nowrap;
+    background:#333;
+    border-radius:10px;
 }
 
 #filters label{
@@ -205,7 +191,9 @@ background:#242424;
 border:1px solid #666;
 border-radius:5px;
 }
-
+#filters input[type="range"]{
+    width: 180px;
+}
 .miles-filter input[type="range"]{
 width:82px;
 padding:0;
@@ -279,6 +267,7 @@ padding:40px;
 }
 #cards-section h2{
 text-align:center;
+margin-top: 0px;
 font-size:26px;
 margin-bottom:30px;
 }
@@ -373,6 +362,20 @@ height:500px;
 padding:20px;
 }
 }
+#filters,
+#filters label,
+#filters label span,
+#filters select,
+#filters input,
+#filters option{
+    font-family:"Nunito Basic", sans-serif !important;
+    font-style:normal !important;
+    letter-spacing:normal;
+}
+
+#filters label{
+    font-weight:600;
+}
 </style>
 </head>
 <body>
@@ -384,134 +387,24 @@ padding:20px;
 <!-- LEFT: Marker legend -->
 
 <div class="type-legend">
+    <span class="legend-hike">Hike</span>
+    <span class="legend-separator">/</span>
 
-<span class="legend-title"></span>
+    <span class="legend-backpack">Backpack</span>
+    <span class="legend-separator">/</span>
 
-<span class="legend-item">
-<span class="legend-dot hike"></span>
-Hike
-</span>
+    <span class="legend-kayak">Kayak</span>
+    <span class="legend-separator">/</span>
 
-<span class="legend-item">
-<span class="legend-dot backpack"></span>
-Backpack
-</span>
-
-<span class="legend-item">
-<span class="legend-dot kayak"></span>
-Kayak
-</span>
-
-<span class="legend-item">
-<span class="legend-dot other"></span>
-Other
-</span>
-
+    <span class="legend-other">Other</span>
 </div>
-
 
 <!-- CENTER: Title -->
 
 <h1 class="adventures-title">Adventures</h1>
 
 
-<!-- RIGHT: Filters -->
 
-<div id="filters">
-
-<label>
-<span>Type:</span>
-
-<select id="typeFilter">
-<option value="All">All</option>
-</select>
-</label>
-
-
-<label>
-<span>Year:</span>
-
-<select id="yearFilter">
-<option value="All">All</option>
-</select>
-</label>
-
-
-<label class="miles-filter">
-
-<span>Miles greater than:</span>
-
-<input
-id="milesSlider"
-type="range"
-min="0"
-max="50"
-value="0"
->
-
-<span>
-<span id="milesValue">0</span> mi
-</span>
-
-</label>
-
-
-<div class="other-filters">
-
-<button
-id="otherFiltersButton"
-type="button"
-aria-expanded="false"
-aria-controls="otherFiltersMenu"
->
-Other Filters ▾
-</button>
-
-
-<div id="otherFiltersMenu">
-
-<label>
-
-<span>State:</span>
-
-<select id="stateFilter">
-<option value="All">All</option>
-</select>
-
-</label>
-
-
-<label>
-
-<span>Country:</span>
-
-<select id="countryFilter">
-<option value="All">All</option>
-</select>
-
-</label>
-
-
-<label>
-
-<span>Elevation Gain greater than:</span>
-
-<input
-id="elevationSlider"
-type="range"
-min="0"
-max="10000"
-step="1000"
-value="0"
->
-
-<span>
-<span id="elevationValue">0</span> ft
-</span>
-
-</label>
-
-</div>
 
 </div>
 
@@ -537,10 +430,76 @@ Loading map…
 </div>
 </div>
 
+<!-- RIGHT: Filters -->
+
+<div id="filters">
+
+  <label>
+    <span>Type:</span>
+    <select id="typeFilter">
+      <option value="All">All</option>
+    </select>
+  </label>
+
+  <label>
+    <span>Year:</span>
+    <select id="yearFilter">
+      <option value="All">All</option>
+    </select>
+  </label>
+
+  <label>
+    <span>State:</span>
+    <select id="stateFilter">
+      <option value="All">All</option>
+    </select>
+  </label>
+
+  <label>
+    <span>Country:</span>
+    <select id="countryFilter">
+      <option value="All">All</option>
+    </select>
+  </label>
+
+  <label class="miles-filter">
+    <span>Miles ></span>
+
+    <input
+      id="milesSlider"
+      type="range"
+      min="0"
+      max="50"
+      value="0"
+    >
+
+    <span>
+      <span id="milesValue">0</span> mi
+    </span>
+  </label>
+
+  <label class="elevation-filter">
+    <span>Elevation gain ></span>
+
+    <input
+      id="elevationSlider"
+      type="range"
+      min="0"
+      max="10000"
+      step="1000"
+      value="0"
+    >
+
+    <span>
+      <span id="elevationValue">0</span> ft
+    </span>
+  </label>
+
+</div>
 
 <section id="cards-section">
-<h2>Latest Adventures</h2>
-<div id="cards-container"></div>
+  <h2>Latest Adventures</h2>
+  <div id="cards-container"></div>
 </section>
 
 
@@ -585,7 +544,11 @@ ${data.photoUrl ? `<img src="${data.photoUrl}">`:""}
 <p><strong>Where:</strong> ${data.area||""}</p>
 <p><strong>Date:</strong> ${data.date||""}</p>
 <p><strong>Miles:</strong> ${data.miles||""}</p>
-<p><strong>Elevation Gain:</strong> ${data.elevationGain||""}</p>
+<p><strong>Elevation Gain ft:</strong> ${
+  data.elevationGain
+    ? Number(String(data.elevationGain).replace(/,/g, "")).toLocaleString()
+    : ""
+}</p>
 <p><strong>Overall Ranking:</strong> ${data.overallRanking||""}</p>
 
 <button class="details-btn">Details</button>
@@ -682,7 +645,11 @@ ${d.photoUrl ? `<img src="${d.photoUrl}">`:""}
 <p><strong>Where:</strong> ${d.area||""}</p>
 <p><strong>Date:</strong> ${d.date||""}</p>
 <p><strong>Miles:</strong> ${d.miles||""}</p>
-<p><strong>Elevation Gain:</strong> ${d.elevationGain||""}</p>
+<p><strong>Elevation Gain ft:</strong> ${
+  d.elevationGain
+    ? Number(String(d.elevationGain).replace(/,/g, "")).toLocaleString()
+    : ""
+}</p>
 <p><strong>Overall Ranking:</strong> ${d.overallRanking||""}</p>
 
 </div>
@@ -972,61 +939,7 @@ updatePanel(mostRecent);
 }
 
 
-const otherFiltersButton=
-document.getElementById("otherFiltersButton");
 
-const otherFiltersMenu=
-document.getElementById("otherFiltersMenu");
-
-
-otherFiltersButton.addEventListener("click",function(event){
-
-event.stopPropagation();
-
-const isOpen=
-otherFiltersMenu.classList.toggle("open");
-
-otherFiltersButton.setAttribute(
-"aria-expanded",
-String(isOpen)
-);
-
-});
-
-
-otherFiltersMenu.addEventListener("click",function(event){
-
-event.stopPropagation();
-
-});
-
-
-document.addEventListener("click",function(){
-
-otherFiltersMenu.classList.remove("open");
-
-otherFiltersButton.setAttribute(
-"aria-expanded",
-"false"
-);
-
-});
-
-
-document.addEventListener("keydown",function(event){
-
-if(event.key==="Escape"){
-
-otherFiltersMenu.classList.remove("open");
-
-otherFiltersButton.setAttribute(
-"aria-expanded",
-"false"
-);
-
-}
-
-});
 loadMarkers();
 
 
