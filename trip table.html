@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>All Trips</title>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Nunito+Basic:wght@400;600;700&display=swap"
+  rel="stylesheet"
+>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  margin:0;
+  padding:0;
+  min-height:100%;
+  font-family:"Nunito Basic", sans-serif;
+  background:#1f1f1f;
+  color:white;
+}
+
+body{
+  padding:40px 24px;
+}
+
+.trips-page{
+  width:100%;
+  max-width:1400px;
+  margin:0 auto;
+}
+
+h1{
+  margin:0 0 30px;
+  text-align:center;
+  font-size:36px;
+  font-weight:700;
+}
+
+.table-wrapper{
+  width:100%;
+  overflow-x:auto;
+  border:1px solid #555;
+  border-radius:8px;
+}
+
+table{
+  width:100%;
+  min-width:950px;
+  border-collapse:collapse;
+  background:#2b2b2b;
+}
+
+thead{
+  background:#3a3a3a;
+}
+
+th,
+td{
+  padding:13px 15px;
+  text-align:left;
+  border-bottom:1px solid #4b4b4b;
+}
+
+th{
+  position:relative;
+  font-size:14px;
+  font-weight:700;
+  white-space:nowrap;
+  cursor:pointer;
+  user-select:none;
+}
+
+th:hover{
+  background:#484848;
+}
+
+th::after{
+  content:"↕";
+  margin-left:7px;
+  color:#aaa;
+  font-size:12px;
+}
+
+th.sort-ascending::after{
+  content:"▲";
+  color:white;
+}
+
+th.sort-descending::after{
+  content:"▼";
+  color:white;
+}
+
+td{
+  font-size:14px;
+}
+
+tbody tr:hover{
+  background:#353535;
+}
+
+tbody tr:last-child td{
+  border-bottom:0;
+}
+
+.trip-name-cell{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-width:190px;
+}
+
+.type-square{
+  display:inline-block;
+  flex:0 0 11px;
+  width:11px;
+  height:11px;
+  border-radius:1px;
+}
+
+.type-square.hike{
+  background:#6fa8dc;
+}
+
+.type-square.backpack{
+  background:#e06666;
+}
+
+.type-square.kayak{
+  background:#6aa84f;
+}
+
+.type-square.other{
+  background:#ffd966;
+}
+
+.trip-link{
+  color:white;
+  font-weight:600;
+  text-decoration:none;
+}
+
+.trip-link:hover{
+  text-decoration:underline;
+}
+
+.number-cell{
+  text-align:right;
+  font-variant-numeric:tabular-nums;
+}
+
+.loading-message,
+.error-message,
+.empty-message{
+  padding:35px;
+  text-align:center;
+}
+
+.error-message{
+  color:#ffb3b3;
+}
+
+@media(max-width:768px){
+  body{
+    padding:24px 14px;
+  }
+
+  h1{
+    font-size:30px;
+  }
+
+  th,
+  td{
+    padding:11px 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="trips-page">
+
+  <h1>All Trips</h1>
+
+  <div class="table-wrapper">
+
+    <table id="tripsTable">
+
+      <thead>
+        <tr>
+          <th data-key="title" data-type="text">Hike</th>
+          <th data-key="date" data-type="date">Date</th>
+          <th data-key="area" data-type="text">Where</th>
+          <th data-key="type" data-type="text">Type</th>
+          <th data-key="miles" data-type="number">Miles</th>
+          <th data-key="elevationGain" data-type="number">
+            Elevation Gain (ft)
+          </th>
+          <th data-key="overallRanking" data-type="number">Rank</th>
+          <th data-key="year" data-type="number">Year</th>
+        </tr>
+      </thead>
+
+      <tbody id="tripsTableBody">
+        <tr>
+          <td colspan="8" class="loading-message">
+            Loading trips…
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+
+</main>
+
+<script>
+const DATA_URL =
+  "https://script.google.com/macros/s/AKfycbweollfSW_IlQr6nka0s77-WPu4sIdIDDpmq0Z9NV0egq0c-8dVcO4nevotzZM6jA4T/exec";
+
+let trips = [];
+
+/*
+  The default order is newest date first.
+*/
+let currentSort = {
+  key: "date",
+  direction: "descending",
+  type: "date"
+};
+
+
+/*
+  Creates the same trip-page URL format used on your map page.
+*/
+function generatePageUrl(title){
+  return "trips/" + String(title || "")
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-") + ".html";
+}
+
+
+/*
+  Converts values such as "4,500" into the number 4500.
+*/
+function getNumber(value){
+  const cleaned = String(value ?? "")
+    .replace(/,/g, "")
+    .replace(/[^\d.-]/g, "");
+
+  const number = Number(cleaned);
+
+  return Number.isFinite(number) ? number : 0;
+}
+
+
+/*
+  Formats numbers with thousands separators.
+*/
+function formatNumber(value){
+  if(
+    value === null ||
+    value === undefined ||
+    String(value).trim() === ""
+  ){
+    return "";
+  }
+
+  return getNumber(value).toLocaleString();
+}
+
+
+/*
+  Makes a date value sortable.
+*/
+function getDateValue(value){
+  const timestamp = new Date(value).getTime();
+
+  return Number.isNaN(timestamp) ? 0 : timestamp;
+}
+
+
+/*
+  Displays the date without changing valid text unnecessarily.
+*/
+function formatDate(value){
+  if(!value){
+    return "";
+  }
+
+  const date = new Date(value);
+
+  if(Number.isNaN(date.getTime())){
+    return String(value);
+  }
+
+  return date.toLocaleDateString("en-US", {
+    month:"short",
+    day:"numeric",
+    year:"numeric"
+  });
+}
+
+
+/*
+  Calculates the Year column from each trip's date.
+*/
+function getYear(value){
+  const date = new Date(value);
+
+  return Number.isNaN(date.getTime())
+    ? ""
+    : date.getFullYear();
+}
+
+
+/*
+  Chooses the colored square based on trip type.
+*/
+function getTypeClass(type){
+  const normalizedType = String(type || "")
+    .trim()
+    .toLowerCase();
+
+  if(normalizedType === "hike"){
+    return "hike";
+  }
+
+  if(normalizedType === "backpack"){
+    return "backpack";
+  }
+
+  if(normalizedType === "kayak"){
+    return "kayak";
+  }
+
+  return "other";
+}
+
+
+/*
+  Prevents spreadsheet text from being inserted as HTML.
+*/
+function escapeHtml(value){
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+
+/*
+  Sorts the current trips array.
+*/
+function sortTrips(){
+  const {key, direction, type} = currentSort;
+
+  trips.sort((a, b) => {
+    let firstValue;
+    let secondValue;
+
+    if(key === "year"){
+      firstValue = getYear(a.date);
+      secondValue = getYear(b.date);
+    }else{
+      firstValue = a[key];
+      secondValue = b[key];
+    }
+
+    if(type === "number"){
+      firstValue = getNumber(firstValue);
+      secondValue = getNumber(secondValue);
+    }else if(type === "date"){
+      firstValue = getDateValue(firstValue);
+      secondValue = getDateValue(secondValue);
+    }else{
+      firstValue = String(firstValue || "").toLowerCase();
+      secondValue = String(secondValue || "").toLowerCase();
+    }
+
+    if(firstValue < secondValue){
+      return direction === "ascending" ? -1 : 1;
+    }
+
+    if(firstValue > secondValue){
+      return direction === "ascending" ? 1 : -1;
+    }
+
+    return 0;
+  });
+}
+
+
+/*
+  Adds the correct arrow to the active table heading.
+*/
+function updateSortIndicators(){
+  document.querySelectorAll("#tripsTable th").forEach(header => {
+    header.classList.remove(
+      "sort-ascending",
+      "sort-descending"
+    );
+
+    if(header.dataset.key === currentSort.key){
+      header.classList.add(
+        currentSort.direction === "ascending"
+          ? "sort-ascending"
+          : "sort-descending"
+      );
+    }
+  });
+}
+
+
+/*
+  Builds all table rows.
+*/
+function renderTable(){
+  const tableBody = document.getElementById("tripsTableBody");
+
+  sortTrips();
+  updateSortIndicators();
+
+  if(!trips.length){
+    tableBody.innerHTML = `
+      <tr>
+        <td colspan="8" class="empty-message">
+          No trips found.
+        </td>
+      </tr>
+    `;
+
+    return;
+  }
+
+  tableBody.innerHTML = trips.map(trip => {
+    const title = trip.title || "";
+    const type = trip.type || "";
+    const typeClass = getTypeClass(type);
+    const year = getYear(trip.date);
+
+    return `
+      <tr>
+
+        <td>
+          <div class="trip-name-cell">
+
+            <span
+              class="type-square ${typeClass}"
+              aria-hidden="true"
+            ></span>
+
+            <a
+              class="trip-link"
+              href="${generatePageUrl(title)}"
+            >
+              ${escapeHtml(title)}
+            </a>
+
+          </div>
+        </td>
+
+        <td>${escapeHtml(formatDate(trip.date))}</td>
+
+        <td>${escapeHtml(trip.area || "")}</td>
+
+        <td>${escapeHtml(type)}</td>
+
+        <td class="number-cell">
+          ${escapeHtml(formatNumber(trip.miles))}
+        </td>
+
+        <td class="number-cell">
+          ${escapeHtml(formatNumber(trip.elevationGain))}
+        </td>
+
+        <td class="number-cell">
+          ${escapeHtml(formatNumber(trip.overallRanking))}
+        </td>
+
+        <td class="number-cell">
+          ${escapeHtml(year)}
+        </td>
+
+      </tr>
+    `;
+  }).join("");
+}
+
+
+/*
+  Clicking the active header reverses its sorting direction.
+  Clicking a different header starts with ascending order,
+  except Date, which starts with the newest date.
+*/
+function configureSorting(){
+  document.querySelectorAll("#tripsTable th").forEach(header => {
+    header.addEventListener("click", () => {
+      const key = header.dataset.key;
+      const type = header.dataset.type;
+
+      if(currentSort.key === key){
+        currentSort.direction =
+          currentSort.direction === "ascending"
+            ? "descending"
+            : "ascending";
+      }else{
+        currentSort.key = key;
+        currentSort.type = type;
+        currentSort.direction =
+          type === "date"
+            ? "descending"
+            : "ascending";
+      }
+
+      renderTable();
+    });
+  });
+}
+
+
+/*
+  Loads the trips from your existing Google Apps Script.
+*/
+async function loadTrips(){
+  const tableBody = document.getElementById("tripsTableBody");
+
+  try{
+    const response = await fetch(DATA_URL);
+
+    if(!response.ok){
+      throw new Error(
+        `Request failed with status ${response.status}`
+      );
+    }
+
+    const data = await response.json();
+
+    trips = Array.isArray(data.mapMarkers)
+      ? [...data.mapMarkers]
+      : [];
+
+    renderTable();
+
+  }catch(error){
+    console.error("Could not load trips:", error);
+
+    tableBody.innerHTML = `
+      <tr>
+        <td colspan="8" class="error-message">
+          The trips could not be loaded.
+        </td>
+      </tr>
+    `;
+  }
+}
+
+
+configureSorting();
+loadTrips();
+</script>
+
+</body>
+</html>
