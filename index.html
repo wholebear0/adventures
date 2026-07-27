@@ -971,9 +971,11 @@ marker.data=d;
 
 
 marker.addListener("click",()=>{
-
-updatePanel(d);
-
+  if(isDesktop()){
+    updatePanel(d);
+  }else{
+    window.location.href=generatePageUrl(d.title);
+  }
 });
 
 
