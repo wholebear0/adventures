@@ -128,24 +128,19 @@ figure img {
 
     body {
         padding: 15px;
-        font-size: 18px;
-        line-height: 1.7;
     }
 
     h1 {
-        font-size: 32px;
-        line-height: 1.2;
-        margin-bottom: 25px;
+        font-size: 34px;
     }
 
     .caption {
-        font-size: 18px;
+        font-size: 22px;
         line-height: 1.7;
-        margin-bottom: 32px;
     }
 
     .cards-section h2 {
-        font-size: 28px;
+        font-size: 30px;
     }
 
     .cards-grid {
@@ -157,11 +152,11 @@ figure img {
     }
 
     .card-title {
-        font-size: 24px;
+        font-size: 25px;
     }
 
     .card-details {
-        font-size: 17px;
+        font-size: 18px;
         line-height: 1.65;
     }
 }
