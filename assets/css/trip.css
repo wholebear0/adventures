@@ -125,22 +125,13 @@ figure img {
 **************************************/
 
 @media (max-width: 600px) {
+    html {
+        -webkit-text-size-adjust: 140%;
+        text-size-adjust: 140%;
+    }
 
     body {
         padding: 15px;
-    }
-
-    h1 {
-        font-size: 34px;
-    }
-
-    .caption {
-        font-size: 22px;
-        line-height: 1.7;
-    }
-
-    .cards-section h2 {
-        font-size: 30px;
     }
 
     .cards-grid {
@@ -149,14 +140,5 @@ figure img {
 
     .card img {
         height: 200px;
-    }
-
-    .card-title {
-        font-size: 25px;
-    }
-
-    .card-details {
-        font-size: 18px;
-        line-height: 1.65;
     }
 }
