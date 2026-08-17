@@ -125,12 +125,13 @@ figure img {
 **************************************/
 
 @media (max-width: 600px) {
-    body {
-        padding: 15px;
+    html {
+        -webkit-text-size-adjust: 140%;
+        text-size-adjust: 140%;
     }
 
-    h1 {
-        font-size: 30px;
+    body {
+        padding: 15px;
     }
 
     .cards-grid {
