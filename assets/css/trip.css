@@ -45,7 +45,9 @@ figure img {
     line-height: 1.5;
     margin: 10px 0 40px;
 }
-
+figure .caption {
+    margin: 0 0 10px;
+}
 /**************************************
   ADVENTURE CARDS SECTION
 **************************************/
