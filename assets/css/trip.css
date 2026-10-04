@@ -144,3 +144,170 @@ figure .caption {
         height: 200px;
     }
 }
+/**************************************
+  NEW TRIP SUMMARY
+**************************************/
+
+.trip-summary {
+    margin-bottom: 55px;
+}
+
+.trip-heading h1 {
+    margin-bottom: 8px;
+}
+
+.trip-date {
+    margin: 0 0 25px;
+    font-size: 16px;
+    color: #666;
+}
+
+
+/**************************************
+  COVER PHOTO
+**************************************/
+
+.trip-cover-container {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.trip-cover {
+    width: 100%;
+    max-height: 650px;
+    display: block;
+    object-fit: cover;
+}
+
+
+/**************************************
+  TRIP DETAILS
+**************************************/
+
+.trip-details {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    background: white;
+
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.trip-detail {
+    padding: 20px;
+
+    border-right: 1px solid #ddd;
+}
+
+.trip-detail:last-child {
+    border-right: none;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+
+    color: #222;
+}
+
+
+/**************************************
+  SMALL MAP
+**************************************/
+
+.trip-map-link {
+    display: block;
+
+    position: relative;
+
+    margin-top: 25px;
+
+    text-decoration: none;
+
+    color: #222;
+
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 260px;
+
+    background: #ddd;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(255,255,255,.92);
+
+    border-radius: 5px;
+
+    font-size: 13px;
+
+    box-shadow:
+        0 2px 6px rgba(0,0,0,.2);
+}
+
+
+/**************************************
+  STORY + PHOTOS
+**************************************/
+
+.trip-story {
+    margin-bottom: 55px;
+}
+
+.trip-story h2,
+.trip-photos h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+
+/**************************************
+  MOBILE
+**************************************/
+
+@media (max-width: 700px) {
+
+    .trip-details {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .trip-detail {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-map {
+        height: 220px;
+    }
+
+}
