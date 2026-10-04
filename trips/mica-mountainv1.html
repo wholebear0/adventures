@@ -13,6 +13,7 @@
 
 <body>
 
+
 <!-- ==========================================
      TRIP SUMMARY
 ========================================== -->
@@ -20,58 +21,105 @@
 <section class="trip-summary">
 
     <div class="trip-heading">
+
         <h1>Mica Mountain</h1>
-        <p id="trip-date" class="trip-date"></p>
+
+        <p
+            id="trip-date"
+            class="trip-date"
+        ></p>
+
     </div>
 
 
     <!-- Cover photo -->
-    <div id="trip-cover-container" class="trip-cover-container"></div>
+
+    <div
+        id="trip-cover-container"
+        class="trip-cover-container"
+    ></div>
 
 
-    <!-- Trip details -->
+    <!-- Trip summary details -->
+
     <div class="trip-details">
 
         <div class="trip-detail">
-            <span class="detail-label">Name</span>
-            <span class="detail-value">Mica Mountain</span>
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span
+                id="trip-type"
+                class="detail-value"
+            ></span>
+
         </div>
 
-        <div class="trip-detail">
-            <span class="detail-label">Type</span>
-            <span id="trip-type" class="detail-value"></span>
-        </div>
 
         <div class="trip-detail">
-            <span class="detail-label">Miles</span>
-            <span id="trip-miles" class="detail-value"></span>
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span
+                id="trip-miles"
+                class="detail-value"
+            ></span>
+
         </div>
 
-        <div class="trip-detail">
-            <span class="detail-label">Elevation Gain</span>
-            <span id="trip-elevation" class="detail-value"></span>
-        </div>
 
         <div class="trip-detail">
-            <span class="detail-label">Where</span>
-            <span id="trip-where" class="detail-value"></span>
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span
+                id="trip-elevation"
+                class="detail-value"
+            ></span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span
+                id="trip-where"
+                class="detail-value"
+            ></span>
+
         </div>
 
     </div>
 
 
-    <!-- Small map -->
+    <!-- Map -->
+
     <a
         id="trip-map-link"
         class="trip-map-link"
         target="_blank"
         rel="noopener"
     >
-        <div id="trip-map" class="trip-map"></div>
+
+        <div
+            id="trip-map"
+            class="trip-map"
+        ></div>
 
         <div class="trip-map-label">
             View in Google Maps →
         </div>
+
     </a>
 
 </section>
@@ -79,12 +127,12 @@
 
 
 <!-- ==========================================
-     ABOUT
+     TRIP DETAILS / WRITE-UP
 ========================================== -->
 
 <section class="trip-story">
 
-    <h2>About This Trip</h2>
+    <h2>Trip Details</h2>
 
     <p class="caption">
         The hike up to Mica Mountain and the Manning camp area is long and I imagine most people would want to spend at least one night. From the Loma Alto trailhead from where I started in Vail, AZ its about 14 miles and 5,000 ft of elevation gain one way. Another area to start is with the Saguaro National Park itself, at the Tanque Verde trailhead. The way up from there is slightly more strenuous, about 14 miles and 6,000 ft of elevation gain one way. The other well known way up is from a different area entirely, from the Miller Canyon trailhead to the east of the mountains, though the road to the trailhead is known as being very rough and has creek crossings. It's about 9.5 miles and 3,800 ft from there. Whichever way one goes, it is a nice peaceful hike. The only other hikers I ran into during the two and a half day trip were on the last day by the trailhead. Temperatures by the trailhead in the lower elevation desert were in the 90s but in the 50s-60s up in the mountains. I stayed the first night at Manning Camp which was really cool. There were a few designated camp spots and a spring for water. The trek to Mica Mountain weaved through the surrounding pines up onto the Tanque Verde ridge trail. From there I hiked along the ridge, taking in sights to the West and South, and of Tanque Verde Peak, then turned south at Cow Head Saddle, where I descended down to the Grass Shack camping area to spend the second night. In the warmer months Manning camp is a great place to be. I could have easily spent another night up there.
@@ -100,7 +148,6 @@
 
 <section class="trip-photos">
 
-<h2>Photos</h2>
 
 <figure>
 <img src="../assets/images/mica-mountain/39a875aa35859d96af1a5b6637697751.jpg"/>
@@ -175,6 +222,7 @@
 Day two
 </p>
 
+
 <figure>
 <img src="../assets/images/mica-mountain/7a004ee6df160b79bf43855984ae3a0f.jpg"/>
 </figure>
@@ -200,6 +248,7 @@ Day two
 Helen's Dome, with Tucson in the distance
 </p>
 
+
 <figure>
 <img src="../assets/images/mica-mountain/537f014f30117a6f31970e19df4acae0.jpg"/>
 </figure>
@@ -216,9 +265,14 @@ Helen's Dome, with Tucson in the distance
 <img src="../assets/images/mica-mountain/31de85f51dd43025e691e77323ba813e.jpg"/>
 </figure>
 
+
 </section>
 
 
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
 
 <footer class="site-footer">
     © 2026 WholeBear. All rights reserved.
@@ -227,99 +281,192 @@ Helen's Dome, with Tucson in the distance
 
 
 <!-- ==========================================
-     GOOGLE MAP
+     TRIP DATA
 ========================================== -->
-
 
 <script>
 
 const TRIP_NAME = "Mica Mountain";
 
 const DATA_URL =
-"https://script.google.com/macros/s/AKfycbxmcar1lRakOBIXfemcSlT_9yMDL5ZVcrEeKs1tr7cuEoD6I8T6Y8_wLR-FHGbAm0zF/exec";
+    "https://script.google.com/macros/s/AKfycbxmcar1lRakOBIXfemcSlT_9yMDL5ZVcrEeKs1tr7cuEoD6I8T6Y8_wLR-FHGbAm0zF/exec";
 
 
 async function loadTripSummary() {
 
-    const response = await fetch(DATA_URL);
+    try {
 
-    const data = await response.json();
-
-    const trip = data.mapMarkers.find(
-        item => item.title === TRIP_NAME
-    );
+        const response =
+            await fetch(DATA_URL);
 
 
-    if (!trip) {
+        if (!response.ok) {
 
-        console.error(
-            "Trip not found:",
-            TRIP_NAME
-        );
-
-        return;
-    }
-
-
-    /* DATE */
-
-    document.getElementById("trip-date").textContent =
-        trip.date || "";
-
-
-    /* DETAILS */
-
-    document.getElementById("trip-type").textContent =
-        trip.type || "";
-
-    document.getElementById("trip-miles").textContent =
-        trip.miles
-            ? trip.miles + " mi"
-            : "";
-
-    document.getElementById("trip-where").textContent =
-        trip.area || "";
-
-
-    if (trip.elevationGain) {
-
-        const elevation =
-            Number(
-                String(trip.elevationGain)
-                    .replace(/,/g, "")
+            throw new Error(
+                "Could not load trip data."
             );
 
-        document.getElementById("trip-elevation").textContent =
-            elevation.toLocaleString() + " ft";
-
-    }
+        }
 
 
-    /* COVER PHOTO */
+        const data =
+            await response.json();
 
-    if (trip.photoUrl) {
+
+        if (!data.mapMarkers) {
+
+            throw new Error(
+                "Trip data does not contain mapMarkers."
+            );
+
+        }
+
+
+        const trip =
+            data.mapMarkers.find(
+                item =>
+                    item.title === TRIP_NAME
+            );
+
+
+        if (!trip) {
+
+            throw new Error(
+                "Mica Mountain was not found in the trip data."
+            );
+
+        }
+
+
+
+        /* ==============================
+           DATE
+        ============================== */
 
         document.getElementById(
-            "trip-cover-container"
-        ).innerHTML = `
-
-            <img
-                src="${trip.photoUrl}"
-                alt="${trip.title}"
-                class="trip-cover"
-            >
-
-        `;
-
-    }
+            "trip-date"
+        ).textContent =
+            trip.date || "";
 
 
-    /* MAP */
 
-    if (trip.position) {
+        /* ==============================
+           TYPE
+        ============================== */
 
-        createTripMap(
-            trip.position
+        document.getElementById(
+            "trip-type"
+        ).textContent =
+            trip.type || "";
+
+
+
+        /* ==============================
+           MILES
+        ============================== */
+
+        document.getElementById(
+            "trip-miles"
+        ).textContent =
+            trip.miles
+                ? trip.miles + " mi"
+                : "";
+
+
+
+        /* ==============================
+           ELEVATION
+        ============================== */
+
+        if (trip.elevationGain) {
+
+            const elevation =
+                Number(
+                    String(
+                        trip.elevationGain
+                    ).replace(
+                        /,/g,
+                        ""
+                    )
+                );
+
+
+            document.getElementById(
+                "trip-elevation"
+            ).textContent =
+                Number.isNaN(elevation)
+                    ? trip.elevationGain + " ft"
+                    : elevation.toLocaleString() + " ft";
+
+        }
+
+
+
+        /* ==============================
+           WHERE
+        ============================== */
+
+        document.getElementById(
+            "trip-where"
+        ).textContent =
+            trip.area || "";
+
+
+
+        /* ==============================
+           COVER PHOTO
+        ============================== */
+
+        if (trip.photoUrl) {
+
+            const cover =
+                document.createElement(
+                    "img"
+                );
+
+
+            cover.src =
+                trip.photoUrl;
+
+            cover.alt =
+                trip.title;
+
+            cover.className =
+                "trip-cover";
+
+
+            document.getElementById(
+                "trip-cover-container"
+            ).appendChild(
+                cover
+            );
+
+        }
+
+
+
+        /* ==============================
+           MAP
+        ============================== */
+
+        if (
+            trip.position &&
+            trip.position.lat !== undefined &&
+            trip.position.lng !== undefined
+        ) {
+
+            createTripMap(
+                trip.position
+            );
+
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "Trip page error:",
+            error
         );
 
     }
@@ -330,47 +477,80 @@ async function loadTripSummary() {
 
 function createTripMap(position) {
 
-    const lat = Number(position.lat);
-    const lng = Number(position.lng);
+    const lat =
+        Number(position.lat);
+
+    const lng =
+        Number(position.lng);
+
+
+    if (
+        Number.isNaN(lat) ||
+        Number.isNaN(lng)
+    ) {
+
+        console.error(
+            "Invalid map coordinates:",
+            position
+        );
+
+        return;
+
+    }
+
+
+    /* ==============================
+       EMBEDDED MAP
+    ============================== */
 
     const mapContainer =
-        document.getElementById("trip-map");
-
-    mapContainer.innerHTML = `
-        <iframe
-            src="https://www.google.com/maps?q=${lat},${lng}&z=11&output=embed"
-            width="100%"
-            height="100%"
-            style="border:0;"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            tabindex="-1"
-        ></iframe>
-    `;
+        document.getElementById(
+            "trip-map"
+        );
 
 
-    const mapLink =
-        document.getElementById("trip-map-link");
-
-    mapLink.href =
-        "https://www.google.com/maps/search/?api=1&query=" +
-        lat +
-        "," +
-        lng;
-}
+    const iframe =
+        document.createElement(
+            "iframe"
+        );
 
 
-    new google.maps.Marker({
+    iframe.src =
+        "https://www.google.com/maps?q=" +
+        encodeURIComponent(
+            lat + "," + lng
+        ) +
+        "&z=11&output=embed";
 
-        position: {
-            lat: lat,
-            lng: lng
-        },
 
-        map: map
+    iframe.width =
+        "100%";
 
-    });
+    iframe.height =
+        "100%";
 
+    iframe.style.border =
+        "0";
+
+    iframe.loading =
+        "lazy";
+
+    iframe.referrerPolicy =
+        "no-referrer-when-downgrade";
+
+    iframe.tabIndex =
+        -1;
+
+
+    mapContainer.replaceChildren(
+        iframe
+    );
+
+
+
+    /* ==============================
+       GOOGLE MAPS LINK
+    ============================== */
 
     const mapLink =
         document.getElementById(
@@ -380,9 +560,9 @@ function createTripMap(position) {
 
     mapLink.href =
         "https://www.google.com/maps/search/?api=1&query=" +
-        lat +
-        "," +
-        lng;
+        encodeURIComponent(
+            lat + "," + lng
+        );
 
 }
 
