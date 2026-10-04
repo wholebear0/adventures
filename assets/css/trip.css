@@ -311,3 +311,7 @@ figure .caption {
     }
 
 }
+.trip-map iframe {
+    display: block;
+    pointer-events: none;
+}
