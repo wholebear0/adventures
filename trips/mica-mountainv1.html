@@ -12,41 +12,46 @@
 <style>
 
 /* ==========================================
-   MICA MOUNTAIN TEST PAGE OVERRIDES
-   These can move into trip.css once approved.
+   MICA MOUNTAIN PROTOTYPE OVERRIDES
 ========================================== */
 
 
-/* SUMMARY DETAILS */
+/* ==========================================
+   SUMMARY DETAILS
+========================================== */
 
 .trip-details {
     display: grid;
-    grid-template-columns: repeat(4, max-content);
-    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
 
-    width: fit-content;
-    max-width: 100%;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0;
 
-    background: #f7f7f7;
-    border: 1px solid #d6d6d6;
-
-    overflow: hidden;
+    background: transparent;
+    border: none;
 }
 
 .trip-detail {
-    padding: 16px 28px;
-    border-right: 1px solid #ddd;
-    white-space: nowrap;
+    padding: 18px 0;
+    border: none;
 }
 
-.trip-detail:last-child {
-    border-right: none;
+.trip-detail:nth-child(1) {
+    text-align: left;
+}
+
+.trip-detail:nth-child(2),
+.trip-detail:nth-child(3) {
+    text-align: center;
+}
+
+.trip-detail:nth-child(4) {
+    text-align: right;
 }
 
 .detail-label {
     display: block;
-    margin-bottom: 7px;
+    margin-bottom: 6px;
 
     font-size: 11px;
     font-weight: 600;
@@ -67,7 +72,9 @@
 }
 
 
-/* WRITE-UP PARAGRAPHS */
+/* ==========================================
+   WRITE-UP
+========================================== */
 
 .trip-story .caption {
     margin: 0 0 20px;
@@ -80,7 +87,9 @@
 }
 
 
-/* MAP */
+/* ==========================================
+   MAP
+========================================== */
 
 .trip-map iframe {
     display: block;
@@ -88,24 +97,33 @@
 }
 
 
-/* MOBILE */
+/* ==========================================
+   MOBILE
+========================================== */
 
 @media (max-width: 700px) {
 
     .trip-details {
-        display: grid;
         grid-template-columns: repeat(2, 1fr);
-
-        width: 100%;
     }
 
     .trip-detail {
-        padding: 16px;
-        white-space: normal;
+        padding: 14px 0;
+    }
+
+    .trip-detail:nth-child(1),
+    .trip-detail:nth-child(3) {
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(2),
+    .trip-detail:nth-child(4) {
+        text-align: right;
     }
 
     .detail-value {
         white-space: normal;
+        font-size: 15px;
     }
 
 }
@@ -241,7 +259,26 @@
 
     <h2>Trip Details</h2>
 
-    <div id="trip-writeup"></div>
+
+    <p class="caption">
+        The hike up to Mica Mountain and the Manning camp area is long and I imagine most people would want to spend at least one night. From the Loma Alto trailhead from where I started in Vail, AZ its about 14 miles and 5,000 ft of elevation gain one way. Another area to start is with the Saguaro National Park itself, at the Tanque Verde trailhead. The way up from there is slightly more strenuous, about 14 miles and 6,000 ft of elevation gain one way. The other well known way up is from a different area entirely, from the Miller Canyon trailhead to the east of the mountains, though the road to the trailhead is known as being very rough and has creek crossings. It's about 9.5 miles and 3,800 ft from there.
+    </p>
+
+
+    <p class="caption">
+        Whichever way one goes, it is a nice peaceful hike. The only other hikers I ran into during the two and a half day trip were on the last day by the trailhead. Temperatures by the trailhead in the lower elevation desert were in the 90s but in the 50s-60s up in the mountains.
+    </p>
+
+
+    <p class="caption">
+        I stayed the first night at Manning Camp which was really cool. There were a few designated camp spots and a spring for water. The trek to Mica Mountain weaved through the surrounding pines up onto the Tanque Verde ridge trail. From there I hiked along the ridge, taking in sights to the West and South, and of Tanque Verde Peak, then turned south at Cow Head Saddle, where I descended down to the Grass Shack camping area to spend the second night.
+    </p>
+
+
+    <p class="caption">
+        In the warmer months Manning camp is a great place to be. I could have easily spent another night up there.
+    </p>
+
 
 </section>
 
@@ -444,9 +481,7 @@ async function loadTripSummary() {
 
 
 
-        /* ==============================
-           DATE
-        ============================== */
+        /* DATE */
 
         document.getElementById(
             "trip-date"
@@ -455,9 +490,7 @@ async function loadTripSummary() {
 
 
 
-        /* ==============================
-           TYPE
-        ============================== */
+        /* TYPE */
 
         document.getElementById(
             "trip-type"
@@ -466,9 +499,7 @@ async function loadTripSummary() {
 
 
 
-        /* ==============================
-           MILES
-        ============================== */
+        /* MILES */
 
         document.getElementById(
             "trip-miles"
@@ -479,9 +510,7 @@ async function loadTripSummary() {
 
 
 
-        /* ==============================
-           ELEVATION
-        ============================== */
+        /* ELEVATION */
 
         if (trip.elevationGain) {
 
@@ -489,10 +518,7 @@ async function loadTripSummary() {
                 Number(
                     String(
                         trip.elevationGain
-                    ).replace(
-                        /,/g,
-                        ""
-                    )
+                    ).replace(/,/g, "")
                 );
 
 
@@ -507,9 +533,7 @@ async function loadTripSummary() {
 
 
 
-        /* ==============================
-           WHERE
-        ============================== */
+        /* WHERE */
 
         document.getElementById(
             "trip-where"
@@ -518,71 +542,7 @@ async function loadTripSummary() {
 
 
 
-        /* ==============================
-           WRITE-UP
-        ============================== */
-
-        const writeUp =
-            trip.WriteUp ??
-            trip.writeUp ??
-            trip.writeup ??
-            "";
-
-
-        const writeupContainer =
-            document.getElementById(
-                "trip-writeup"
-            );
-
-
-        if (writeUp) {
-
-            const paragraphs =
-                String(writeUp)
-                    .replace(/\r\n/g, "\n")
-                    .replace(/\r/g, "\n")
-                    .split(/\n+/)
-                    .map(
-                        paragraph =>
-                            paragraph.trim()
-                    )
-                    .filter(
-                        paragraph =>
-                            paragraph.length > 0
-                    );
-
-
-            paragraphs.forEach(
-                paragraphText => {
-
-                    const paragraph =
-                        document.createElement(
-                            "p"
-                        );
-
-
-                    paragraph.className =
-                        "caption";
-
-
-                    paragraph.textContent =
-                        paragraphText;
-
-
-                    writeupContainer.appendChild(
-                        paragraph
-                    );
-
-                }
-            );
-
-        }
-
-
-
-        /* ==============================
-           COVER PHOTO
-        ============================== */
+        /* COVER PHOTO */
 
         if (trip.photoUrl) {
 
@@ -614,9 +574,7 @@ async function loadTripSummary() {
 
 
 
-        /* ==============================
-           MAP
-        ============================== */
+        /* MAP */
 
         if (
             trip.position &&
@@ -669,9 +627,7 @@ function createTripMap(position) {
 
 
 
-    /* ==============================
-       EMBEDDED MAP
-    ============================== */
+    /* EMBEDDED MAP */
 
     const mapContainer =
         document.getElementById(
@@ -723,9 +679,7 @@ function createTripMap(position) {
 
 
 
-    /* ==============================
-       GOOGLE MAPS LINK
-    ============================== */
+    /* GOOGLE MAPS LINK */
 
     const mapLink =
         document.getElementById(
