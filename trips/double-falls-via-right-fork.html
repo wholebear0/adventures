@@ -1,70 +1,659 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Double Falls via Right Fork</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Double Falls via Right Fork</h1>
-<p class="caption">
-    10/2/2021 - Double Falls via Right Fork
-</p>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Double Falls via Right Fork
+        </h1>
+
+        <p class="trip-date">
+            10/02/2021
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/WieLrWT.jpeg"
+    alt="Double Falls via Right Fork"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                10.6 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                633 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                4,542 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Zion NP, UT
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=37.27055,-113.10322"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=37.27055,-113.10322&amp;z=11&amp;output=embed"
+            title="Map of Double Falls via Right Fork"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/double-falls-via-right-fork/862e61b713c41eaa6f78545002092085.jpg"/>
+<img
+    src="../assets/images/double-falls-via-right-fork/862e61b713c41eaa6f78545002092085.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/double-falls-via-right-fork/cb425054b482993cb53e37dc976080ca.jpg"/>
+<img
+    src="../assets/images/double-falls-via-right-fork/cb425054b482993cb53e37dc976080ca.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/double-falls-via-right-fork/555ba475d5e3745df4fa5bf68ef5be77.jpg"/>
+<img
+    src="../assets/images/double-falls-via-right-fork/555ba475d5e3745df4fa5bf68ef5be77.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/double-falls-via-right-fork/941570b04546f857d4b0632560c1fe8a.jpg"/>
+<img
+    src="../assets/images/double-falls-via-right-fork/941570b04546f857d4b0632560c1fe8a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/double-falls-via-right-fork/a9da3822d4f19a0446e1b6b69db7cbcf.jpg"/>
+<img
+    src="../assets/images/double-falls-via-right-fork/a9da3822d4f19a0446e1b6b69db7cbcf.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/double-falls-via-right-fork/af01e791ee706d62d3b2cdc51054f433.jpg"/>
+<img
+    src="../assets/images/double-falls-via-right-fork/af01e791ee706d62d3b2cdc51054f433.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/double-falls-via-right-fork/ab86d968741151b8ba0a2e626d351558.jpg"/>
+<img
+    src="../assets/images/double-falls-via-right-fork/ab86d968741151b8ba0a2e626d351558.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/double-falls-via-right-fork/6aee5fb410664dc73c33163be27f22d1.jpg"/>
+<img
+    src="../assets/images/double-falls-via-right-fork/6aee5fb410664dc73c33163be27f22d1.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/double-falls-via-right-fork/11517cf7343a6b63150711c42e9a5f02.jpg"/>
+<img
+    src="../assets/images/double-falls-via-right-fork/11517cf7343a6b63150711c42e9a5f02.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/double-falls-via-right-fork/1e45597b3ffa7912e531a133f83d8ece.jpg"/>
+<img
+    src="../assets/images/double-falls-via-right-fork/1e45597b3ffa7912e531a133f83d8ece.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/double-falls-via-right-fork/4d4c28accc6f92d06b3111083750841c.jpg"/>
+<img
+    src="../assets/images/double-falls-via-right-fork/4d4c28accc6f92d06b3111083750841c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/double-falls-via-right-fork/fc51c293c67b61b640de0f00d9192e17.jpg"/>
+<img
+    src="../assets/images/double-falls-via-right-fork/fc51c293c67b61b640de0f00d9192e17.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/double-falls-via-right-fork/4e1e480e9b0efcacc3db013c4452f1e3.jpg"/>
+<img
+    src="../assets/images/double-falls-via-right-fork/4e1e480e9b0efcacc3db013c4452f1e3.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/double-falls-via-right-fork/16946ea25b9c4c2a08d15afc0d07c95d.jpg"/>
+<img
+    src="../assets/images/double-falls-via-right-fork/16946ea25b9c4c2a08d15afc0d07c95d.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/double-falls-via-right-fork/3e7292cffc3f41c6af50b78ad0797c94.jpg"/>
+<img
+    src="../assets/images/double-falls-via-right-fork/3e7292cffc3f41c6af50b78ad0797c94.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/double-falls-via-right-fork/f9a133558b98a8e5f658e826fdcb4dce.jpg"/>
+<img
+    src="../assets/images/double-falls-via-right-fork/f9a133558b98a8e5f658e826fdcb4dce.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/double-falls-via-right-fork/26fc8424bfe7813dcf2861098173eb16.jpg"/>
+<img
+    src="../assets/images/double-falls-via-right-fork/26fc8424bfe7813dcf2861098173eb16.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/double-falls-via-right-fork/181d163d180147571741031677d92511.jpg"/>
+<img
+    src="../assets/images/double-falls-via-right-fork/181d163d180147571741031677d92511.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

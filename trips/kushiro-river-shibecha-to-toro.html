@@ -1,79 +1,683 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Kushiro River, Shibecha to Toro</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Kushiro River, Shibecha to Toro</h1>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Kushiro River, Shibecha to Toro
+        </h1>
+
+        <p class="trip-date">
+            06/19/2026
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/jWsovsb.jpeg"
+    alt="Kushiro River, Shibecha to Toro"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Kayak
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                16.4 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                0 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                70 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Shibecha, Japan
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=43.29945,144.6017"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=43.29945,144.6017&amp;z=11&amp;output=embed"
+            title="Map of Kushiro River, Shibecha to Toro"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
 <p class="caption">
-    6/19/26 - Kushiro River, Shibecha to Toro
+On the Nishiki river near Hiroshima about a week earlier a nice couple I met recommended the Kushiro river for a rafting trip. After doing more research, the upper parts of this river are known to be more chaotic with obstructions like bends, rapids, and downed trees, while the lower half is more calm, eventually working its way through the port city of Kushiro to the sea. I opted to do the lower half, from Shibecha, down 16 miles to the small town of Toro where there is a train station that one can take back to Shibecha. The put in location in Shibecha was near a bridge and the surrounding area was full of colorful wildflowers. I parked at the closest public spot I could which appeared to be a frisbee disc golf course. As I walked over to the put in, a few kids were walking to school. One group stood out, I saw two girls walking together, one on a bicycle and the other limping along. I would think the limping girl would get more use out of the bicycle.
 </p>
+
 <p class="caption">
-    On the Nishiki river n ear Hiroshima about a week earlier a nice couple I met recommended the Kushiro river for a rafting trip. After doing more research, the upper parts of this river are known to be more chaotic with obstructions like bends, rapids, and downed trees, while the lower half is more calm, eventually working its way through the port city of Kushiro to the sea. I opted to do the lower half, from Shibecha, down 16 miles to the small town of Toro where there is a train station that one can take back to Shibecha. The put in location in Shibecha was near a bridge and the surrounding area was full of colorful wildflowers. I parked at the closest public spot I could which appeared to be a frisbee disc golf course. As I walked over to the put in, a few kids were walking to school. One group stood out, I saw two girls walking together, one on a bicycle and the other limping along. I would think the limping girl would get more use out of the bicycle . On the river the water flow was excellent with no rapids which provided the opportunity to just sit back and relax and let the flow take the raft. There was an abundance of wildlife everywhere, including birds and tons of deer along the banks and some crossing the river. The deer were very shy and would let out a high pitch shriek and run back into the forest when I got within 100 yards of them. Sounds of owls and birds echoed out onto the river from the forest on both sides. There were no fisherman and no other people until the takeout where there seemed to be some canoe outfitters launching. It was a very enjoyable trip and I am glad I was informed about it and got to do it. The takeout was muddy and followed by a half mile walk to the town of Toro with its one room, unstaffed train station. After taking the one car train from Toro to Shibecha, I ate ramen in a restaurant at a table by the window. I gazed out and saw the same two girls from the morning walking by. The same one was on the bike rolling right along without pedaling, her friend limping along next to her.
+On the river the water flow was excellent with no rapids which provided the opportunity to just sit back and relax and let the flow take the raft. There was an abundance of wildlife everywhere, including birds and tons of deer along the banks and some crossing the river. The deer were very shy and would let out a high pitch shriek and run back into the forest when I got within 100 yards of them. Sounds of owls and birds echoed out onto the river from the forest on both sides. There were no fisherman and no other people until the takeout where there seemed to be some canoe outfitters launching. It was a very enjoyable trip and I am glad I was informed about it and got to do it. The takeout was muddy and followed by a half mile walk to the town of Toro with its one room, unstaffed train station. After taking the one car train from Toro to Shibecha, I ate ramen in a restaurant at a table by the window. I gazed out and saw the same two girls from the morning walking by. The same one was on the bike rolling right along without pedaling, her friend limping along next to her.
 </p>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/7c8da9738e3ff26124f14843796472cc.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/7c8da9738e3ff26124f14843796472cc.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/86aa962aed69b4177cb29a67582e70f0.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/86aa962aed69b4177cb29a67582e70f0.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/8004dd55ce4f20987e15d669b5fc8a28.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/8004dd55ce4f20987e15d669b5fc8a28.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/f5fae01911fe6472879f8a1eeb63c30d.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/f5fae01911fe6472879f8a1eeb63c30d.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/e6201506ae64dee4342b546e0d7790d1.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/e6201506ae64dee4342b546e0d7790d1.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/d8648a5899720ba7a1e3a1db8ba1d09a.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/d8648a5899720ba7a1e3a1db8ba1d09a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/000a8c1cfdd278b60fd77441ca2b3d15.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/000a8c1cfdd278b60fd77441ca2b3d15.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/5045ccc09675bf0c4869de41d19c4473.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/5045ccc09675bf0c4869de41d19c4473.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/676120a2547b8e6dd4ac46a250dd1db3.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/676120a2547b8e6dd4ac46a250dd1db3.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/6a93bc933ca8f182475f5a32b37e6c1e.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/6a93bc933ca8f182475f5a32b37e6c1e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/f2a5192c345ab3cebe5237d4172e8b0e.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/f2a5192c345ab3cebe5237d4172e8b0e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/8155893f0b47a86f41b5502af70e03e5.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/8155893f0b47a86f41b5502af70e03e5.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/6b08f2d4e4d751a6a953f202d2bf6595.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/6b08f2d4e4d751a6a953f202d2bf6595.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/1ae15529ab23d9c0f7258374f44fdf09.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/1ae15529ab23d9c0f7258374f44fdf09.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/91ed8743e647bdd26ed98f99d2d916c4.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/91ed8743e647bdd26ed98f99d2d916c4.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/37812ece368865258a951a0361bb90f9.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/37812ece368865258a951a0361bb90f9.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/2a98c18254243036c1437bad98217fba.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/2a98c18254243036c1437bad98217fba.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/80392a8a5e736bda603fed733ec1934f.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/80392a8a5e736bda603fed733ec1934f.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/0a57c8c80174e4d7e20976a84a5bc956.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/0a57c8c80174e4d7e20976a84a5bc956.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/kushiro-river-shibecha-to-toro/024ad7cc395b81d4f3ca02a990be0c53.jpg"/>
+<img
+    src="../assets/images/kushiro-river-shibecha-to-toro/024ad7cc395b81d4f3ca02a990be0c53.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

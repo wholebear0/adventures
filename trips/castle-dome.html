@@ -1,133 +1,731 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Castle Dome</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Castle Dome</h1>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Castle Dome
+        </h1>
+
+        <p class="trip-date">
+            02/14/2026
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/QREHif7.jpeg"
+    alt="Castle Dome"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                5.3999999999999995 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                2,125 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                1,699 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Kofa Wilderness, AZ
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=33.09867,-114.17529"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=33.09867,-114.17529&amp;z=11&amp;output=embed"
+            title="Map of Castle Dome"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
 <p class="caption">
-    2/14/2026 - Castle Dome
+Castle Dome is a box shaped peak in the Kofa Wilderness that seems to be visible from anywhere in the vicinity, whether elsewhere in the wilderness or 35 miles to the south near Yuma, AZ. The road in off highway 95 is doable in any car but there is a turnoff onto a much less good road. It was from there that I transitioned from car to bicycle to get to the trailhead. It took about an hour of mountain biking up a gradual climb of 600 ft or so. There were no cars except for one or two groups of offroad vehicles that passed by and waved. Finally making it to the trailhead, the going from there was through a wash and then a canyon which eventually widened out. I saw a desert toad and a foot long rattlesnake. The way up to Castle Dome was well marked and over scree and uneven footing most of the way. At one point there was a tall pinnacle and a 30 foot vertical wall next to it. It seemed like the only way up and there were some hand/footholds, but there definitely was some exposure. On the way down I found a much easier and somewhat hidden way so I piled a few rocks together into an arrow hoping others would see it.
 </p>
+
 <p class="caption">
-    Castle Dome is a box shaped peak in the Kofa Wilderness that seems to be visible from anywhere in the vicinity, whether elsewhere in the wilderness or 35 miles to the south near Yuma, AZ. The road in off highway 95 is doable in any car but there is a turnoff onto a much less good road. It was from there that I transitioned from car to bicycle to get to the trailhead. It took about an hour of mountain biking up a gradual climb of 600 ft or so. There were no cars except for one or two groups of offroad vehicles that passed by and waved. Finally making it to the trailhead, the going from there was through a wash and then a canyon which eventually widened out. I saw a desert toad and a foot long rattlesnake. The way up to Castle Dome was well marked and over scree and uneven footing most of the way. At one point there was a tall pinnacle and a 30 foot vertical wall next to it. It seemed like the only way up and there were some hand/footholds, but there definitely was some exposure. On the way down I found a much easier and somewhat hidden way so I piled a few rocks together into an arrow hoping others would see it. From there on the views were phenomenal in all directions. There was a climb of maybe 200 ft to the summit and on top there was a nice assortment of low desert plants like cholla, ocotillo, agave, palo verde, and red barrel cactus. There wasn’t a single other person out but in the summit register I did see a few entries from the past month or two.
+From there on the views were phenomenal in all directions. There was a climb of maybe 200 ft to the summit and on top there was a nice assortment of low desert plants like cholla, ocotillo, agave, palo verde, and red barrel cactus. There wasn’t a single other person out but in the summit register I did see a few entries from the past month or two.
 </p>
-<p class="caption">
-    Mountain biking in to the trailhead, Castle Dome, the boxy looking peak, middle left
-</p>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/castle-dome/a69b2365411a620edc3d569a855ebbf6.jpg"/>
+<img
+    src="../assets/images/castle-dome/a69b2365411a620edc3d569a855ebbf6.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Start of the hike through a wash
-</p>
+
 <figure>
-<img src="../assets/images/castle-dome/f5ce40e8b6b702cd53c623e57178702e.jpg"/>
+<img
+    src="../assets/images/castle-dome/f5ce40e8b6b702cd53c623e57178702e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Castle Dome comes into view
-</p>
+
 <figure>
-<img src="../assets/images/castle-dome/19d019cbc10bc94f42a81f4306baae24.jpg"/>
+<img
+    src="../assets/images/castle-dome/19d019cbc10bc94f42a81f4306baae24.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/castle-dome/1bcc434486c17eb367a0dbe24365a49e.jpg"/>
+<img
+    src="../assets/images/castle-dome/1bcc434486c17eb367a0dbe24365a49e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking back
-</p>
+
 <figure>
-<img src="../assets/images/castle-dome/b67c263bd3d7b5491cdca4d3a303de36.jpg"/>
+<img
+    src="../assets/images/castle-dome/b67c263bd3d7b5491cdca4d3a303de36.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Continuing to climb, through scree and loose footing
-</p>
+
 <figure>
-<img src="../assets/images/castle-dome/cd9f50b99b9dfa1530a2803d89beb074.jpg"/>
+<img
+    src="../assets/images/castle-dome/cd9f50b99b9dfa1530a2803d89beb074.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/castle-dome/1493dc870dabbfc1d562deb9a5ee0bf8.jpg"/>
+<img
+    src="../assets/images/castle-dome/1493dc870dabbfc1d562deb9a5ee0bf8.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/castle-dome/3cfd83c29ffb0dbb419f3348755026f5.jpg"/>
+<img
+    src="../assets/images/castle-dome/3cfd83c29ffb0dbb419f3348755026f5.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/castle-dome/cbeaba6ba9409b8d236309387165ce08.jpg"/>
+<img
+    src="../assets/images/castle-dome/cbeaba6ba9409b8d236309387165ce08.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/castle-dome/19ef7fb9ff2fbeb507e4bd858237cf9f.jpg"/>
+<img
+    src="../assets/images/castle-dome/19ef7fb9ff2fbeb507e4bd858237cf9f.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    At the pinnacle there was a ~30 ft class 4 wall with exposure. I climbed it but on the way back down found a much easier way.
-</p>
+
 <figure>
-<img src="../assets/images/castle-dome/1ef928d68a36f6b7294d8423662059b5.jpg"/>
+<img
+    src="../assets/images/castle-dome/1ef928d68a36f6b7294d8423662059b5.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking down at the short climb
-</p>
+
 <figure>
-<img src="../assets/images/castle-dome/36d26dc4e2a744b898036487ed101d05.jpg"/>
+<img
+    src="../assets/images/castle-dome/36d26dc4e2a744b898036487ed101d05.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/castle-dome/a11a4455cbc50885458987c8d89490c5.jpg"/>
+<img
+    src="../assets/images/castle-dome/a11a4455cbc50885458987c8d89490c5.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/castle-dome/9dbb904e65d81d2da0479c8983c9af4a.jpg"/>
+<img
+    src="../assets/images/castle-dome/9dbb904e65d81d2da0479c8983c9af4a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/castle-dome/8009fd137cf2f2ee47fe09fe7ad784ae.jpg"/>
+<img
+    src="../assets/images/castle-dome/8009fd137cf2f2ee47fe09fe7ad784ae.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    View south
-</p>
+
 <figure>
-<img src="../assets/images/castle-dome/7dd12de1d802fcf69318e309d50160ff.jpg"/>
+<img
+    src="../assets/images/castle-dome/7dd12de1d802fcf69318e309d50160ff.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/castle-dome/30516116178bf9797187189950b0f9aa.jpg"/>
+<img
+    src="../assets/images/castle-dome/30516116178bf9797187189950b0f9aa.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/castle-dome/0630fc7a7655c050da246c0cd25f7a2f.jpg"/>
+<img
+    src="../assets/images/castle-dome/0630fc7a7655c050da246c0cd25f7a2f.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    View north
-</p>
+
 <figure>
-<img src="../assets/images/castle-dome/ff0acf527e21ff7b630355e65fda0c53.jpg"/>
+<img
+    src="../assets/images/castle-dome/ff0acf527e21ff7b630355e65fda0c53.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    View west, the road I biked in from in the far distance
-</p>
+
 <figure>
-<img src="../assets/images/castle-dome/b79b6f8912793b42450400e80d2224fa.jpg"/>
+<img
+    src="../assets/images/castle-dome/b79b6f8912793b42450400e80d2224fa.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    View northeast of other mountains i n the Kofa Wilderness about 20 miles away. The following day I hiked up to the two peaks in green: Signal Peak on the left and Ten Ewe Mountain on the right
-</p>
+
 <figure>
-<img src="../assets/images/castle-dome/424eacd84984ca63dc6a06730ed78777.jpg"/>
+<img
+    src="../assets/images/castle-dome/424eacd84984ca63dc6a06730ed78777.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/castle-dome/f7634d719aa6e58d68a3e661cc1b8569.jpg"/>
+<img
+    src="../assets/images/castle-dome/f7634d719aa6e58d68a3e661cc1b8569.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/castle-dome/822f31ca34382c70bfa1ede6ca7c7f25.jpg"/>
+<img
+    src="../assets/images/castle-dome/822f31ca34382c70bfa1ede6ca7c7f25.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/castle-dome/c92d1d6e8a34948a65b4078e1de76bf4.jpg"/>
+<img
+    src="../assets/images/castle-dome/c92d1d6e8a34948a65b4078e1de76bf4.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Biking back to the car in the late afternoon
-</p>
+
 <figure>
-<img src="../assets/images/castle-dome/8c92a84195a46046baebae2d20e2efa1.jpg"/>
+<img
+    src="../assets/images/castle-dome/8c92a84195a46046baebae2d20e2efa1.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/castle-dome/27e48855fa022694aa1b45bd794dba66.jpg"/>
+<img
+    src="../assets/images/castle-dome/27e48855fa022694aa1b45bd794dba66.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

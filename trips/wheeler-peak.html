@@ -1,14 +1,324 @@
-
 <!DOCTYPE html>
+
 <html>
 
 <head>
 
-<meta charset="UTF-8">
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Wheeler Peak</title>
 
-<link rel="stylesheet" href="../assets/css/trip.css">
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -16,138 +326,360 @@
 <body>
 
 
-<h1>
-Wheeler Peak
-</h1>
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Wheeler Peak
+        </h1>
+
+        <p class="trip-date">
+            08/13/2026
+        </p>
+
+    </div>
 
 
 
-<p class="caption">
-08/13/2026 - Wheeler Peak
-</p>
+    <!-- COVER PHOTO -->
 
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100694/Wheeler%20Peak/X.jpg"
+    alt="Wheeler Peak"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                10.12 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                3,060 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                10,223 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Wheeler Peak Wilderness, NM
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=36.57928,-105.44016"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=36.57928,-105.44016&amp;z=11&amp;output=embed"
+            title="Map of Wheeler Peak"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
 <p class="caption">
 Nestled in the Taos ski valley village is the popular trail and hike to Wheeler Peak, the highest point in New Mexico at 13,159 ft. There was a small chance of thunderstorms in the afternoon so I got an early start at about 6 am, planning to reach the peak then continue clockwise around the mountain ridges and end up back at the trailhead. Trying to be careful I opted out of doing the circle because of questionable blue and grey clouds that formed pretty fast. The hike is well graded with many switchbacks which helps counterbalance the higher elevation. Along the way were many pika, a marmot or two, and a large herd of bighorn sheep near the next peak over, Mt Walter. After taking in the views on Wheeler Peak I continued south to Simpson Peak where there was a sign noting travel further south is not permitted since it is part of the Taos Pueblo wilderness, so I turned around and trekked back to the trailhead, gazing out across the folds of mountains, fast moving clouds, and fine views. It was a fun hike, short enough for most people but somewhat of a challenge due to the elevation and uphill gain. It would be fun to return to the area sometime. North of NM-150 which is the road up to the Taos ski valley is the Columbine-Hondo wilderness which seems to have quite a few trails with probably much fewer crowds and some backpacking trip potential.
-
 </p>
 
-<figure>
 
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100648/Wheeler%20Peak/1-%20DSC05620.jpg">
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
+<figure>
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100648/Wheeler%20Peak/1-%20DSC05620.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100651/Wheeler%20Peak/1-%20DSC05623.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100651/Wheeler%20Peak/1-%20DSC05623.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100654/Wheeler%20Peak/1-%20DSC05624.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100654/Wheeler%20Peak/1-%20DSC05624.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100657/Wheeler%20Peak/1-%20DSC05625.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100657/Wheeler%20Peak/1-%20DSC05625.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100659/Wheeler%20Peak/1-%20DSC05631.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100659/Wheeler%20Peak/1-%20DSC05631.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100661/Wheeler%20Peak/1-%20DSC05634.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100661/Wheeler%20Peak/1-%20DSC05634.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100663/Wheeler%20Peak/1-%20DSC05637.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100663/Wheeler%20Peak/1-%20DSC05637.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100665/Wheeler%20Peak/1-%20DSC05640.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100665/Wheeler%20Peak/1-%20DSC05640.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100667/Wheeler%20Peak/1-%20DSC05642.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100667/Wheeler%20Peak/1-%20DSC05642.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100670/Wheeler%20Peak/1-%20DSC05645.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100670/Wheeler%20Peak/1-%20DSC05645.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100672/Wheeler%20Peak/1-%20DSC05648.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100672/Wheeler%20Peak/1-%20DSC05648.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100674/Wheeler%20Peak/1-%20DSC05653.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100674/Wheeler%20Peak/1-%20DSC05653.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100676/Wheeler%20Peak/1-%20DSC05654.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100676/Wheeler%20Peak/1-%20DSC05654.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<figcaption class="caption">
-Ridgeline of the cirque from Simpson Peak
-</figcaption>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100679/Wheeler%20Peak/1-%20DSC05655.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100679/Wheeler%20Peak/1-%20DSC05655.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100680/Wheeler%20Peak/1-%20DSC05662.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100680/Wheeler%20Peak/1-%20DSC05662.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100682/Wheeler%20Peak/1-%20DSC05670.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100682/Wheeler%20Peak/1-%20DSC05670.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<figcaption class="caption">
-Bighorn sheep grazing and resting in the grass
-</figcaption>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100683/Wheeler%20Peak/1-%20DSC05671.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100683/Wheeler%20Peak/1-%20DSC05671.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100686/Wheeler%20Peak/1-%20DSC05673.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100686/Wheeler%20Peak/1-%20DSC05673.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100687/Wheeler%20Peak/1-%20DSC05677.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100687/Wheeler%20Peak/1-%20DSC05677.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<figcaption class="caption">
-Williams Lake
-</figcaption>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100689/Wheeler%20Peak/1-%20DSC05682.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100689/Wheeler%20Peak/1-%20DSC05682.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100692/Wheeler%20Peak/1-%20DSC05683.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787100692/Wheeler%20Peak/1-%20DSC05683.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
 
 
 </body>

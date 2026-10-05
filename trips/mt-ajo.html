@@ -1,106 +1,695 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Mt Ajo</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Mt Ajo</h1>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Mt Ajo
+        </h1>
+
+        <p class="trip-date">
+            12/26/2025
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/zkCkCNb.jpeg"
+    alt="Mt Ajo"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                8.4 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                2,634 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                2,378 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Organ Pipe Cactus NM, AZ
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=32.01599,-112.71198"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=32.01599,-112.71198&amp;z=11&amp;output=embed"
+            title="Map of Mt Ajo"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
 <p class="caption">
-    12/26/2025 - Mt Ajo
+This was a nice peaceful hike. To get there one must turn off route 85 onto Ajo Mountain Drive and drive the slightly wash boarded gravel road to the far end of the one way loop, about 12 miles. From the trailhead, I think most people hike a small loop up to the Bull Pasture Loop and don&#x27;t go up to the top. Aside from 2 groups of people around the viewpoint area which is about a mile and a half in, there was no one else the whole hike. The climb is relatively short but steep in spots then levels out for a mile or so along a ridge with nice desert views in all directions. Looking east over the vast expanse of the Tohono O’Odham reservation I could spot the Catalina Mountains and Baboquivari Peak, and to the south the town of Sonoyta, Mexico. The top ridge had many teal agaves and some small juniper trees and brush. The rock was solid and tended to have small alcoves or cavities carved out in spots which made it even more fun.
 </p>
-<p class="caption">
-    This was a nice peaceful hike. To get there one must turn off route 85 onto Ajo Mountain Drive and drive the slightly wash boarded gravel road to the far end of the one way loop, about 12 miles. From the trailhead, I think most people hike a small loop up to the Bull Pasture Loop and don't go up to the top. Aside from 2 groups of people around the viewpoint area which is about a mile and a half in, there was no one else the whole hike. The climb is relatively short but steep in spots then levels out for a mile or so along a ridge with nice desert views in all directions. Looking east over the vast expanse of the Tohono O’Odham reservation I could spot the Catalina Mountains and Baboquivari Peak, and to the south the town of Sonoyta, Mexico. The top ridge had many teal agaves and some small juniper trees and brush. The rock was solid and tended to have small alcoves or cavities carved out in spots which made it even more fun.
-</p>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/mt-ajo/a64e5e148fa82cc1182570b18b7b03e6.jpg"/>
+<img
+    src="../assets/images/mt-ajo/a64e5e148fa82cc1182570b18b7b03e6.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ajo/05b14755acfec9ba910032efbc11b99d.jpg"/>
+<img
+    src="../assets/images/mt-ajo/05b14755acfec9ba910032efbc11b99d.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Mt Ajo, top right of center
-</p>
+
 <figure>
-<img src="../assets/images/mt-ajo/aed272e98dbb45d7c9e3acae2b8d510e.jpg"/>
+<img
+    src="../assets/images/mt-ajo/aed272e98dbb45d7c9e3acae2b8d510e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ajo/abae496cc697c2135f590e93d42c1768.jpg"/>
+<img
+    src="../assets/images/mt-ajo/abae496cc697c2135f590e93d42c1768.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking back towards the starting point, just behind the hill on the left, after a few minutes
-</p>
+
 <figure>
-<img src="../assets/images/mt-ajo/0fc461b0edafe1ee3eea5b066858eb46.jpg"/>
+<img
+    src="../assets/images/mt-ajo/0fc461b0edafe1ee3eea5b066858eb46.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ajo/c3681f82e8b2773c5eeaca3f8cffafb5.jpg"/>
+<img
+    src="../assets/images/mt-ajo/c3681f82e8b2773c5eeaca3f8cffafb5.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    View from the Bull Pasture viewpoint. This is where the official trail ends and the unoffocial social trail up to Mt Ajo begins.
-</p>
+
 <figure>
-<img src="../assets/images/mt-ajo/8cd96dfb36309b91d4cf7976ed1c8d62.jpg"/>
+<img
+    src="../assets/images/mt-ajo/8cd96dfb36309b91d4cf7976ed1c8d62.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Climbing up to a ridgeline that would go to the top
-</p>
+
 <figure>
-<img src="../assets/images/mt-ajo/74ba6057b46c45ad3c6ef83cfb58a8d9.jpg"/>
+<img
+    src="../assets/images/mt-ajo/74ba6057b46c45ad3c6ef83cfb58a8d9.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ajo/f928bc40c233e7365338fbdb98ea3f85.jpg"/>
+<img
+    src="../assets/images/mt-ajo/f928bc40c233e7365338fbdb98ea3f85.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ajo/de1c55ba5dce6ea714a3fcb266fd643e.jpg"/>
+<img
+    src="../assets/images/mt-ajo/de1c55ba5dce6ea714a3fcb266fd643e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ajo/412bd19950b7bbae2e1813437f435e83.jpg"/>
+<img
+    src="../assets/images/mt-ajo/412bd19950b7bbae2e1813437f435e83.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ajo/13ff3d7839565802b6bf66471079ab17.jpg"/>
+<img
+    src="../assets/images/mt-ajo/13ff3d7839565802b6bf66471079ab17.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ajo/a4d06d275d4dc332882e4a6f99f4a4b2.jpg"/>
+<img
+    src="../assets/images/mt-ajo/a4d06d275d4dc332882e4a6f99f4a4b2.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ajo/b11bd1269d13d9f94b50f172cb74b8d5.jpg"/>
+<img
+    src="../assets/images/mt-ajo/b11bd1269d13d9f94b50f172cb74b8d5.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ajo/ad8d57b31082eba3aef72dc010f29234.jpg"/>
+<img
+    src="../assets/images/mt-ajo/ad8d57b31082eba3aef72dc010f29234.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Some kind of gizmo on top of Mt Ajo
-</p>
+
 <figure>
-<img src="../assets/images/mt-ajo/9b2b9dd883a418e7a40a5fc6eee0c506.jpg"/>
+<img
+    src="../assets/images/mt-ajo/9b2b9dd883a418e7a40a5fc6eee0c506.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ajo/cb58948e8f62eed2c750c9c4a1de1700.jpg"/>
+<img
+    src="../assets/images/mt-ajo/cb58948e8f62eed2c750c9c4a1de1700.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking back down, the parking lot a small blur s lightly left of center
-</p>
+
 <figure>
-<img src="../assets/images/mt-ajo/2d419be4104932fae1383fdcc2b34692.jpg"/>
+<img
+    src="../assets/images/mt-ajo/2d419be4104932fae1383fdcc2b34692.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ajo/63dd2a210ac38d9025863fcf6092435a.jpg"/>
+<img
+    src="../assets/images/mt-ajo/63dd2a210ac38d9025863fcf6092435a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ajo/3bc5a3f49cb0ee5e49e3cbb867a56bde.jpg"/>
+<img
+    src="../assets/images/mt-ajo/3bc5a3f49cb0ee5e49e3cbb867a56bde.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking east over the vast Tohono O'Odham nation
-</p>
+
 <figure>
-<img src="../assets/images/mt-ajo/7f7e4fb0d2ddab4fbbbb1ed741f67afe.jpg"/>
+<img
+    src="../assets/images/mt-ajo/7f7e4fb0d2ddab4fbbbb1ed741f67afe.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ajo/d9b7fa8dec08dee5a9deecbdb53dbad0.jpg"/>
+<img
+    src="../assets/images/mt-ajo/d9b7fa8dec08dee5a9deecbdb53dbad0.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

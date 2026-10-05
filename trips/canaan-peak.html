@@ -1,52 +1,579 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Canaan Peak</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Canaan Peak</h1>
-<p class="caption">
-    5/23/2025 - Canaan Peak
-</p>
-<p class="caption">
-    Along the way from Ashdown Gorge to Escalante I made a quick detour on a rough 10 mile dirt road to a short 4 mile round trip trail to Canaan Peak, which overlooks the higher steppes of the Paria Wilderness. The road was rutted and the surrounding ponderosa trees casted shade on the road making it difficult to see potholes. At one point I was going about 25 mph and maybe it was a combination of the shade and angle of sun that made seeing the road difficult, but there was a cut in the road that I didnt see. As i drove over it in a split second I realized what was happening and then heard a loud thud and plastic scraping sound. Apparently, the bottom plastic part of the car fender got scraped up pretty bad and almost came off. The trail was okay and had a nice view but just wasn't worth the time and effort navigating the rough roads.
-</p>
-<p class="caption">
-    Trailhead parking in a meadow
-</p>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Canaan Peak
+        </h1>
+
+        <p class="trip-date">
+            05/23/2025
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/77Jwgu9.jpeg"
+    alt="Canaan Peak"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                4.3 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                535 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                8,490 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Dixie NF, UT
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=37.62938,-111.80286"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=37.62938,-111.80286&amp;z=11&amp;output=embed"
+            title="Map of Canaan Peak"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/canaan-peak/95d78a9cc0f5f5f16001ed78b5accc32.jpg"/>
+<img
+    src="../assets/images/canaan-peak/95d78a9cc0f5f5f16001ed78b5accc32.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Most of the trail went through a dense pine forest and was without views
-</p>
+
 <figure>
-<img src="../assets/images/canaan-peak/de974fa95bf6482dde4dd8479705b89e.jpg"/>
+<img
+    src="../assets/images/canaan-peak/de974fa95bf6482dde4dd8479705b89e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/canaan-peak/1d8be7210a47ff8dfafe594da723c4fe.jpg"/>
+<img
+    src="../assets/images/canaan-peak/1d8be7210a47ff8dfafe594da723c4fe.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/canaan-peak/96710b81c6f8d7e81fec58e1da7cd576.jpg"/>
+<img
+    src="../assets/images/canaan-peak/96710b81c6f8d7e81fec58e1da7cd576.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/canaan-peak/cd7a893f8f477efb42f9aedb54c743a1.jpg"/>
+<img
+    src="../assets/images/canaan-peak/cd7a893f8f477efb42f9aedb54c743a1.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/canaan-peak/b12680756a1a71629e8c1a28aa018483.jpg"/>
+<img
+    src="../assets/images/canaan-peak/b12680756a1a71629e8c1a28aa018483.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/canaan-peak/22c23e8b9a0f729603d5f7f95c4f40bb.jpg"/>
+<img
+    src="../assets/images/canaan-peak/22c23e8b9a0f729603d5f7f95c4f40bb.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Powell Peak in the distance
-</p>
+
 <figure>
-<img src="../assets/images/canaan-peak/70b47959066db976f2fa3f01918450e5.jpg"/>
+<img
+    src="../assets/images/canaan-peak/70b47959066db976f2fa3f01918450e5.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

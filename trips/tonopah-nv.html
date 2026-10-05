@@ -1,94 +1,715 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Tonopah NV</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Tonopah NV</h1>
-<p class="caption">
-    7/6/2025 - Tonopah NV
-</p>
-<p class="caption">
-    There is just something about those small Western towns like Tonopah, NV. Full of charm, clean, quiet, relaxed, and like a portal back to a bygone era. On the way back from the Arc Dome wilderness I stopped and walked around part of the former mining town for a bit. It was a Sunday morning around 7 am and I walked towards one shop that seemed to be open, a café. Next to the cafe was a gym with a man running on a treadmill. I entered the coffee shop and walked over white floor tiles and high ceilings. At the front by the window sat an overweight man with a teal shirt, long white beard, and camo hat, sipping his morning coffee. Attached to the café was an open door to a hotel with a very cool lobby outfitted with antique furniture and decorations. Afterwards I went outside and walked around, enjoying the cool 70 degree high elevation air (a touch over 6,000’) that had not a drop of humidity. I drove out of town taking note of a sign mentioning the next gas station was in 162 miles. I drove fast across the high desert, eventually passing the small community with said gas station, and a VFW post, known as Rachel, NV, then reached the next town, Caliente, NV. It was 192 miles from Tonopah and another quaint little town almost as cool as Tonopah, but I didnt stop to take any photos.
-</p>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Tonopah NV
+        </h1>
+
+        <p class="trip-date">
+            07/06/2025
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/uxTEWIi.jpeg"
+    alt="Tonopah NV"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                0.6 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                35 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                6,027 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Tonopah, NV
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=38.06842,-117.23098"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=38.06842,-117.23098&amp;z=11&amp;output=embed"
+            title="Map of Tonopah NV"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/tonopah-nv/ab46b2655eca9e428d6af92d31b63b62.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/ab46b2655eca9e428d6af92d31b63b62.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/bd685c9d0639ca53f676cc27ba330aa3.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/bd685c9d0639ca53f676cc27ba330aa3.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/b7ea8cf2d3b9beb2ea66f30efb7f250b.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/b7ea8cf2d3b9beb2ea66f30efb7f250b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/0246e76e11117903df249561ae071423.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/0246e76e11117903df249561ae071423.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/81f52e6a735861fbfcd778aab2946f93.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/81f52e6a735861fbfcd778aab2946f93.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/5ec8e507f1459a712886b8a8a545ba91.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/5ec8e507f1459a712886b8a8a545ba91.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/3c04b794018d83196644af4d0363cb79.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/3c04b794018d83196644af4d0363cb79.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/a12137ca27cb98cbeed55fa7585ead89.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/a12137ca27cb98cbeed55fa7585ead89.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/77c4f43ecf33a80c073c86f065d28a11.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/77c4f43ecf33a80c073c86f065d28a11.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/9f17993e602d77c9256ff1a6a481ea73.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/9f17993e602d77c9256ff1a6a481ea73.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/a4d4117a7f2df801d4c74a04f55d19d0.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/a4d4117a7f2df801d4c74a04f55d19d0.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/0c1cfdfd9b8b86e1e01337cf85d4ca61.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/0c1cfdfd9b8b86e1e01337cf85d4ca61.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/90b4cf3cd7e9e5a8db4a3f1d2856df97.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/90b4cf3cd7e9e5a8db4a3f1d2856df97.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/f3abf79048ac0f99b9fb4d01a97f7a58.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/f3abf79048ac0f99b9fb4d01a97f7a58.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/5ed28f5924c6e23a05387968cc591db3.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/5ed28f5924c6e23a05387968cc591db3.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/b91aa4b79b7b7a36feea8e673b99f733.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/b91aa4b79b7b7a36feea8e673b99f733.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/4a458dc48f263703b42fc59f4ebd20ad.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/4a458dc48f263703b42fc59f4ebd20ad.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/fa818830a3175e7a5e5f8835e63fcb05.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/fa818830a3175e7a5e5f8835e63fcb05.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/87df9cccde8e15e4b4b3b520a4928805.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/87df9cccde8e15e4b4b3b520a4928805.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/681e27942e1ff3855e5d9c8a097cfde6.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/681e27942e1ff3855e5d9c8a097cfde6.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/822c8116df5fbc0498e7fc8c234a413b.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/822c8116df5fbc0498e7fc8c234a413b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/246382026c7e7b6e8fcfe004a92a95bc.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/246382026c7e7b6e8fcfe004a92a95bc.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/344da9fcf384d0d24866e7ce96105f8f.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/344da9fcf384d0d24866e7ce96105f8f.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/9e4580665a11887faf49a108bd3e523a.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/9e4580665a11887faf49a108bd3e523a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/tonopah-nv/8d317705640bdfcabf99355e577d2f8a.jpg"/>
+<img
+    src="../assets/images/tonopah-nv/8d317705640bdfcabf99355e577d2f8a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

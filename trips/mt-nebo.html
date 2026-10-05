@@ -1,94 +1,659 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Mt Nebo</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Mt Nebo</h1>
-<p class="caption">
-    7/12/2025 - Mt Nebo
-</p>
-<p class="caption">
-    This was a fun 9 mile hike to the top of 11,928’ Mt Nebo and was easy to get to just off I-15. The area surrounding these mountains is a wilderness area with a scenic byway and many places for high elevation dispersed camping along the way. Midway up the meandering road at about 9,000 ft is the trailhead to Mount Nebo. It is a popular trail and being a Saturday the parking lot was full though the hike itself didn’t feel too overcrowded. At the start of the hike there is a gain in elevation which continues pretty much to the peak.  Along the way there is a pass called Wolf pass and above it a tall false summit with Mt Nebo hiding above and past it. Once atop the false summit the trail continues along a nice ridgeline that looks steeper and more dangerous than it actually is. There are great views in all directions, west towards the town of Nephi, east towards the forest, and north towards Salt Lake City and the Wasatch mountains.
-</p>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Mt Nebo
+        </h1>
+
+        <p class="trip-date">
+            07/12/2025
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/FgiajE1.jpeg"
+    alt="Mt Nebo"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                8.7 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                3,163 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                9,266 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Mount Nebo Wilderness, UT
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=39.84851,-111.72208"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=39.84851,-111.72208&amp;z=11&amp;output=embed"
+            title="Map of Mt Nebo"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/mt-nebo/e7abd69e262b59b72ba94cf21704c6c5.jpg"/>
+<img
+    src="../assets/images/mt-nebo/e7abd69e262b59b72ba94cf21704c6c5.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-nebo/73ae5e49fcf4747effa8918b12e5ed31.jpg"/>
+<img
+    src="../assets/images/mt-nebo/73ae5e49fcf4747effa8918b12e5ed31.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-nebo/7e514c5fe381b357bf9bd16a625ed558.jpg"/>
+<img
+    src="../assets/images/mt-nebo/7e514c5fe381b357bf9bd16a625ed558.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-nebo/3c98ea6988b71cd1a0cd03b8475bae50.jpg"/>
+<img
+    src="../assets/images/mt-nebo/3c98ea6988b71cd1a0cd03b8475bae50.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-nebo/93841fac0b04b4d8bc48542abda562ac.jpg"/>
+<img
+    src="../assets/images/mt-nebo/93841fac0b04b4d8bc48542abda562ac.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Mt Nebo, The highest peak on the right
-</p>
+
 <figure>
-<img src="../assets/images/mt-nebo/f83a3da841a04916a9972c354b42584b.jpg"/>
+<img
+    src="../assets/images/mt-nebo/f83a3da841a04916a9972c354b42584b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking back
-</p>
+
 <figure>
-<img src="../assets/images/mt-nebo/f301d5027d136d95cc8487c5eb77e067.jpg"/>
+<img
+    src="../assets/images/mt-nebo/f301d5027d136d95cc8487c5eb77e067.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    From Wolf pass hiking up towards an initial peak. Mt Nebo was past that
-</p>
+
 <figure>
-<img src="../assets/images/mt-nebo/c2956a47742f7d644caf6ba482d50909.jpg"/>
+<img
+    src="../assets/images/mt-nebo/c2956a47742f7d644caf6ba482d50909.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-nebo/1c7ae92ea71e24033e79ea7e729e3df4.jpg"/>
+<img
+    src="../assets/images/mt-nebo/1c7ae92ea71e24033e79ea7e729e3df4.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-nebo/b697d1c33bf47f3c284de9be2016147c.jpg"/>
+<img
+    src="../assets/images/mt-nebo/b697d1c33bf47f3c284de9be2016147c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    A fun traverse to Mt Nebo ahead
-</p>
+
 <figure>
-<img src="../assets/images/mt-nebo/48c13bba47a452280f6f01113f0219fc.jpg"/>
+<img
+    src="../assets/images/mt-nebo/48c13bba47a452280f6f01113f0219fc.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-nebo/214c3d379ab58f5541337a87227b0914.jpg"/>
+<img
+    src="../assets/images/mt-nebo/214c3d379ab58f5541337a87227b0914.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-nebo/44a908f48cb9c1faac8fcdda0adf4705.jpg"/>
+<img
+    src="../assets/images/mt-nebo/44a908f48cb9c1faac8fcdda0adf4705.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking back
-</p>
+
 <figure>
-<img src="../assets/images/mt-nebo/f960bd3ddff643a4725e6c0ffe784059.jpg"/>
+<img
+    src="../assets/images/mt-nebo/f960bd3ddff643a4725e6c0ffe784059.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    South Peak seen ahead. I decided not to go there because the loose boulders but it looks like a fun hike
-</p>
+
 <figure>
-<img src="../assets/images/mt-nebo/b87364280e5bc5a2db3b08c820876654.jpg"/>
+<img
+    src="../assets/images/mt-nebo/b87364280e5bc5a2db3b08c820876654.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-nebo/34df8832b735302b193c360de00bc970.jpg"/>
+<img
+    src="../assets/images/mt-nebo/34df8832b735302b193c360de00bc970.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking back, north towards Salt Lake City and the Wasatch mountains in the far distance
-</p>
+
 <figure>
-<img src="../assets/images/mt-nebo/e37c476a4cf8d781eb3b0832b88deeb5.jpg"/>
+<img
+    src="../assets/images/mt-nebo/e37c476a4cf8d781eb3b0832b88deeb5.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-nebo/2896bef74b9a049ac5a8eb38d24fdd9c.jpg"/>
+<img
+    src="../assets/images/mt-nebo/2896bef74b9a049ac5a8eb38d24fdd9c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

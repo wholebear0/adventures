@@ -1,88 +1,691 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Thimble Peak</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Thimble Peak</h1>
-<p class="caption">
-    1/11/2026 - Thimble Peak
-</p>
-<p class="caption">
-    It was a very cold morning, in the high 40s but the worst part was the wind. It was a constant 25-30 mph and near Thimble Peak gusted to probably over 40 mp h . I started from the Hirabayashi Campground and my fingers were stiff and cold by the time I made it to the base of Thimble Peak. There was some sno w in the distance at higher elevation and water flowing in the washes from recent rains. There was a 20 foot section of scrambling, probably high class 3, up a crack gulley in the rock. On top I realized there was a second summit, perhaps the real Thimble Peak just beyond but it looked like the same elevation. There was a drop which looked like I would have to descend and walk around to the bottom of the second peak to try getting up. There was some fixed rope but with the wind like it was I was content to call it a day.
-</p>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Thimble Peak
+        </h1>
+
+        <p class="trip-date">
+            01/11/2026
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/7dp6umR.jpeg"
+    alt="Thimble Peak"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                10.19 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                1,571 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                4,851 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Pusch Ridge Wilderness, AZ
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=32.3361,-110.71958"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=32.3361,-110.71958&amp;z=11&amp;output=embed"
+            title="Map of Thimble Peak"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/thimble-peak/c399f143a0d85052915ae04ef9d25132.jpg"/>
+<img
+    src="../assets/images/thimble-peak/c399f143a0d85052915ae04ef9d25132.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/bf47a1167758fef71b60fb6f537fc2be.jpg"/>
+<img
+    src="../assets/images/thimble-peak/bf47a1167758fef71b60fb6f537fc2be.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/dd125b033c43eeda0b3dae72e10e49b4.jpg"/>
+<img
+    src="../assets/images/thimble-peak/dd125b033c43eeda0b3dae72e10e49b4.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/e91b8db65cb32711c6b82c2530e6702b.jpg"/>
+<img
+    src="../assets/images/thimble-peak/e91b8db65cb32711c6b82c2530e6702b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/f0879cb3045108c8e74f71623b659034.jpg"/>
+<img
+    src="../assets/images/thimble-peak/f0879cb3045108c8e74f71623b659034.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/4f52232da0096e88036329080dddd83b.jpg"/>
+<img
+    src="../assets/images/thimble-peak/4f52232da0096e88036329080dddd83b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/734d4b0cfa6b1f138ab5ced131e08d0b.jpg"/>
+<img
+    src="../assets/images/thimble-peak/734d4b0cfa6b1f138ab5ced131e08d0b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/a2166c896886eb8e890b264d5eee1fc4.jpg"/>
+<img
+    src="../assets/images/thimble-peak/a2166c896886eb8e890b264d5eee1fc4.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Thimble Peak in the distance
-</p>
+
 <figure>
-<img src="../assets/images/thimble-peak/213bb9418adcdca56cae4dc6001c9b35.jpg"/>
+<img
+    src="../assets/images/thimble-peak/213bb9418adcdca56cae4dc6001c9b35.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/59229ba9a83d824f1e2d585d9ab65f21.jpg"/>
+<img
+    src="../assets/images/thimble-peak/59229ba9a83d824f1e2d585d9ab65f21.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/fab0050b4f985f9b03fd70903ee5ac8e.jpg"/>
+<img
+    src="../assets/images/thimble-peak/fab0050b4f985f9b03fd70903ee5ac8e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/ffd4436fe7e4095f2dbd2a181ab1bfa0.jpg"/>
+<img
+    src="../assets/images/thimble-peak/ffd4436fe7e4095f2dbd2a181ab1bfa0.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/35ddc08f6f0a65c00053592b37727948.jpg"/>
+<img
+    src="../assets/images/thimble-peak/35ddc08f6f0a65c00053592b37727948.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/48ef64839eeb07abb32f88731cc88f5f.jpg"/>
+<img
+    src="../assets/images/thimble-peak/48ef64839eeb07abb32f88731cc88f5f.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/a2d9eb00ff089ff88473bb429a2a6972.jpg"/>
+<img
+    src="../assets/images/thimble-peak/a2d9eb00ff089ff88473bb429a2a6972.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/db8a65e75c38b29a6386082a9e83a6b4.jpg"/>
+<img
+    src="../assets/images/thimble-peak/db8a65e75c38b29a6386082a9e83a6b4.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/14458e3240fe52b51f2624fc502ad110.jpg"/>
+<img
+    src="../assets/images/thimble-peak/14458e3240fe52b51f2624fc502ad110.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/d31bdc5dd51223743686e4811a83e690.jpg"/>
+<img
+    src="../assets/images/thimble-peak/d31bdc5dd51223743686e4811a83e690.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/0ccd2a3c338818e97d1b7d21e711dddc.jpg"/>
+<img
+    src="../assets/images/thimble-peak/0ccd2a3c338818e97d1b7d21e711dddc.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/d7e1ba205d5e400ce9f6c115c68738b6.jpg"/>
+<img
+    src="../assets/images/thimble-peak/d7e1ba205d5e400ce9f6c115c68738b6.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/8322d40edf709ee4796ba0d492ff87d6.jpg"/>
+<img
+    src="../assets/images/thimble-peak/8322d40edf709ee4796ba0d492ff87d6.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/thimble-peak/98f8f00163615963094c2bf9e2f37ba1.jpg"/>
+<img
+    src="../assets/images/thimble-peak/98f8f00163615963094c2bf9e2f37ba1.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

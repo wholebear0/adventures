@@ -1,70 +1,639 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Bobcat Ridge and Cat Mountain</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Bobcat Ridge and Cat Mountain</h1>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Bobcat Ridge and Cat Mountain
+        </h1>
+
+        <p class="trip-date">
+            05/04/2026
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/VJwH2FL.jpeg"
+    alt="Bobcat Ridge and Cat Mountain"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                7.33 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                1,693 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                2,699 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Tucson Mountain Park, AZ
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=32.19022,-111.07569"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=32.19022,-111.07569&amp;z=11&amp;output=embed"
+            title="Map of Bobcat Ridge and Cat Mountain"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
 <p class="caption">
-    5/4/2026 - Bobcat Ridge and Cat Mountain
+Loop hike through the southern area of Tucson Mountain park, first going up and over Bobcat ridge then up to Cat Mountain then back to the trailhead. Cat Mountain was fun and about a 890 ft elevation gain. Once at the saddle it seems the climb doesn’t go much further but the true summit is still another 400 ft up. The hike had one brief scramble and was pretty fun, following along the spine of the small mountain, with good views of the area.
 </p>
-<p class="caption">
-    Loop hike through the southern area of Tucson Mountain park, first going up and over Bobcat ridge then up to Cat Mountain then back to the trailhead. Cat Mountain was fun and about a 890 ft elevation gain. Once at the saddle it seems the climb doesn’t go much further but the true summit is still another 400 ft up. The hike had one brief scramble and was pretty fun, following along the spine of the small mountain, with good views of the area.
-</p>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/bobcat-ridge-and-cat-mountain/57b42f294c4d9e2fa57c667759ef57c5.jpg"/>
+<img
+    src="../assets/images/bobcat-ridge-and-cat-mountain/57b42f294c4d9e2fa57c667759ef57c5.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/bobcat-ridge-and-cat-mountain/44fb32ff662b3249ff2741fe17601161.jpg"/>
+<img
+    src="../assets/images/bobcat-ridge-and-cat-mountain/44fb32ff662b3249ff2741fe17601161.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/bobcat-ridge-and-cat-mountain/ebdcff807baf936a3a563c6f546e3152.jpg"/>
+<img
+    src="../assets/images/bobcat-ridge-and-cat-mountain/ebdcff807baf936a3a563c6f546e3152.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Bobcat ridge. Cat Mountain in the distance
-</p>
+
 <figure>
-<img src="../assets/images/bobcat-ridge-and-cat-mountain/85fd02240e873eff106926f6a04be846.jpg"/>
+<img
+    src="../assets/images/bobcat-ridge-and-cat-mountain/85fd02240e873eff106926f6a04be846.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking back. Golden Gate Peak and Bren in the distance, to the north
-</p>
+
 <figure>
-<img src="../assets/images/bobcat-ridge-and-cat-mountain/8ee9c604c95908cca1bc723713f07873.jpg"/>
+<img
+    src="../assets/images/bobcat-ridge-and-cat-mountain/8ee9c604c95908cca1bc723713f07873.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/bobcat-ridge-and-cat-mountain/06e6f5edf90bd09f092a9e3033514a65.jpg"/>
+<img
+    src="../assets/images/bobcat-ridge-and-cat-mountain/06e6f5edf90bd09f092a9e3033514a65.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/bobcat-ridge-and-cat-mountain/2e8fcb7e63e143c982694e59b101bb29.jpg"/>
+<img
+    src="../assets/images/bobcat-ridge-and-cat-mountain/2e8fcb7e63e143c982694e59b101bb29.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/bobcat-ridge-and-cat-mountain/65584f43bdec027de3dde74eeb5c5b84.jpg"/>
+<img
+    src="../assets/images/bobcat-ridge-and-cat-mountain/65584f43bdec027de3dde74eeb5c5b84.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/bobcat-ridge-and-cat-mountain/59c44c5cb15343cd3916613e7272b574.jpg"/>
+<img
+    src="../assets/images/bobcat-ridge-and-cat-mountain/59c44c5cb15343cd3916613e7272b574.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/bobcat-ridge-and-cat-mountain/5077fe3dfacd93db2585d3dc3a5d0457.jpg"/>
+<img
+    src="../assets/images/bobcat-ridge-and-cat-mountain/5077fe3dfacd93db2585d3dc3a5d0457.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/bobcat-ridge-and-cat-mountain/140bb639d1716adfdee538e4504d0454.jpg"/>
+<img
+    src="../assets/images/bobcat-ridge-and-cat-mountain/140bb639d1716adfdee538e4504d0454.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/bobcat-ridge-and-cat-mountain/19edda558e023c613db9a0b201b4b470.jpg"/>
+<img
+    src="../assets/images/bobcat-ridge-and-cat-mountain/19edda558e023c613db9a0b201b4b470.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/bobcat-ridge-and-cat-mountain/c0332d7fc548e54e6b7dfa426e95f1d6.jpg"/>
+<img
+    src="../assets/images/bobcat-ridge-and-cat-mountain/c0332d7fc548e54e6b7dfa426e95f1d6.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/bobcat-ridge-and-cat-mountain/b52e8bcfa068321f16cdce5e514186d2.jpg"/>
+<img
+    src="../assets/images/bobcat-ridge-and-cat-mountain/b52e8bcfa068321f16cdce5e514186d2.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/bobcat-ridge-and-cat-mountain/af62dbbd4da0b5c4d7a683bddaa402d9.jpg"/>
+<img
+    src="../assets/images/bobcat-ridge-and-cat-mountain/af62dbbd4da0b5c4d7a683bddaa402d9.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

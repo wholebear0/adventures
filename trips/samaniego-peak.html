@@ -1,14 +1,324 @@
-
 <!DOCTYPE html>
+
 <html>
 
 <head>
 
-<meta charset="UTF-8">
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Samaniego Peak</title>
 
-<link rel="stylesheet" href="../assets/css/trip.css">
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -16,163 +326,352 @@
 <body>
 
 
-<h1>
-Samaniego Peak
-</h1>
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Samaniego Peak
+        </h1>
+
+        <p class="trip-date">
+            09/02/2026
+        </p>
+
+    </div>
 
 
 
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459731/Samaniego%20Peak/X.jpg"
+    alt="Samaniego Peak"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                12.6 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                2,881 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                9,095 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Coronado National Forest, AZ
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=32.44048,-110.78588"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=32.44048,-110.78588&amp;z=11&amp;output=embed"
+            title="Map of Samaniego Peak"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
 <p class="caption">
-09/02/2026 - Samaniego Peak
+Starting from the top of Mt Lemmon, this hike followed along the Meadow trail, then the Sutherland trail, then Canada del Oro trail for a bit, then finally the Samaniego Ridge trail to Samaniego Peak. These trails dont get a lot of use and seem to have a reputation as being overgrown but I think they are among the best among the high elevation hikes in the Mt Lemmon vicinity. Not only because of the views but because of the peace and solitude with mostly zero crowds. This hike was no different as I saw not a single other person.
 </p>
 
 <p class="caption">
-Starting from the top of Mt Lemmon, this hike followed along the Meadow trail, then the Sutherland trail, then Canada del Oro trail for a bit, then finally the Samaniego Ridge trail to Samaniego Peak. These trails dont get a lot of use and seem to have a reputation as being overgrown but I think they are among the best among the high elevation hikes in the Mt Lemmon vicinity. Not only because of the views but because of the peace and solitude with mostly zero crowds. This hike was no different as I saw not a single other person.
+The route itself was in great condition and easy to follow except for one or two brief sections of 50 feet of trail near drainages that were a bushwhack. But they were no more inconvenient than just pushing some plants aside. I kept hiking along through tall grass on both sides, then underneath pine trees on a carpet of pine needles as clouds began rolling in, then along the Samaniego ridge which offered great views of Oro Valley to the west and the Canada del Oro canyon to the east. On the way to Samaniego peak I passed some bear poo and on the way back there were at least a dozen bear prints on the trail in the same area. But just east of Samaniego peak at the somewhat murky Walnut spring was a sign stuck in the ground saying end of trail. At this point I jumped off trail and headed west, initially finding some easy walking through tall grass and weaving around bushes. But as the peak got closer and slope steeper, the pace slowed substantially. The bushes were larger and more stubborn and there were numerous boulders, all at a kind of steep gradient. Inevitably I got scratched up but made it to the top ridgeline just north of the peak. There were some big boulders between the peak and myself so I went down a few feet off the ridge and found it much easier, making it over to the peak in a few minutes. After the short scrambling there were great 360 views.
+</p>
 
-The route itself was in great condition and easy to follow except for one or two brief sections of 50 feet of trail near drainages that were a bushwhack. But they were no more inconvenient than just pushing some plants aside. I kept hiking along through tall grass on both sides, then underneath pine trees on a carpet of pine needles as clouds began rolling in, then along the Samaniego ridge which offered great views of Oro Valley to the west and the Canada del Oro canyon to the east. On the way to Samaniego peak I passed some bear poo and on the way back there were at least a dozen bear prints on the trail in the same area. But just east of Samaniego peak at the somewhat murky Walnut spring was a sign stuck in the ground saying end of trail. At this point I jumped off trail and headed west, initially finding some easy walking through tall grass and weaving around bushes. But as the peak got closer and slope steeper, the pace slowed substantially. The bushes were larger and more stubborn and there were numerous boulders, all at a kind of steep gradient. Inevitably I got scratched up but made it to the top ridgeline just north of the peak. There were some big boulders between the peak and myself so I went down a few feet off the ridge and found it much easier, making it over to the peak in a few minutes. After the short scrambling there were great 360 views. On the way back, a mile or so after I passed the bear tracks I hiked through some dense branches looking down. I heard a sound and lookd up to see along the creek drainage a black bear drinking water. Hearing me it tore upwards up the slope and out of view behind brush so quickly I could even get and turn on my camera for a photo. It was not a cub but was still kind of small.
-
+<p class="caption">
 Of interest was the area directly east, the Canada del Oro canyon and towards Oracle, an even more remote area I dont know much about and which probably receives even fewer visitors. There is a trail down along the canyon bottom but following along water and with shade I imagine it could be quite overgrown with dense vegetation, but there is no way of knowing for sure until checking it out some day.
 </p>
 
-<figure>
 
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459689/Samaniego%20Peak/1-%20DSC05948.jpg">
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
+<figure>
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459689/Samaniego%20Peak/1-%20DSC05948.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459692/Samaniego%20Peak/1-%20DSC05955.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459692/Samaniego%20Peak/1-%20DSC05955.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459694/Samaniego%20Peak/1-%20DSC05960.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459694/Samaniego%20Peak/1-%20DSC05960.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<figcaption class="caption">
-Samaniego Peak on the right side center. THe trail went fown from here to the left, across the saddle, then over the ridgeline
-</figcaption>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459696/Samaniego%20Peak/1-%20DSC05961.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459696/Samaniego%20Peak/1-%20DSC05961.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<figcaption class="caption">
-Looking south to Cathedral Rock and Pusch Ridge Wilderness in the distance
-</figcaption>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459698/Samaniego%20Peak/1-%20DSC05967.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459698/Samaniego%20Peak/1-%20DSC05967.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<figcaption class="caption">
-Clouds starting to form
-</figcaption>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459699/Samaniego%20Peak/1-%20DSC05971.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459699/Samaniego%20Peak/1-%20DSC05971.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459702/Samaniego%20Peak/1-%20DSC05973.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459702/Samaniego%20Peak/1-%20DSC05973.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459704/Samaniego%20Peak/1-%20DSC05974.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459704/Samaniego%20Peak/1-%20DSC05974.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<figcaption class="caption">
-A couple short sections of bushwhacking, usually by drainages
-</figcaption>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459707/Samaniego%20Peak/1-%20DSC05976.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459707/Samaniego%20Peak/1-%20DSC05976.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<figcaption class="caption">
-Canada del Oro canyon
-</figcaption>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459709/Samaniego%20Peak/1-%20DSC05978.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459709/Samaniego%20Peak/1-%20DSC05978.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<figcaption class="caption">
-Samaniego Peak
-</figcaption>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459712/Samaniego%20Peak/1-%20DSC05981.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459712/Samaniego%20Peak/1-%20DSC05981.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<figcaption class="caption">
-Walnut Spring with some water, and official end of the trail
-</figcaption>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459716/Samaniego%20Peak/1-%20DSC05983.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459716/Samaniego%20Peak/1-%20DSC05983.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<figcaption class="caption">
-Off trail part. Getting up to the peak and back took about an hour.
-</figcaption>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459718/Samaniego%20Peak/1-%20DSC05984.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459718/Samaniego%20Peak/1-%20DSC05984.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<figcaption class="caption">
-Ridge line
-</figcaption>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459720/Samaniego%20Peak/1-%20DSC05985.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459720/Samaniego%20Peak/1-%20DSC05985.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459721/Samaniego%20Peak/1-%20DSC05986.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459721/Samaniego%20Peak/1-%20DSC05986.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459723/Samaniego%20Peak/1-%20DSC05989.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459723/Samaniego%20Peak/1-%20DSC05989.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<figcaption class="caption">
-Looking back, to the north
-</figcaption>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459725/Samaniego%20Peak/1-%20DSC05992.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459725/Samaniego%20Peak/1-%20DSC05992.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<figcaption class="caption">
-Mt Lemmon, where I started from, now covered in clouds
-</figcaption>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459727/Samaniego%20Peak/1-%20DSC06015.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459727/Samaniego%20Peak/1-%20DSC06015.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459728/Samaniego%20Peak/1-%20DSC06016.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1788459728/Samaniego%20Peak/1-%20DSC06016.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
 
 
 </body>

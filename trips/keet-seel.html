@@ -1,64 +1,595 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Keet Seel</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Keet Seel</h1>
-<p class="caption">
-    9 / 7 /2 4 - 9/8/24 Navajo NM and Keet Seel
-</p>
-<p class="caption">
-    8 miles back in Navajo National Monument is a big dwelling called Keet Seel. The only way to access it is to take a ranger led overnight backpacking trip, which is what I did. Despite the website saying all permits were taken, I called the office and they said many people just dont show up, and if I showed up I would be turned away. Not surprised people dont show up given my experience with federal permits. People just take peoples spots which is very frustrating. This adventure was a stop on my way from St George to Tucson and I camped the night before in the free campground at the park. The instructions said to meet at the visitor center at 8am the next morning and when that time came around i was there waiting. In fact, I was the only person there. I kept waiting and one other couple showed up. They drove up from flagstaff and were also confused why no one else was here. After a couple hours the visitor center opened and we inquired. It took some time to get an answer but finally we found out the tour was delayed a few hours because the rangers were driving over from Canyon de Chelley. They finally arrived as well as maybe 12 other people. There two rangers, brothers, who grew up on the reservation in the Canyon de Chelley area. They were cool. The hike in was nice. It was hot, in the 90s, and upon their recommendation we cached water under a juniper for the way back the next day. The entirety of the hike was next to or in a creek. We finally got to the camping area before dusk and were told to just pick a spot. After that we were guided over to the Keet Seel ruins which were awesome. We got up below the ruins and the ground was covered with colorful pottery shards. Of course no one picked any up. I imagine there are many other smaller ruins in the surrounding canyons. Quite a cool place.
-</p>
-<p class="caption">
-    Not Keet Seel, but a smaller ruin from an overlook near the visitor center: Betatakin.
-</p>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Keet Seel
+        </h1>
+
+        <p class="trip-date">
+            09/07/2024
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/vUI32IR.jpeg"
+    alt="Keet Seel"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Backpack
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                15 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                1,637 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                6,740 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Navajo NM, AZ
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=36.76043,-110.4959"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=36.76043,-110.4959&amp;z=11&amp;output=embed"
+            title="Map of Keet Seel"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/keet-seel/4241f47b3b1af76884006e0b29ce0e60.jpg"/>
+<img
+    src="../assets/images/keet-seel/4241f47b3b1af76884006e0b29ce0e60.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Our ranger led group heading down into the canyon where we followed along the creek
-</p>
+
 <figure>
-<img src="../assets/images/keet-seel/c3926e9e0de0b2af34086b003150af37.jpg"/>
+<img
+    src="../assets/images/keet-seel/c3926e9e0de0b2af34086b003150af37.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/keet-seel/8dc810cc5a54777464898c854fec76b0.jpg"/>
+<img
+    src="../assets/images/keet-seel/8dc810cc5a54777464898c854fec76b0.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/keet-seel/e6183723f9e0219ca25cf5507903f62c.jpg"/>
+<img
+    src="../assets/images/keet-seel/e6183723f9e0219ca25cf5507903f62c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/keet-seel/5d95d80740e47b9a3a7ae9a130142105.jpg"/>
+<img
+    src="../assets/images/keet-seel/5d95d80740e47b9a3a7ae9a130142105.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/keet-seel/3286528b47d5adb286e8d26d7781ed39.jpg"/>
+<img
+    src="../assets/images/keet-seel/3286528b47d5adb286e8d26d7781ed39.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Near dusk we made it to Keet Seel
-</p>
+
 <figure>
-<img src="../assets/images/keet-seel/14e132977dc53c241e1b0e604f7d3b4c.jpg"/>
+<img
+    src="../assets/images/keet-seel/14e132977dc53c241e1b0e604f7d3b4c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/keet-seel/dbbfa33ecd4cca2b12883673111032ce.jpg"/>
+<img
+    src="../assets/images/keet-seel/dbbfa33ecd4cca2b12883673111032ce.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Once upon a time a heavy amount of cooking occurred within these dwelling walls, evidenced by the black stained walls.
-</p>
+
 <figure>
-<img src="../assets/images/keet-seel/f22729907542634c9bc561fb818ac793.jpg"/>
+<img
+    src="../assets/images/keet-seel/f22729907542634c9bc561fb818ac793.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    The right side of Keet Seel with numerous dwellings. Even more rooms are supposedly below those. We werent allowed to go up to any of them though.
-</p>
+
 <figure>
-<img src="../assets/images/keet-seel/73f9b4ee78c9c144520acf45c07e4613.jpg"/>
+<img
+    src="../assets/images/keet-seel/73f9b4ee78c9c144520acf45c07e4613.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

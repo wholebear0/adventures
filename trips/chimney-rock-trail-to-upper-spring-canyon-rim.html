@@ -1,88 +1,647 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Chimney Rock trail to Upper Spring Canyon rim</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Chimney Rock trail to Upper Spring Canyon rim</h1>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Chimney Rock trail to Upper Spring Canyon rim
+        </h1>
+
+        <p class="trip-date">
+            04/12/2026
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/oO8gs8g.jpeg"
+    alt="Chimney Rock trail to Upper Spring Canyon rim"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                9.85 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                1,680 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                6,052 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Capitol Reef NP, UT
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=38.3156,-111.30421"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=38.3156,-111.30421&amp;z=11&amp;output=embed"
+            title="Map of Chimney Rock trail to Upper Spring Canyon rim"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
 <p class="caption">
-    4/12/2026 - Chimney Rock trail to Upper Spring Canyon rim
+At the visitor center, I asked a ranger for nice off trail peak hikes north of the Fremont River but he said he didn&#x27;t know much but would get someone who did. He turned around and went through a door and a few moments later an older guy popped in, I believe a volunteer. He suggested this route and drew a rough diagram, graciously describing the route, where to turn, and other advice, ending by saying it was a dawn to dusk type hike. It was to the park benchmark (highest peak in the park) called Capitol. I was sold or so i thought! The route up from upper spring canyon has a lot of small boulders and a couple spots needing scrambling moves. It was a not very fun climb up to the rim where the slope finally abated a bit but the annoyance was replaced by tons of cryptobiotic soil. It was pretty much everywhere and difficult to avoid stepping on. I wasted a lot of time carefully avoiding and walking around the soil looking for slick rock to walk on. I finally got near a minor outcropping with a small bridge and got a good lay of the land from this point. There didn&#x27;t seem to be many interesting landmarks within the flat rim/basin that I was in. I gave up on trying to make it over to Capitol Benchmark which was probably another 8 miles roundtrip, so headed east but it was slow going with much crypto soil. After trying a few different directions I turned around and headed down. It was a good scouting trip and useful to know a route up though I&#x27;m not sure if there are many interesting routes once atop the rim, and if there are, they will be slow going navigating around the soil and terrain.
 </p>
-<p class="caption">
-    At the visitor center, I asked a ranger for nice off trail peak hikes north of the Fremont River but he said he didn't know much but would get someone who did. He turned around and went through a door and a few moments later an older guy popped in, I believe a volunteer. He suggested this route and drew a rough diagram, graciously describing the route, where to turn, and other advice, ending by saying it was a dawn to dusk type hike. It was to the park benchmark (highest peak in the park) called Capitol. I was sold or so i thought! The route up from upper spring canyon has a lot of small boulders and a couple spots needing scrambling moves. It was a not very fun climb up to the rim where the slope finally abated a bit but the annoyance was replaced by tons of cryptobiotic soil. It was pretty much everywhere and difficult to avoid stepping on. I wasted a lot of time carefully avoiding and walking around the soil looking for slick rock to walk on. I finally got near a minor outcropping with a small bridge and got a good lay of the land from this point. There didn't seem to be many interesting landmarks within the flat rim/basin that I was in. I gave up on trying to make it over to Capitol Benchmark which was probably another 8 miles roundtrip, so headed east but it was slow going with much crypto soil. After trying a few different directions I turned around and headed down. It was a good scouting trip and useful to know a route up though I'm not sure if there are many interesting routes once atop the rim, and if there are, they will be slow going navigating around the soil and terrain.
-</p>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/39943d397376d6730d962b66dd4edfb9.jpg"/>
+<img
+    src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/39943d397376d6730d962b66dd4edfb9.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/c107a94c160f54b2c9fde7c08e6311b9.jpg"/>
+<img
+    src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/c107a94c160f54b2c9fde7c08e6311b9.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/381fa112c044e7d2f417fac364ba6aa8.jpg"/>
+<img
+    src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/381fa112c044e7d2f417fac364ba6aa8.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/f829a2c380ff94a8496e53b25ebb77a9.jpg"/>
+<img
+    src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/f829a2c380ff94a8496e53b25ebb77a9.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/0a25c121d3bd9cc28dab1932e2034d80.jpg"/>
+<img
+    src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/0a25c121d3bd9cc28dab1932e2034d80.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Turning off the Spring Canyon trail heading north through a different canyon
-</p>
+
 <figure>
-<img src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/e8ac9a58a21a2885eeb9672f07e6dd1c.jpg"/>
+<img
+    src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/e8ac9a58a21a2885eeb9672f07e6dd1c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking up at the ascent and obstacles out of the canyon. I stayed to the right of the vertical wall.
-</p>
+
 <figure>
-<img src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/7e4226f360c386684af4ed9627f9d440.jpg"/>
+<img
+    src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/7e4226f360c386684af4ed9627f9d440.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/1061e2a1b1eee253e2eda2fd22609cd8.jpg"/>
+<img
+    src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/1061e2a1b1eee253e2eda2fd22609cd8.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/d9e9465f612403d37b4b55bf5389f07f.jpg"/>
+<img
+    src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/d9e9465f612403d37b4b55bf5389f07f.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    View south. Fern's Nipple faintly visible way in the distance, middle far left side.
-</p>
+
 <figure>
-<img src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/231726b19bbc9ce9e0e3bbd373ae6602.jpg"/>
+<img
+    src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/231726b19bbc9ce9e0e3bbd373ae6602.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/488f5d0b16361f7d79b8fae875f487a8.jpg"/>
+<img
+    src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/488f5d0b16361f7d79b8fae875f487a8.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Tons of crypto soil to avoid walking on.
-</p>
+
 <figure>
-<img src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/123eabc0f8eb6bb573c7919094e53baa.jpg"/>
+<img
+    src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/123eabc0f8eb6bb573c7919094e53baa.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking back at a bowl I hiked through
-</p>
+
 <figure>
-<img src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/bced606ece769c72946b224879644f06.jpg"/>
+<img
+    src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/bced606ece769c72946b224879644f06.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    At the top was a mostly flat basin/park area. I I walked around the area a bit but headed back down afterwards.
-</p>
+
 <figure>
-<img src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/5be32ca02090d8ef6b1cc31b2601fa65.jpg"/>
+<img
+    src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/5be32ca02090d8ef6b1cc31b2601fa65.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/b04e7ff21a90b4a0aca324b9b9b62761.jpg"/>
+<img
+    src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/b04e7ff21a90b4a0aca324b9b9b62761.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Capitol benchmark in distance, middle of photo
-</p>
+
 <figure>
-<img src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/4ea830a7b4bc3f42ba064283b394e6fc.jpg"/>
+<img
+    src="../assets/images/chimney-rock-trail-to-upper-spring-canyon-rim/4ea830a7b4bc3f42ba064283b394e6fc.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

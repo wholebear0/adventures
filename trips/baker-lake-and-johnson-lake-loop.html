@@ -1,109 +1,659 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Baker Lake and Johnson Lake Loop</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Baker Lake and Johnson Lake Loop</h1>
-<p class="caption">
-    7/5/24 - Great Basin NP: Baker Lake and Johnson Lake Loop
-</p>
-<p class="caption">
-    xI had been wanting to check out Great Basin for the past few years and looking back, I don’t know why I didn’t go before. It was awesome. It was the July 4th weekend and hot so the higher elevations in the park were quite tempting. It was Friday and I logged off work, threw my camping gear in the back of the car and made the drive over. After Cathedral Gorge state park the terrain got kind of interesting. Very dry low deserts with north to south narrow mountain ranges. After some driving I saw an imposing mountain range to the north east and knew it was Great Basin NP. I stopped in at the visitor center and was told the snow along the crest where I would be hiking the next day had just finished melting. Sweet! I started the hike and it was most pleasant. The trail weaved through pines and streams and there was only one group the whole way and they were headed back to the parking lot. I got to Baker Lake and was scouting for a campsite but was disappointed to see two other groups of campers. They had taken what looked like the few good spots along the lake and with the sun already set, I threw down the tent in a semi mud covered clearing. The stars that night were incredible and I snapped a few photos. The next day I ascended the ridgeline over loose scree and got a nice view back towards Johnson Lake. I made the descent and relaxed around the lake for awhile, then started back on the last few miles. All in all, a very pleasant hike and definitely a place to come back to. Next time, I plan to summit wheeler peak and scramble along the high ridgeline. Later that day I drove up to the higher elevation area just under Wheeler Peak and hiked the lake loop. Then after that, since the campground was full, I backpacked a few miles down. It was a tiring day indeed but most awesome.
-</p>
-<p class="caption">
-    The Snake Range within Great Basin National Park
-</p>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Baker Lake and Johnson Lake Loop
+        </h1>
+
+        <p class="trip-date">
+            07/05/2024
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/2rye5Po.jpeg"
+    alt="Baker Lake and Johnson Lake Loop"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Backpack
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                20.3 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                5,181 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                11,299 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Great Basin NP
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=38.94624,-114.30058"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=38.94624,-114.30058&amp;z=11&amp;output=embed"
+            title="Map of Baker Lake and Johnson Lake Loop"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/baker-lake-and-johnson-lake-loop/5df5390aec3295c57e437d808a9d9144.jpg"/>
+<img
+    src="../assets/images/baker-lake-and-johnson-lake-loop/5df5390aec3295c57e437d808a9d9144.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Heading up
-</p>
+
 <figure>
-<img src="../assets/images/baker-lake-and-johnson-lake-loop/61e5cb0f3a4c257f6536bb64553a9e33.jpg"/>
+<img
+    src="../assets/images/baker-lake-and-johnson-lake-loop/61e5cb0f3a4c257f6536bb64553a9e33.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Crossing a stream at the beginning of the hike late Friday afternoon
-</p>
+
 <figure>
-<img src="../assets/images/baker-lake-and-johnson-lake-loop/b1b6a77adb9105d1b23d68f5e4ddbeed.jpg"/>
+<img
+    src="../assets/images/baker-lake-and-johnson-lake-loop/b1b6a77adb9105d1b23d68f5e4ddbeed.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Baker Lake at dusk
-</p>
+
 <figure>
-<img src="../assets/images/baker-lake-and-johnson-lake-loop/3f7a374cc86dae2e93c7cd6da5d578f3.jpg"/>
+<img
+    src="../assets/images/baker-lake-and-johnson-lake-loop/3f7a374cc86dae2e93c7cd6da5d578f3.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    A star photo from my tent
-</p>
+
 <figure>
-<img src="../assets/images/baker-lake-and-johnson-lake-loop/807a77ed281f28a33dfb0f83196d4850.jpg"/>
+<img
+    src="../assets/images/baker-lake-and-johnson-lake-loop/807a77ed281f28a33dfb0f83196d4850.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/baker-lake-and-johnson-lake-loop/ba1dd6f33a0f3343d16ee4e776bb94f5.jpg"/>
+<img
+    src="../assets/images/baker-lake-and-johnson-lake-loop/ba1dd6f33a0f3343d16ee4e776bb94f5.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/baker-lake-and-johnson-lake-loop/ae98581a37ee1fd7274f29ecd25e263e.jpg"/>
+<img
+    src="../assets/images/baker-lake-and-johnson-lake-loop/ae98581a37ee1fd7274f29ecd25e263e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    A small pond with crest I was about to hike up in the background
-</p>
+
 <figure>
-<img src="../assets/images/baker-lake-and-johnson-lake-loop/508688e0c407f3d96475eeb6ebff531b.jpg"/>
+<img
+    src="../assets/images/baker-lake-and-johnson-lake-loop/508688e0c407f3d96475eeb6ebff531b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/baker-lake-and-johnson-lake-loop/bf7da2652599c42b08ccee00a42d2877.jpg"/>
+<img
+    src="../assets/images/baker-lake-and-johnson-lake-loop/bf7da2652599c42b08ccee00a42d2877.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/baker-lake-and-johnson-lake-loop/fcfa55792efc0513e5d7f473b0feef3a.jpg"/>
+<img
+    src="../assets/images/baker-lake-and-johnson-lake-loop/fcfa55792efc0513e5d7f473b0feef3a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    From atop the crest looking down at Johnson Lake and North East in the distance
-</p>
+
 <figure>
-<img src="../assets/images/baker-lake-and-johnson-lake-loop/5fd439693ad779228230183b8876544b.jpg"/>
+<img
+    src="../assets/images/baker-lake-and-johnson-lake-loop/5fd439693ad779228230183b8876544b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Down at Johnson Lake, the shallow clear water reflecting the mountain from which I hiked down
-</p>
+
 <figure>
-<img src="../assets/images/baker-lake-and-johnson-lake-loop/1c93c2545d4c5a3765081b803068f187.jpg"/>
+<img
+    src="../assets/images/baker-lake-and-johnson-lake-loop/1c93c2545d4c5a3765081b803068f187.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Hills between Johnson Lake and the  trailhead
-</p>
+
 <figure>
-<img src="../assets/images/baker-lake-and-johnson-lake-loop/46eaf1fb27c59587590a09f7ac4b9205.jpg"/>
+<img
+    src="../assets/images/baker-lake-and-johnson-lake-loop/46eaf1fb27c59587590a09f7ac4b9205.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Theresa Lake, up at 10,230ft
-</p>
+
 <figure>
-<img src="../assets/images/baker-lake-and-johnson-lake-loop/49acaada757d3d7c8c2ea025ac0481db.jpg"/>
+<img
+    src="../assets/images/baker-lake-and-johnson-lake-loop/49acaada757d3d7c8c2ea025ac0481db.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Stella Lake nearby
-</p>
+
 <figure>
-<img src="../assets/images/baker-lake-and-johnson-lake-loop/b43944b286f28ee5dc0979b3714f49c8.jpg"/>
+<img
+    src="../assets/images/baker-lake-and-johnson-lake-loop/b43944b286f28ee5dc0979b3714f49c8.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/baker-lake-and-johnson-lake-loop/bf0ddca09a79afe486950130fe2e99e1.jpg"/>
+<img
+    src="../assets/images/baker-lake-and-johnson-lake-loop/bf0ddca09a79afe486950130fe2e99e1.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Tacked on a 3 mile hike down to a meadow where I camped for the night
-</p>
+
 <figure>
-<img src="../assets/images/baker-lake-and-johnson-lake-loop/97e33991cf174e9f4c4a8cdf16f535f5.jpg"/>
+<img
+    src="../assets/images/baker-lake-and-johnson-lake-loop/97e33991cf174e9f4c4a8cdf16f535f5.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/baker-lake-and-johnson-lake-loop/41a54ba075737b03bb772f0597ff35d1.jpg"/>
+<img
+    src="../assets/images/baker-lake-and-johnson-lake-loop/41a54ba075737b03bb772f0597ff35d1.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

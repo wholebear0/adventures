@@ -1,181 +1,843 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Prisoners Harbor to Scorpion via Montanon Trail</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Prisoners Harbor to Scorpion via Montanon Trail</h1>
-<p class="caption">
-    6/6/2025 - Prisoners Harbor to Scorpion via Montanon Trail Wanting a taste of some different scenery, I took the day off Friday and drove to Ventura, CA the Thursday before and slept in the car at the ferry company parking lot. The next morning I took the 9 am ferry to Santa Cruz island which was about an hour and a half. Midway across a whale surfaced though only its back and fin could be seen. The ferry first stopped at the main anchorage with the visitor center and campground where 95% of people got off. The island used to be a private ranch and therefore has a few old, unused roads, but is otherwise completely undeveloped. There is no food and water can only be found at the Scorpion campground. After the passengers were dropped off we went to the last stop, Prisoner’s Harbor. From here it was a bout a 14 mile hike back to the Scorpion campground area where I would camp and refill water. The hike was really pleasant and peaceful and I didn’t see a single other person until arriving at the campground around 6:30 pm. After leaving the dock, the trail climbed up along a ridge and weaved through lush hills dotted with wildflowers, succulents, and other unique plants. For a few miles the trail continued along a crest up about 1,300 ft with a view of the ocean below on both sides. Then the trail climbed up a ridgeline where the weather was quite foggy. After hanging out on the ridge for a few minutes and taking in the views, I went over it and the weather finally cleared up enough for the sun to poke through ever so slightly. The gradual descent down the hills to the campsite was nice. There were a few other groups at the campsite and round dusk several foxes appeared from the tall grass outside the campground and wandered through camp, probably in search of food.
-</p>
-<p class="caption">
-    The ferry at the harbor in Ventura, CA, middle left
-</p>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Prisoners Harbor to Scorpion via Montanon Trail
+        </h1>
+
+        <p class="trip-date">
+            06/06/2025
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/B4sSMZq.jpeg"
+    alt="Prisoners Harbor to Scorpion via Montanon Trail"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Backpack
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                14.4 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                2,524 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                11 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Channel Islands NP, CA
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=34.019353,-119.684284"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=34.019353,-119.684284&amp;z=11&amp;output=embed"
+            title="Map of Prisoners Harbor to Scorpion via Montanon Trail"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/999810a3b9a3b0d740dcf19bb64164e6.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/999810a3b9a3b0d740dcf19bb64164e6.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/3a1a41520fd9a2bf3359c6e71205b588.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/3a1a41520fd9a2bf3359c6e71205b588.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/7820ee4160b9d1f1d4684bb2335f8c17.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/7820ee4160b9d1f1d4684bb2335f8c17.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/12884ea9c4b14d3dd081c96242393840.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/12884ea9c4b14d3dd081c96242393840.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/f20404e2609100da936c085a666838bf.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/f20404e2609100da936c085a666838bf.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    95% of people got off at the first/main stop except for a handful of people, pictured, and myself. Dock at Prisoner's Harbor below. I hiked from here for 14 miles back to the main stop at Scorpion anchorage.
-</p>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/844256fa901519c18594af0fa10d1cb9.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/844256fa901519c18594af0fa10d1cb9.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/67c425b8b599873282438f02818cd5cb.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/67c425b8b599873282438f02818cd5cb.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/0f229e5e4d3440875ff80785c416c2de.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/0f229e5e4d3440875ff80785c416c2de.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/e8a6ffd6af382ff7bd21274e04afcb5b.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/e8a6ffd6af382ff7bd21274e04afcb5b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Starting the hike and quickly gaining elevation
-</p>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/b0c0c37273e655943fafd9b33412e3f6.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/b0c0c37273e655943fafd9b33412e3f6.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/5a47b558a83721dbb630f30c4e9f8417.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/5a47b558a83721dbb630f30c4e9f8417.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/541b88d02e0924078b11ed97ad1ac539.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/541b88d02e0924078b11ed97ad1ac539.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    A few trees with spanish moss
-</p>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/1de57efaadf0e357fd58aea688f65394.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/1de57efaadf0e357fd58aea688f65394.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/757e9b333d0d3abbb0a249e4243e3849.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/757e9b333d0d3abbb0a249e4243e3849.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/5140f4233b8e17d502f1e258c4a4cfeb.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/5140f4233b8e17d502f1e258c4a4cfeb.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/12bbdcc49ba532e472ec73a9f18d71c3.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/12bbdcc49ba532e472ec73a9f18d71c3.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/9569fdbe65a1bdf8cbf2d87a922a9705.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/9569fdbe65a1bdf8cbf2d87a922a9705.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/4824e3b5710858198539a13565bc587e.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/4824e3b5710858198539a13565bc587e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/e0a1e1811876a0de35048f14915cc92c.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/e0a1e1811876a0de35048f14915cc92c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    2 mile round trip side hike to Los Pinos del Sur lookout.
-</p>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/40f62e30634490fd3b377ccf58099080.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/40f62e30634490fd3b377ccf58099080.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    The Santa Cruz island fox. This was the first of many I saw. They are very small, perhaps smaller than a cat.
-</p>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/a7d6218b9a6fbbf1197baf483b0a5fc4.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/a7d6218b9a6fbbf1197baf483b0a5fc4.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/29e2bedaed554e4c6ba1654375e599a7.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/29e2bedaed554e4c6ba1654375e599a7.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Back from the side trail onto the main trail. There was a section hiking on top of a crest with views of the ocean 1,500 ft below on both sides
-</p>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/74b55636cd7aca0869929dfffdec5e35.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/74b55636cd7aca0869929dfffdec5e35.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/75973559794fcd5c2dbf8ac73c2c7355.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/75973559794fcd5c2dbf8ac73c2c7355.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/bf403da222951f4de0304df5fe7e678d.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/bf403da222951f4de0304df5fe7e678d.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/9759b50f2d7f2d1b88e8c5443eb955b3.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/9759b50f2d7f2d1b88e8c5443eb955b3.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/5badb182f05c6e3a9c45a9f9aaf000d3.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/5badb182f05c6e3a9c45a9f9aaf000d3.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Starting the ascent to the Montanon Ridge which was very foggy.
-</p>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/8738e91111acb1d2330b777ee2902f1a.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/8738e91111acb1d2330b777ee2902f1a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking back the way I came
-</p>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/bbea007dab57080e2939208a4be35beb.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/bbea007dab57080e2939208a4be35beb.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/7434d7ef350255218f6aa2a19c6eba7c.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/7434d7ef350255218f6aa2a19c6eba7c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/dbb094338894ca436b83e5e33c6d66d6.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/dbb094338894ca436b83e5e33c6d66d6.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Fogged out along the ridge with limited views. In the photo above, the section of land in the far distance across the water jutting out to the right is where the hike started.
-</p>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/17523b7c6501dfb326184dc31db8d655.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/17523b7c6501dfb326184dc31db8d655.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/cc673bcf253c2cfe0950225a9d2b5550.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/cc673bcf253c2cfe0950225a9d2b5550.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Nice colorful succulent plants were everywhere
-</p>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/27428598acf3740512b3fdfe4f0c6d83.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/27428598acf3740512b3fdfe4f0c6d83.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/a6504023a207c550afd601c29514d04a.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/a6504023a207c550afd601c29514d04a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Some sun after crossing over onto the other side of the ridge and descending. Anacapa island on middle far right side.
-</p>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/870f2efbc479974f73584113e777c97a.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/870f2efbc479974f73584113e777c97a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/a12c5de30eb0bb1b4eabc3be64c245b8.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/a12c5de30eb0bb1b4eabc3be64c245b8.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/ebe680937f5f68803342c0aef66e91b3.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/ebe680937f5f68803342c0aef66e91b3.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/a6e56087570f7dfcfce9c65e53c06260.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/a6e56087570f7dfcfce9c65e53c06260.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Some old abandoned piece of machinery
-</p>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/92a5bb04e91c01170c20c06c9ea1fc32.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/92a5bb04e91c01170c20c06c9ea1fc32.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Campground for the night with a nice view
-</p>
+
 <figure>
-<img src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/5324e6a4691fdea949bf0ce30ebca8a9.jpg"/>
+<img
+    src="../assets/images/prisoners-harbor-to-scorpion-via-montanon-trail/5324e6a4691fdea949bf0ce30ebca8a9.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

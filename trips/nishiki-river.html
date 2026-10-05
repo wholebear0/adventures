@@ -1,82 +1,675 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Nishiki River</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Nishiki River</h1>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Nishiki River
+        </h1>
+
+        <p class="trip-date">
+            06/10/2026
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/ymyoj8S.jpeg"
+    alt="Nishiki River"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Kayak
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                14 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                0 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                121 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Honshu, Japan
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=34.1937,132.03392"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=34.1937,132.03392&amp;z=11&amp;output=embed"
+            title="Map of Nishiki River"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
 <p class="caption">
-    6/14/26 - Nishiki River
+About an hour and half train ride from Hiroshima near the city of Iwakuni is the Nishiki river. To scout it out I had looked on Google maps and found that the river appeared to be floatable and free of dams and other obstructions. Other than that I had no idea what it would be like or what I would be getting into. After stumbling around trying to find the right train in the big Hiroshima station, I rode for an hour then transferred to a small one car train at Iwakuni. A couple got on who were also packrafting which provided some assurance. They mentioned the river was too shallow a couple weeks ago but that now was good and that it had a good flow. They were very friendly. I got off at the Mukuni station and after some searching for a way down the bridge to the riverbank, found some steps down where I put in.
 </p>
+
 <p class="caption">
-    About an hour and half train ride from Hiroshima near the city of Iwakuni is the Nishiki river. To scout it out I had looked on Google maps and found that the river appeared to be floatable and free of dams and other obstructions. Other than that I had no idea what it would be like or what I would be getting into. After stumbling around trying to find the right train in the big Hiroshima station, I rode for an hour then transferred to a small one car train at Iwakuni. A couple got on who were also packrafting which provided some assurance. They mentioned the river was too shallow a couple weeks ago but that now was good and that it had a good flow. They were very friendly. I got off at the Mukuni station and after some searching for a way down the bridge to the riverbank, found some steps down where I put in. The flow was decent mostly but slow like a lake i n a few spots. The water was shallow and very clear, more clear than the Shimanto and Niyodo rivers. The only obstacles during the trip were one or two shallow water portages. I scraped the raft against rocks once or twice so I imagine other times of the year outside of the rainy season would be too shallow. Much bamboo padded the river banks and once in a while there were dead stalks poking up from the water which had to be avoided. I think I was lucky with timing. The water was just high enough so a sunny day in the rainy season might be one of the better times to float. The couple I spoke with had gotten off the train a couple miles earlier but we ran into each other by the bridge take out, where they took a photo and later emailed it to me. Afterwards, I packed the raft up, got annoyed at having to pay a "toll" to walk across the bridge, then hiked through a really cool historic village area up to a castle overlooking Iwakuni and the Nishiki river.
+The flow was decent mostly but slow like a lake in a few spots. The water was shallow and very clear, more clear than the Shimanto and Niyodo rivers. The only obstacles during the trip were one or two shallow water portages. I scraped the raft against rocks once or twice so I imagine other times of the year outside of the rainy season would be too shallow. Much bamboo padded the river banks and once in a while there were dead stalks poking up from the water which had to be avoided. I think I was lucky with timing. The water was just high enough so a sunny day in the rainy season might be one of the better times to float. The couple I spoke with had gotten off the train a couple miles earlier but we ran into each other by the bridge take out, where they took a photo and later emailed it to me. Afterwards, I packed the raft up, got annoyed at having to pay a &quot;toll&quot; to walk across the bridge, then hiked through a really cool historic village area up to a castle overlooking Iwakuni and the Nishiki river.
 </p>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/nishiki-river/71ba068e3af2fafc3cadd79163f567bb.jpg"/>
+<img
+    src="../assets/images/nishiki-river/71ba068e3af2fafc3cadd79163f567bb.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/nishiki-river/f437ad2ea105cb7b9bbaafb099466a1a.jpg"/>
+<img
+    src="../assets/images/nishiki-river/f437ad2ea105cb7b9bbaafb099466a1a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/nishiki-river/716f3ae26118b859477d5ccc02fc01a5.jpg"/>
+<img
+    src="../assets/images/nishiki-river/716f3ae26118b859477d5ccc02fc01a5.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/nishiki-river/83ba90a3ccc4b6d5f9081e77dadc7552.jpg"/>
+<img
+    src="../assets/images/nishiki-river/83ba90a3ccc4b6d5f9081e77dadc7552.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/nishiki-river/1a37e1a899ebbab6c0eceded2dba8ac7.jpg"/>
+<img
+    src="../assets/images/nishiki-river/1a37e1a899ebbab6c0eceded2dba8ac7.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/nishiki-river/3ba9fdede4834d3ab1f35e0f1bdc4979.jpg"/>
+<img
+    src="../assets/images/nishiki-river/3ba9fdede4834d3ab1f35e0f1bdc4979.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/nishiki-river/45a019778022dbac210a552a684d8d5d.jpg"/>
+<img
+    src="../assets/images/nishiki-river/45a019778022dbac210a552a684d8d5d.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/nishiki-river/c4f3de6389f874fa96ed18b51d09823e.jpg"/>
+<img
+    src="../assets/images/nishiki-river/c4f3de6389f874fa96ed18b51d09823e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/nishiki-river/542bff60a66e1c468d9cda56ea231fa1.jpg"/>
+<img
+    src="../assets/images/nishiki-river/542bff60a66e1c468d9cda56ea231fa1.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/nishiki-river/6545f028b258198e71da2d76fb6be536.jpg"/>
+<img
+    src="../assets/images/nishiki-river/6545f028b258198e71da2d76fb6be536.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/nishiki-river/6cf0f54364693f8e2d38370119b078b3.jpg"/>
+<img
+    src="../assets/images/nishiki-river/6cf0f54364693f8e2d38370119b078b3.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/nishiki-river/42438e398b17a03fca77a83a49cdf279.jpg"/>
+<img
+    src="../assets/images/nishiki-river/42438e398b17a03fca77a83a49cdf279.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/nishiki-river/dd37bc356eba26378c7e6be29abab50e.jpg"/>
+<img
+    src="../assets/images/nishiki-river/dd37bc356eba26378c7e6be29abab50e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/nishiki-river/77bb679cc8ebbff67c007f3f2e1d4339.jpg"/>
+<img
+    src="../assets/images/nishiki-river/77bb679cc8ebbff67c007f3f2e1d4339.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Photo taken from the friednly couple.
-</p>
+
 <figure>
-<img src="../assets/images/nishiki-river/8bc9d27531b0be53e950a3eb5b8afcbd.jpg"/>
+<img
+    src="../assets/images/nishiki-river/8bc9d27531b0be53e950a3eb5b8afcbd.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/nishiki-river/9157dcfee4ca5fb46fabced4fbf55e40.jpg"/>
+<img
+    src="../assets/images/nishiki-river/9157dcfee4ca5fb46fabced4fbf55e40.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    A statue of Kojiro Sasaki who died in a duel. From here I hiked up to the castle, visible to the right of the middle of the sword.
-</p>
+
 <figure>
-<img src="../assets/images/nishiki-river/31bd4a8c8fa4cd005fad3bcf0f50a757.jpg"/>
+<img
+    src="../assets/images/nishiki-river/31bd4a8c8fa4cd005fad3bcf0f50a757.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/nishiki-river/a67b3b6dfe0afee35f0167125f4df21b.jpg"/>
+<img
+    src="../assets/images/nishiki-river/a67b3b6dfe0afee35f0167125f4df21b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/nishiki-river/1a9a1f59c6ffaea3d2ee10e1ce9f9101.jpg"/>
+<img
+    src="../assets/images/nishiki-river/1a9a1f59c6ffaea3d2ee10e1ce9f9101.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

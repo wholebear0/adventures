@@ -1,14 +1,324 @@
-
 <!DOCTYPE html>
+
 <html>
 
 <head>
 
-<meta charset="UTF-8">
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Mt Momoiwa and Rebun Rindou Course</title>
 
-<link rel="stylesheet" href="../assets/css/trip.css">
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -16,130 +326,412 @@
 <body>
 
 
-<h1>
-Mt Momoiwa and Rebun Rindou Course
-</h1>
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Mt Momoiwa and Rebun Rindou Course
+        </h1>
+
+        <p class="trip-date">
+            07/04/2026
+        </p>
+
+    </div>
 
 
 
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419512/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/X.jpg"
+    alt="Mt Momoiwa and Rebun Rindou Course"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                8.41 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                1,238 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                11 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Rishiri Rebun Sarobetsu National Park, Japan
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=45.29866,141.046"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=45.29866,141.046&amp;z=11&amp;output=embed"
+            title="Map of Mt Momoiwa and Rebun Rindou Course"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
 <p class="caption">
-07/04/2026 - Mt Momoiwa and Rebun Rindou Course
+Next to Rishiri island and part of the broader national park is a second isla,d Rebun island. On paper the island looks smaller and has fewer peaks but after visiting I found it to be the more interesting island of the two. It has more trails with ridgeline, sea views, and tons of wildflowers. The plan was to hike up to the trailhead then south to a well known overlook, then a lighthouse, then go back to the trailhead and continue north in the other direction. The hike from there would go along a ridgeline with views of the ocean on both sides, then eventually I would end up at a campsite for the night. After the ferry from Rishiri to Rebun, there was a brief walk through the very small town followed by a bit of road walking up the hill to the Mt Momoiwa trailhead. Climbing up there were a lot of wildflowers and tourists who took a bus already there. It seemed like many people would get off here then walk the trail south to another bus stop then go back to town.
 </p>
 
 <p class="caption">
-Next to Rishiri island and part of the broader national park is a second island Rebun island. On paper the island looks smaller and has fewer peaks but after visiting I found it to be the more interesting island of the two. It has more trails with ridgeline, sea views, and tons of wildflowers. The plan was to hike up to the trailhead then south to a well known overlook, then a lighthouse, then go back to the trailhead and continue north in the other direction. The hike from there would go along a ridgeline with views of the ocean on both sides, then eventually I would end up at a campsite for the night. After the ferry from Rishiri to Rebun, there was a brief walk through the very small town followed by a bit of road walking up the hill to the Mt Momoiwa trailhead. Climbing up there were a lot of wildflowers and tourists who took a bus already there. It seemed like many people would get off here then walk the trail south to another bus stop then go back to town. 
-
 I hiked to the top although there isn&#x27;t an actual summit but a series of high points along a ridgeline overlooking the ocean to the west. The trail was very narrow and had wildflowers and tall grass on both sides which made it difficult when other people, which were many, passed, but the views were very nice. As I passed one older man he started talking and trying to get to know me. He said he was retired and from Tokyo and flew to Sapporo then the airport on Rishiri island. He was swaying around while walking almost like he was very drunk and did not have any water. I was a bit worried for him. He said he used to manage hotels with some locations in the US and had been to a few states like Alaska, Guam, Florida, and others. Also went on a Caribbean cruise apparently. As we talked there was another lady who stopped and said she had been to Arizona and Monument Valley and experienced a strange thing. While driving in Arizona she saw some sort of a bright light explosion in front of her and she didn&#x27;t know what it was at the time and was asking if I knew what it was. The language barrier didn&#x27;t help in understanding it any better but i had no clue. I turned around and headed north past the trailhead for a few miles, walking the Rebun Rindou course as they call it, and there were just a few other people. The first half had some nice open views then the second half was forest walking up until the campsite where I stayed.
 </p>
 
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419442/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04979.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419442/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04979.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419444/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04980.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419444/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04980.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419449/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04981.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419449/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04981.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419452/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04983.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419452/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04983.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419455/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04984.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419455/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04984.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419457/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04986.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419457/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04986.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419460/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04987.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419460/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04987.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419463/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04991.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419463/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04991.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419465/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04994.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419465/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04994.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419467/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04998.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419467/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC04998.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419470/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05004.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419470/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05004.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419473/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05005.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419473/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05005.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419476/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05008.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419476/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05008.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419478/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05009.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419478/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05009.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419480/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05010.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419480/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05010.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419482/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05012.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419482/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05012.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419485/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05013.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419485/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05013.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419487/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05015.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419487/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05015.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419490/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05016.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419490/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05016.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419492/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05022.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419492/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05022.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419494/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05023.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419494/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05023.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419496/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05025.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419496/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05025.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419498/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05027.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419498/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05027.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419501/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05028.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419501/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05028.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419505/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05030.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419505/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05030.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419507/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05036.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419507/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05036.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419510/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05038.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419510/Mt%20Momoiwa%20and%20Rebun%20Rindou%20Course/compressed-DSC05038.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
 
 
 </body>

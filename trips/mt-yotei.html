@@ -1,76 +1,671 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Mt Yotei</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Mt Yotei</h1>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Mt Yotei
+        </h1>
+
+        <p class="trip-date">
+            06/25/2026
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/ROcJxWh.jpeg"
+    alt="Mt Yotei"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                8.23 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                5,124 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                1,140 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Shikotsu-Tōya National Park, Japan
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=42.84609,140.75895"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=42.84609,140.75895&amp;z=11&amp;output=embed"
+            title="Map of Mt Yotei"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
 <p class="caption">
-    6/25/26 - Mt Yotei
+For days I had watched the mountain/cloud forecast for Mt Yotei like a hawk, and spotting a clear sunny day I quickly took a small one car train over to the town of Kutchan, followed by a local bus. I got off at the side of the road and walked a mile or so up to a small camping area at the trailhead to spend the night. Around 7pm a group of 15 people came to the amp area  and set up tents, just a few feet away from where I was. They all had matching uniforms and equipment and said they were search and rescue. They talked until 8pm or after but I can&#x27;t really remember as I put in earplugs and fell asleep pretty fast. We all awoke at about 4 am, a full 30 minutes or so after it got light out. Just before I started a tour bus pulled up and unloaded middle age and older hikers who got off the bus, beelined to the bathroom at the trailhead, then immediately started hiking, wasting no time. I headed up shortly afterwards and the hike up was kind of rough. It was pretty much a straight line up along a narrow trail with many spots of steep slopes of dirt which was not fun to go up. The hike was through forest and dense vegetation so there were no views except a mostly obstructed peek out every now and then. At last, at the summit rim the views were pretty cool. There was a small pond from snowmelt in the middle of the caldera quite a ways below. I walked around the whole rim and there were nice views and clouds passing over at the same height. After enjoying the time at the top I headed down, finding myself counting down the miles as I descended.
 </p>
-<p class="caption">
-    For days I had watched the mountain/cloud forecast for Mt Yotei like a hawk, and spotting a clear sunny day I quickly took a small one car train over to the town of Kutchan, followed by a local bus. I got off at the side of the road and walked a mile or so up to a small camping area at the trailhead to spend the night. Around 7pm a group of 15 people came to the amp area  and set up tents, just a few feet away from where I was. They all had matching uniforms and equipment and said they were search and rescue. They talked until 8pm or after but I can't really remember as I put in earplugs and fell asleep pretty fast. We all awoke at about 4 am, a full 30 minutes or so after it got light out. Just before I started a tour bus pulled up and unloaded middle age and older hikers who got off the bus, beelined to the bathroom at the trailhead, then immediately started hiking, wasting no time. I headed up shortly afterwards and the hike up was kind of rough. It was pretty much a straight line up along a narrow trail with many spots of steep slopes of dirt which was not fun to go up. The hike was through forest and dense vegetation so there were no views except a mostly obstructed peek out every now and then. At last, at the summit rim the views were pretty cool. There was a small pond from snowmelt in the middle of the caldera quite a ways below. I walked around the whole rim and there were nice views and clouds passing over at the same height. After enjoying the time at the top I headed down, finding myself counting down the miles as I descended.
-</p>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/mt-yotei/46f1ab802407c32eb39f4386e48005d4.jpg"/>
+<img
+    src="../assets/images/mt-yotei/46f1ab802407c32eb39f4386e48005d4.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-yotei/8f2ee0625fa462bdb337d9d658f67d1c.jpg"/>
+<img
+    src="../assets/images/mt-yotei/8f2ee0625fa462bdb337d9d658f67d1c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-yotei/edf28a0a06b60bdf6db5e0d5e7c91d50.jpg"/>
+<img
+    src="../assets/images/mt-yotei/edf28a0a06b60bdf6db5e0d5e7c91d50.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-yotei/b6593d468bb01d95b04da329e8018e5f.jpg"/>
+<img
+    src="../assets/images/mt-yotei/b6593d468bb01d95b04da329e8018e5f.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-yotei/68547bfe4580f68cf9b304ba18a1298d.jpg"/>
+<img
+    src="../assets/images/mt-yotei/68547bfe4580f68cf9b304ba18a1298d.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-yotei/4a2347d579e924aadb3737080fe957f9.jpg"/>
+<img
+    src="../assets/images/mt-yotei/4a2347d579e924aadb3737080fe957f9.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-yotei/bd836e535427f26c2e0e0af9005dc121.jpg"/>
+<img
+    src="../assets/images/mt-yotei/bd836e535427f26c2e0e0af9005dc121.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-yotei/2bd178e8cd799665663e8c807dd41a55.jpg"/>
+<img
+    src="../assets/images/mt-yotei/2bd178e8cd799665663e8c807dd41a55.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-yotei/f29a3215a43f53f8e322cadc2b02be39.jpg"/>
+<img
+    src="../assets/images/mt-yotei/f29a3215a43f53f8e322cadc2b02be39.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-yotei/4e47d8a1af41399f5985a99e855f2bae.jpg"/>
+<img
+    src="../assets/images/mt-yotei/4e47d8a1af41399f5985a99e855f2bae.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-yotei/720a47fc037e8f2768e2af7ca6b74dc2.jpg"/>
+<img
+    src="../assets/images/mt-yotei/720a47fc037e8f2768e2af7ca6b74dc2.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-yotei/872330a9b90970623d762ed1ce068426.jpg"/>
+<img
+    src="../assets/images/mt-yotei/872330a9b90970623d762ed1ce068426.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-yotei/1c1726229f3a9aa8176daad747297121.jpg"/>
+<img
+    src="../assets/images/mt-yotei/1c1726229f3a9aa8176daad747297121.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-yotei/15b748ef16d44524a29f2c6c5b270182.jpg"/>
+<img
+    src="../assets/images/mt-yotei/15b748ef16d44524a29f2c6c5b270182.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-yotei/1f8ebd2e5098175631d1209a93ceed5b.jpg"/>
+<img
+    src="../assets/images/mt-yotei/1f8ebd2e5098175631d1209a93ceed5b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-yotei/f7eab2af34ca667ee96a9df0bb984252.jpg"/>
+<img
+    src="../assets/images/mt-yotei/f7eab2af34ca667ee96a9df0bb984252.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-yotei/40bb84110f5e010041ae514a1dd4f58f.jpg"/>
+<img
+    src="../assets/images/mt-yotei/40bb84110f5e010041ae514a1dd4f58f.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-yotei/0a623443cd2f4307b732481b13982dd1.jpg"/>
+<img
+    src="../assets/images/mt-yotei/0a623443cd2f4307b732481b13982dd1.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-yotei/bac191b6fb70828ddfe8bb836cfb9d6f.jpg"/>
+<img
+    src="../assets/images/mt-yotei/bac191b6fb70828ddfe8bb836cfb9d6f.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

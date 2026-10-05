@@ -1,73 +1,603 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Safford Peak</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Safford Peak</h1>
-<p class="caption">
-    4/19/25 - Safford Peak
-</p>
-<p class="caption">
-    Today was an unusually mild day for April, in the 60s and breezy. For some time I had been wanting to hike up these small two peaks on the edge of town near Marana. Looking at maps I planned a route to hike up to Safford peak, then hike along the ridgeline for a half mile to a trail leading up to Panther Peak. But when I got up to the saddle just below Safford Peak I could not find a way across. The terrain was steep with loose scree rock, not to mention it just didn’t seem worth going to the second peak as the view would be nearly the same. Nevertheless, the hike up Safford Peak was a start to a day.
-</p>
-<p class="caption">
-    View up at Safford Peak on the top right, from the trailhead
-</p>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Safford Peak
+        </h1>
+
+        <p class="trip-date">
+            04/19/2025
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/g05WZQP.jpeg"
+    alt="Safford Peak"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                3.5 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                1,885 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                2,227 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Saguaro National Park, AZ
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=32.35221,-111.14019"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=32.35221,-111.14019&amp;z=11&amp;output=embed"
+            title="Map of Safford Peak"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/safford-peak/eed8b7e2381b5e04b44651a8b4a02309.jpg"/>
+<img
+    src="../assets/images/safford-peak/eed8b7e2381b5e04b44651a8b4a02309.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/safford-peak/7bf3cc4209f4d97a3b475635254d5903.jpg"/>
+<img
+    src="../assets/images/safford-peak/7bf3cc4209f4d97a3b475635254d5903.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/safford-peak/579e827e941c7a65f362f5d416706e9e.jpg"/>
+<img
+    src="../assets/images/safford-peak/579e827e941c7a65f362f5d416706e9e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Desert ocotillo in bloom
-</p>
+
 <figure>
-<img src="../assets/images/safford-peak/7a41dc9e198c6829ca8f43445a75586e.jpg"/>
+<img
+    src="../assets/images/safford-peak/7a41dc9e198c6829ca8f43445a75586e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/safford-peak/ef569221da94c4751da3a18ee420bbdd.jpg"/>
+<img
+    src="../assets/images/safford-peak/ef569221da94c4751da3a18ee420bbdd.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking southwest at Saguaro National Park
-</p>
+
 <figure>
-<img src="../assets/images/safford-peak/53a8dfedd34444d611990b0853855ca5.jpg"/>
+<img
+    src="../assets/images/safford-peak/53a8dfedd34444d611990b0853855ca5.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    The short but steep ascent towards the top
-</p>
+
 <figure>
-<img src="../assets/images/safford-peak/d291e1814ca507fcd3c39fdfe1fb6e9a.jpg"/>
+<img
+    src="../assets/images/safford-peak/d291e1814ca507fcd3c39fdfe1fb6e9a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    View from Safford Peak towards Tucson
-</p>
+
 <figure>
-<img src="../assets/images/safford-peak/f0a35f68c7eb674b509fea6e1a9a9fc8.jpg"/>
+<img
+    src="../assets/images/safford-peak/f0a35f68c7eb674b509fea6e1a9a9fc8.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Steep drop to the side
-</p>
+
 <figure>
-<img src="../assets/images/safford-peak/9f1bef18cfa0907ccaca308ce348d014.jpg"/>
+<img
+    src="../assets/images/safford-peak/9f1bef18cfa0907ccaca308ce348d014.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/safford-peak/1cdebda0ef6adde12601d876d227bea8.jpg"/>
+<img
+    src="../assets/images/safford-peak/1cdebda0ef6adde12601d876d227bea8.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    View toward Panther Peak all the way on the left. I tried to find a way along the ridgeline either over the minor peaks or around them but decided not to do it.
-</p>
+
 <figure>
-<img src="../assets/images/safford-peak/4c97d5abe00bce0be29912f666a405db.jpg"/>
+<img
+    src="../assets/images/safford-peak/4c97d5abe00bce0be29912f666a405db.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

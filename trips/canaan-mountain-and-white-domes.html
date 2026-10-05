@@ -1,70 +1,603 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Canaan Mountain and White Domes</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Canaan Mountain and White Domes</h1>
-<p class="caption">
-    12 /29/2 4 - Canaan Mountain wilderness and White Domes
-</p>
-<p class="caption">
-    Driving through the town of Hildale or Colorado City, Im not really sure which one as they are right next to eachother, there is the Canaan Mountain Wilderness. I had long been interested in exploring the area but never go around to it. The temperature today was above normal, in the 50s in late December in the high desert. Not bad. The trail started up a hill then climbed through a small canyon, then got difficult to find as it switchbacked the side of a mountain. Almost to the top the trail seemed to end at a 6 foot slab of vertical stone. I kept looking for where to go then finally realized the wall ahd to be scaled. There werent many footholds or things to grab onto but i finally located a nice piece of rock to hold on and pull myself over. From there the trail just about disappeared and i wandered through ponderosa while admiring the view out across the wilderness. I found my way down to a dry sandy wash with ice in spots, the ascended towards white domes. I could see white domes from a ways a way but when i got there i was totally blown away. It was similar to yant flat but white and on top of a mountain saddle overlooking zion in the far distance. The waves of rock were incredible and had a gentle drift to it. I took a bunch of photos then looped around and took the squirrel canyon trail back to the car. I hightailed it home and got back just in time to watch the 'Skins beat the falcons in an overtime, second to last game of the season, must-win game.
-</p>
-<p class="caption">
-    Route in the narrow canyon through a trickle of water
-</p>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Canaan Mountain and White Domes
+        </h1>
+
+        <p class="trip-date">
+            12/29/2024
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/xkcJ9ov.jpeg"
+    alt="Canaan Mountain and White Domes"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                9.7 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                2,500 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                6,892 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Canaan Wilderness, AZ
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=37.06217,-112.98147"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=37.06217,-112.98147&amp;z=11&amp;output=embed"
+            title="Map of Canaan Mountain and White Domes"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/canaan-mountain-and-white-domes/fcbdab1c45d88927b2b550a5cc0c8044.jpg"/>
+<img
+    src="../assets/images/canaan-mountain-and-white-domes/fcbdab1c45d88927b2b550a5cc0c8044.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/canaan-mountain-and-white-domes/1d39769b2a1f592ee5646d10e9078b0a.jpg"/>
+<img
+    src="../assets/images/canaan-mountain-and-white-domes/1d39769b2a1f592ee5646d10e9078b0a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    After exiting the canyon the views really opened up
-</p>
+
 <figure>
-<img src="../assets/images/canaan-mountain-and-white-domes/e8651404308043b4110e7a8be40f2680.jpg"/>
+<img
+    src="../assets/images/canaan-mountain-and-white-domes/e8651404308043b4110e7a8be40f2680.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/canaan-mountain-and-white-domes/cb1b260262844e6b78a4bd40cc8abd21.jpg"/>
+<img
+    src="../assets/images/canaan-mountain-and-white-domes/cb1b260262844e6b78a4bd40cc8abd21.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    The hike up towards white domes, visible in the top center
-</p>
+
 <figure>
-<img src="../assets/images/canaan-mountain-and-white-domes/7c36a033e5cf8868500a63a384c47748.jpg"/>
+<img
+    src="../assets/images/canaan-mountain-and-white-domes/7c36a033e5cf8868500a63a384c47748.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/canaan-mountain-and-white-domes/d79602f4bf7dd8f6a48f355fcc94f74c.jpg"/>
+<img
+    src="../assets/images/canaan-mountain-and-white-domes/d79602f4bf7dd8f6a48f355fcc94f74c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/canaan-mountain-and-white-domes/20d33a84f109867abb589c07e47d91d1.jpg"/>
+<img
+    src="../assets/images/canaan-mountain-and-white-domes/20d33a84f109867abb589c07e47d91d1.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Insane waves and lines
-</p>
+
 <figure>
-<img src="../assets/images/canaan-mountain-and-white-domes/90bc8fc549da5e8614946746accb7530.jpg"/>
+<img
+    src="../assets/images/canaan-mountain-and-white-domes/90bc8fc549da5e8614946746accb7530.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/canaan-mountain-and-white-domes/1f511de05cfa188afc4aa4f475c43d39.jpg"/>
+<img
+    src="../assets/images/canaan-mountain-and-white-domes/1f511de05cfa188afc4aa4f475c43d39.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking north to Zion in the far distance
-</p>
+
 <figure>
-<img src="../assets/images/canaan-mountain-and-white-domes/de42da31afa835dd1a3ab08101d468d7.jpg"/>
+<img
+    src="../assets/images/canaan-mountain-and-white-domes/de42da31afa835dd1a3ab08101d468d7.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    The descent down through squirrel canyon
-</p>
+
 <figure>
-<img src="../assets/images/canaan-mountain-and-white-domes/fb8afea83453c683800039cb1395eaa0.jpg"/>
+<img
+    src="../assets/images/canaan-mountain-and-white-domes/fb8afea83453c683800039cb1395eaa0.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

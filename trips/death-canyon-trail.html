@@ -1,82 +1,619 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Death Canyon Trail</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Death Canyon Trail</h1>
-<p class="caption">
-    8/22/2024 - Death Canyon Trail
-</p>
-<p class="caption">
-    On my first day in Grand Teton National Park i did an overnight backpack to Death Canyon. Looking back it isnt the most scenic hike in the park, but it was still good. The hike started out near a lake, and made a fast ascent alongside a stream with waterfalls and rushing water. After topping out the hike was flat from there through the canyon. The mountains on either side seemed to go straight up from the ground and I had to bend my head back completely to look at them. There were very few people but there were a couple campers nearby me that night, but we were far enough away from each other that I didnt hear them. Along the way there was a big moose. After setting up camp I hiked out of the canyon to the Alaska Basin crest area where the views opened up a bit more. Afterwards, I hiked the .75 miles or so back to camp, collected water from the stream near the campsite and enjoyed the cool crisp tasting water. The hike back the next morning was rather uneventful aside from another moose sighting, but it was probably the same one as the day before.
-</p>
-<p class="caption">
-    Haze in the sky from wildfires to the east
-</p>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Death Canyon Trail
+        </h1>
+
+        <p class="trip-date">
+            08/22/2024
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/sRaOHnr.jpeg"
+    alt="Death Canyon Trail"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Backpack
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                19.2 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                4,614 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                9,569 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Grand Teton NP, WY
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=43.64582,-110.90969"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=43.64582,-110.90969&amp;z=11&amp;output=embed"
+            title="Map of Death Canyon Trail"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/death-canyon-trail/c6afd61c4ffe86c536c4f28892bf6373.jpg"/>
+<img
+    src="../assets/images/death-canyon-trail/c6afd61c4ffe86c536c4f28892bf6373.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/death-canyon-trail/a416ea8af29b2948cef700d6942a94c5.jpg"/>
+<img
+    src="../assets/images/death-canyon-trail/a416ea8af29b2948cef700d6942a94c5.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Climbing up the canyon alongside a creek
-</p>
+
 <figure>
-<img src="../assets/images/death-canyon-trail/9b8055ffde8d5d6212b3e4c0733374ac.jpg"/>
+<img
+    src="../assets/images/death-canyon-trail/9b8055ffde8d5d6212b3e4c0733374ac.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Death Canyon
-</p>
+
 <figure>
-<img src="../assets/images/death-canyon-trail/56a1d743d95166ba0c4ab4324d2f0c0a.jpg"/>
+<img
+    src="../assets/images/death-canyon-trail/56a1d743d95166ba0c4ab4324d2f0c0a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/death-canyon-trail/6941e853227bd60ba17516232bece60e.jpg"/>
+<img
+    src="../assets/images/death-canyon-trail/6941e853227bd60ba17516232bece60e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    A wild moose
-</p>
+
 <figure>
-<img src="../assets/images/death-canyon-trail/4e48fa5ead58d4fa068d9364cddc95a1.jpg"/>
+<img
+    src="../assets/images/death-canyon-trail/4e48fa5ead58d4fa068d9364cddc95a1.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    The Death Canyon shelf trail above. It looked cool and I could have taken a longer loop back to the car but decided to play it safe and avoid potential knee pain.
-</p>
+
 <figure>
-<img src="../assets/images/death-canyon-trail/1cca696190f9cca84ba024627b4c317e.jpg"/>
+<img
+    src="../assets/images/death-canyon-trail/1cca696190f9cca84ba024627b4c317e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/death-canyon-trail/fabf12ac5561e7895dc71d09e8d7861c.jpg"/>
+<img
+    src="../assets/images/death-canyon-trail/fabf12ac5561e7895dc71d09e8d7861c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Creek next to camp. The water tasted great. There were so many wildflowers everywhere, very colorful.
-</p>
+
 <figure>
-<img src="../assets/images/death-canyon-trail/343788c1d55c31f7367cd6a139dd5d82.jpg"/>
+<img
+    src="../assets/images/death-canyon-trail/343788c1d55c31f7367cd6a139dd5d82.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/death-canyon-trail/94eb2ba5d41617228a79be9ea80f2ce1.jpg"/>
+<img
+    src="../assets/images/death-canyon-trail/94eb2ba5d41617228a79be9ea80f2ce1.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Maybe the same moose?
-</p>
+
 <figure>
-<img src="../assets/images/death-canyon-trail/27fbb348289dcd24512b7359727ecd86.jpg"/>
+<img
+    src="../assets/images/death-canyon-trail/27fbb348289dcd24512b7359727ecd86.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    The way back the next morning. The mountains here seemed to go straight up and tower over you.
-</p>
+
 <figure>
-<img src="../assets/images/death-canyon-trail/656a6b7a57dc636e25c2b2c638577882.jpg"/>
+<img
+    src="../assets/images/death-canyon-trail/656a6b7a57dc636e25c2b2c638577882.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/death-canyon-trail/51084929e4964cebbf0a1c132222fa89.jpg"/>
+<img
+    src="../assets/images/death-canyon-trail/51084929e4964cebbf0a1c132222fa89.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

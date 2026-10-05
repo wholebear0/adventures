@@ -1,88 +1,667 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Atascosa Peak</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Atascosa Peak</h1>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Atascosa Peak
+        </h1>
+
+        <p class="trip-date">
+            05/02/2026
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/p2nIiVW.jpeg"
+    alt="Atascosa Peak"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                6.23 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                1,986 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                4,695 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Pajarito Mountains, AZ
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=31.40495,-111.14714"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=31.40495,-111.14714&amp;z=11&amp;output=embed"
+            title="Map of Atascosa Peak"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
 <p class="caption">
-    5/2/2026 - Atascosa Peak
+Atascosa Peak is a somewhat obscure and remote peak, west of Nogales and about 5 miles north of the Mexico border. Turning off I-19, the road is paved to a small lake, Pena Blanca, but is followed by about 5 miles of very washboarded roads to the trailhead. The elevation of the surrounding area is in the high 4000s so there are some trees and greenery. There was no one else at the trailhead when I was there and I saw no one the entire time which made for a very peaceful hike.
 </p>
+
 <p class="caption">
-    Atascosa Peak is a somewhat obscure and remote peak, west of Nogales and about 5 miles north of the Mexico border. Turning off I-19, the road is paved to a small lake, Pena Blanca, but is followed by about 5 miles of very washboarded roads to the trailhead. The elevation of the surrounding area is in the high 4000s so there are some trees and greenery. There was no one else at the trailhead when I was there and I saw no one the entire time which made for a very peaceful hike. This was a really nice hike with views nearly the entire time, starting from the trailhead. The hike makes a quick ascent to the Atascosa Lookout mountain which offers a view of the actual Atascosa Mountain .75 miles north. The way from the lookout to Atascosa Mountain is an unofficial social trail but it is in very good condition with minimal to no bush whacking, and follows along a ridge with nice views to the east and west. Below Atascosa Mountain is a short scramble which should take no more than 5 minutes. The views on top were pretty good though not any better than the atop the lookout.  The last entry in the summit register was in February, about 3 months ago. The hike started out with cloudless skies but the moderate wind had brought in numerous clouds very quickly. The temperature was really nice and after a short rest I turned around and headed back to the car, wishing the hike was longer than it was. To the southwest is Sycamore Canyon which looked really nice from where I was so I hope to return to the area another time. Perhaps in November to see fall colors along the creek.
+This was a really nice hike with views nearly the entire time, starting from the trailhead. The hike makes a quick ascent to the Atascosa Lookout mountain which offers a view of the actual Atascosa Mountain .75 miles north. The way from the lookout to Atascosa Mountain is an unofficial social trail but it is in very good condition with minimal to no bush whacking, and follows along a ridge with nice views to the east and west. Below Atascosa Mountain is a short scramble which should take no more than 5 minutes. The views on top were pretty good though not any better than the atop the lookout.  The last entry in the summit register was in February, about 3 months ago. The hike started out with cloudless skies but the moderate wind had brought in numerous clouds very quickly. The temperature was really nice and after a short rest I turned around and headed back to the car, wishing the hike was longer than it was. To the southwest is Sycamore Canyon which looked really nice from where I was so I hope to return to the area another time. Perhaps in November to see fall colors along the creek.
 </p>
-<p class="caption">
-    At the trailhead, looking south
-</p>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/atascosa-peak/e18e402ae22da0018bcd899e82abd541.jpg"/>
+<img
+    src="../assets/images/atascosa-peak/e18e402ae22da0018bcd899e82abd541.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/atascosa-peak/7837f0f727c4002389613bc93d9aa7f1.jpg"/>
+<img
+    src="../assets/images/atascosa-peak/7837f0f727c4002389613bc93d9aa7f1.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/atascosa-peak/1dd06f00319627ddcbd2e55b13502fd4.jpg"/>
+<img
+    src="../assets/images/atascosa-peak/1dd06f00319627ddcbd2e55b13502fd4.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/atascosa-peak/67a2174cdb94d429d53b4a914e0aac92.jpg"/>
+<img
+    src="../assets/images/atascosa-peak/67a2174cdb94d429d53b4a914e0aac92.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/atascosa-peak/d415c0e66af0360662aa38777ab00f85.jpg"/>
+<img
+    src="../assets/images/atascosa-peak/d415c0e66af0360662aa38777ab00f85.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/atascosa-peak/70ea3fbb45b09e3d2b3e1464022f2d81.jpg"/>
+<img
+    src="../assets/images/atascosa-peak/70ea3fbb45b09e3d2b3e1464022f2d81.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Atascosa Mountain, from the lookout peak. The way there goes along the ridgeline and is only .75 miles
-</p>
+
 <figure>
-<img src="../assets/images/atascosa-peak/5cba0f55cb26acc89627775a6c42f5d9.jpg"/>
+<img
+    src="../assets/images/atascosa-peak/5cba0f55cb26acc89627775a6c42f5d9.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/atascosa-peak/e232fe97aa75ec0b4ffbc432c97b250a.jpg"/>
+<img
+    src="../assets/images/atascosa-peak/e232fe97aa75ec0b4ffbc432c97b250a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking back along the ridge to the lookout
-</p>
+
 <figure>
-<img src="../assets/images/atascosa-peak/15f13147ce650b76f429a25418830771.jpg"/>
+<img
+    src="../assets/images/atascosa-peak/15f13147ce650b76f429a25418830771.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/atascosa-peak/ba4000e754bc8d09e71c84f279223184.jpg"/>
+<img
+    src="../assets/images/atascosa-peak/ba4000e754bc8d09e71c84f279223184.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Views from Atascosa Mountain
-</p>
+
 <figure>
-<img src="../assets/images/atascosa-peak/4948b7bf3415797ce84670f1de7ce269.jpg"/>
+<img
+    src="../assets/images/atascosa-peak/4948b7bf3415797ce84670f1de7ce269.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/atascosa-peak/1afc4abcbb89ebbeb63e4d4dd8dd2a47.jpg"/>
+<img
+    src="../assets/images/atascosa-peak/1afc4abcbb89ebbeb63e4d4dd8dd2a47.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/atascosa-peak/9eacb87e15f44192302c9e36b96c4760.jpg"/>
+<img
+    src="../assets/images/atascosa-peak/9eacb87e15f44192302c9e36b96c4760.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/atascosa-peak/76e974b4a2b512e71e5ce93b3f9b40ad.jpg"/>
+<img
+    src="../assets/images/atascosa-peak/76e974b4a2b512e71e5ce93b3f9b40ad.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Hiking back down
-</p>
+
 <figure>
-<img src="../assets/images/atascosa-peak/e45847f8c79b3d8bb9fbdf390ee35f15.jpg"/>
+<img
+    src="../assets/images/atascosa-peak/e45847f8c79b3d8bb9fbdf390ee35f15.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/atascosa-peak/f49dcf32e3c05eec782a06b9705982d1.jpg"/>
+<img
+    src="../assets/images/atascosa-peak/f49dcf32e3c05eec782a06b9705982d1.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/atascosa-peak/54919bcc7eb82f80fdf68dd70113a43a.jpg"/>
+<img
+    src="../assets/images/atascosa-peak/54919bcc7eb82f80fdf68dd70113a43a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/atascosa-peak/b320a53e0058322eb7d2f908ed992c2d.jpg"/>
+<img
+    src="../assets/images/atascosa-peak/b320a53e0058322eb7d2f908ed992c2d.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

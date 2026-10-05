@@ -1,106 +1,699 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Colorado River Willow Beach to Emerald Cove</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Colorado River Willow Beach to Emerald Cove</h1>
-<p class="caption">
-    4/5/25 - Colorado River: Willow beach and Chloride, AZ
-</p>
-<p class="caption">
-    I headed to Tucson from St George and made a couple stops along the way, a kayaking trip on the Colorado at Willow Beach and to go skiing at Snowbowl in Flagstaff. The night before kayaking I planned to disperse camp in Arizona just east of the Hoover Dam, but was disappointed when I got to the road and saw every flat spot full. I kept driving along the rough gravel road and noticed an empty flat area. The only obstacle was an embankment of about 1.5 ft between it and the road. I put the car in park then a fellow camper in a jeep passed behind me. Once it passed, I put the gear in drive and tried to drive over the embankment. It should have been no surprise but after the front two wheels got on top of the dirt, my car didn’t budge forward. I put it in reverse and the wheels span and I could smell burned rubber. I was stuck. I got out of the car and saw to my shock the two front wheels sank in the dirt and the whole front half of the car was sitting plumb on top of the embankment. I looked down the road and the jeep that had passed was reversing up the hill towards me. When he got to where I was he asked if I needed help getting out of the mess. In one motion he jumped out of his car, grabbed a rope from the trunk of his car, and attached it to both vehicles. He then put his Jeep in reverse while I did the same with my car. In a few seconds I was out and very grateful to this guy, who was probably a few years younger than me. He could have just kept driving but instead he put it in reverse and came back to help. Good guy. I ended up stealth camping near the marina at Willow Beach and got bad sleep. The next day, I started kayaking at 7:30am the next day to nice weather. Even though there wasn’t much current, kayaking upriver combined with 5-15mph wind proved to be exhausting. I only got about 4.5 miles up. Along the way there were coves, some flat areas one could throw down a tent at, and really nice transparent blue water. There were a lot of ducks and birds and very few boats which was nice. After kayaking I drove to a small town along the way called Chloride, AZ. It used to be a mining town in the 1800s and is like a much smaller Bisbee, with older residents who turn their house and property into forms of “art”. After that I car camped near Ash Fork, AZ, a little over an hour from snowbowl. Not a single car passed by and I got some good sleep.
-</p>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Colorado River Willow Beach to Emerald Cove
+        </h1>
+
+        <p class="trip-date">
+            04/05/2025
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/w34G3Rz.jpeg"
+    alt="Colorado River Willow Beach to Emerald Cove"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Kayak
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                9 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                0 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                648 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Colorado River, AZ
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=35.86821,-114.66286"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=35.86821,-114.66286&amp;z=11&amp;output=embed"
+            title="Map of Colorado River Willow Beach to Emerald Cove"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/831c5ff890d337221932010628617980.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/831c5ff890d337221932010628617980.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/d98ad1cb7b4b6833abe00e5e101ac5d6.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/d98ad1cb7b4b6833abe00e5e101ac5d6.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/b3dfe645387d091cb10c239ae79df113.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/b3dfe645387d091cb10c239ae79df113.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/94199baddf9f09e87022f4a5274937f1.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/94199baddf9f09e87022f4a5274937f1.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/d6d1070734da77ca5c9b1978d3800b9b.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/d6d1070734da77ca5c9b1978d3800b9b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/2c6646f7928e83b5de2d4712392219b7.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/2c6646f7928e83b5de2d4712392219b7.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/983d215d240f53569319a202fe495490.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/983d215d240f53569319a202fe495490.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/8322d5058105a35151d84acff299c7fa.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/8322d5058105a35151d84acff299c7fa.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/f78270e8cd46c2d2e4dc30035e897b47.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/f78270e8cd46c2d2e4dc30035e897b47.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/cd909a064f258c6cdd81bbac5b675fa6.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/cd909a064f258c6cdd81bbac5b675fa6.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/1840359887225a30165776ea4e3de47d.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/1840359887225a30165776ea4e3de47d.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    A neat edifice of sorts in Chloride, AZ
-</p>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/5a7d187fb073211347e35f5a9b00d269.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/5a7d187fb073211347e35f5a9b00d269.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/0f49db9eff11a1ce184b1cba635e4c6d.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/0f49db9eff11a1ce184b1cba635e4c6d.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/40be9a904632aa2ef736bd0d55d1ae1b.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/40be9a904632aa2ef736bd0d55d1ae1b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    A derelict but still functioning post office
-</p>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/5eef90cd0f572d4d22b07107cea96245.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/5eef90cd0f572d4d22b07107cea96245.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/2b56d9671c77ecf34393da6f25cdd596.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/2b56d9671c77ecf34393da6f25cdd596.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/bf311317d8ff58821d6bdc40e2c7fe11.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/bf311317d8ff58821d6bdc40e2c7fe11.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/e187e75c8addb90e5f262179aa40626b.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/e187e75c8addb90e5f262179aa40626b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Art, etc
-</p>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/059ba1445b486e39788e40353c6002e7.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/059ba1445b486e39788e40353c6002e7.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    There was a DYI sign for murals at the end of town, which I followed. A few miles on very rough road later, there were murals painted on boulders and a few petroglyphs.
-</p>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/38606ce2fca470b9d1152292cc812442.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/38606ce2fca470b9d1152292cc812442.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking back at the town from the murals site
-</p>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/9f2b82db25d901e60b2595808e86ea89.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/9f2b82db25d901e60b2595808e86ea89.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/26b281ebd764f2d4be6c5daa5e76e128.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/26b281ebd764f2d4be6c5daa5e76e128.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Camp spot after a long day
-</p>
+
 <figure>
-<img src="../assets/images/colorado-river-willow-beach-to-emerald-cove/a558a7037cde22efdd072ae03c602adc.jpg"/>
+<img
+    src="../assets/images/colorado-river-willow-beach-to-emerald-cove/a558a7037cde22efdd072ae03c602adc.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

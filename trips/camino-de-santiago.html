@@ -1,14 +1,324 @@
-
 <!DOCTYPE html>
+
 <html>
 
 <head>
 
-<meta charset="UTF-8">
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Camino de Santiago</title>
 
-<link rel="stylesheet" href="../assets/css/trip.css">
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -16,291 +326,628 @@
 <body>
 
 
-<h1>
-Camino de Santiago
-</h1>
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Camino de Santiago
+        </h1>
+
+        <p class="trip-date">
+            11/30/2024
+        </p>
+
+    </div>
 
 
 
-<p class="caption">
-11/30/2024 - Camino de Santiago
-</p>
+    <!-- COVER PHOTO -->
 
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244083/Camino%20de%20Santiago/1-%202281-DSCF5302.jpg"
+    alt="Camino de Santiago"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Backpack
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                171.3 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                14,231 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                2,853 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Spain
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=42.45717,-6.05496"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=42.45717,-6.05496&amp;z=11&amp;output=embed"
+            title="Map of Camino de Santiago"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244035/Camino%20de%20Santiago/1-%20105-DSCF3128.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244035/Camino%20de%20Santiago/1-%20105-DSCF3128.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244037/Camino%20de%20Santiago/1-%20116-DSCF3139.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244037/Camino%20de%20Santiago/1-%20116-DSCF3139.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244039/Camino%20de%20Santiago/1-%201179-DSCF4200.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244039/Camino%20de%20Santiago/1-%201179-DSCF4200.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244040/Camino%20de%20Santiago/1-%201245-DSCF4266.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244040/Camino%20de%20Santiago/1-%201245-DSCF4266.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244042/Camino%20de%20Santiago/1-%201303-DSCF4324.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244042/Camino%20de%20Santiago/1-%201303-DSCF4324.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244045/Camino%20de%20Santiago/1-%201349-DSCF4370.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244045/Camino%20de%20Santiago/1-%201349-DSCF4370.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244047/Camino%20de%20Santiago/1-%201445-DSCF4466.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244047/Camino%20de%20Santiago/1-%201445-DSCF4466.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244048/Camino%20de%20Santiago/1-%201476-DSCF4497.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244048/Camino%20de%20Santiago/1-%201476-DSCF4497.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244050/Camino%20de%20Santiago/1-%201481-DSCF4502.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244050/Camino%20de%20Santiago/1-%201481-DSCF4502.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244053/Camino%20de%20Santiago/1-%20152-DSCF3175.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244053/Camino%20de%20Santiago/1-%20152-DSCF3175.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244055/Camino%20de%20Santiago/1-%201595-DSCF4616.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244055/Camino%20de%20Santiago/1-%201595-DSCF4616.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244058/Camino%20de%20Santiago/1-%20162-DSCF3185.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244058/Camino%20de%20Santiago/1-%20162-DSCF3185.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244059/Camino%20de%20Santiago/1-%201631-DSCF4652.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244059/Camino%20de%20Santiago/1-%201631-DSCF4652.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244061/Camino%20de%20Santiago/1-%201661-DSCF4682.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244061/Camino%20de%20Santiago/1-%201661-DSCF4682.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244062/Camino%20de%20Santiago/1-%201724-DSCF4745.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244062/Camino%20de%20Santiago/1-%201724-DSCF4745.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244066/Camino%20de%20Santiago/1-%201734-DSCF4755.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244066/Camino%20de%20Santiago/1-%201734-DSCF4755.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244068/Camino%20de%20Santiago/1-%201750-DSCF4771.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244068/Camino%20de%20Santiago/1-%201750-DSCF4771.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244070/Camino%20de%20Santiago/1-%201880-DSCF4901.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244070/Camino%20de%20Santiago/1-%201880-DSCF4901.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244072/Camino%20de%20Santiago/1-%201928-DSCF4949.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244072/Camino%20de%20Santiago/1-%201928-DSCF4949.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244075/Camino%20de%20Santiago/1-%202012-DSCF5033.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244075/Camino%20de%20Santiago/1-%202012-DSCF5033.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244077/Camino%20de%20Santiago/1-%202133-DSCF5154.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244077/Camino%20de%20Santiago/1-%202133-DSCF5154.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244079/Camino%20de%20Santiago/1-%202163-DSCF5184.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244079/Camino%20de%20Santiago/1-%202163-DSCF5184.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244081/Camino%20de%20Santiago/1-%202165-DSCF5186.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244081/Camino%20de%20Santiago/1-%202165-DSCF5186.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244083/Camino%20de%20Santiago/1-%202281-DSCF5302.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244083/Camino%20de%20Santiago/1-%202281-DSCF5302.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244086/Camino%20de%20Santiago/1-%202292-DSCF5313.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244086/Camino%20de%20Santiago/1-%202292-DSCF5313.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244089/Camino%20de%20Santiago/1-%202318-DSCF5339.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244089/Camino%20de%20Santiago/1-%202318-DSCF5339.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244093/Camino%20de%20Santiago/1-%202323-DSCF5344.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244093/Camino%20de%20Santiago/1-%202323-DSCF5344.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244095/Camino%20de%20Santiago/1-%20234-DSCF3256.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244095/Camino%20de%20Santiago/1-%20234-DSCF3256.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244097/Camino%20de%20Santiago/1-%202340-DSCF5361.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244097/Camino%20de%20Santiago/1-%202340-DSCF5361.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244099/Camino%20de%20Santiago/1-%202403-DSCF5424.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244099/Camino%20de%20Santiago/1-%202403-DSCF5424.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244100/Camino%20de%20Santiago/1-%202467-DSCF5488.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244100/Camino%20de%20Santiago/1-%202467-DSCF5488.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244102/Camino%20de%20Santiago/1-%20271-DSCF3293.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244102/Camino%20de%20Santiago/1-%20271-DSCF3293.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244103/Camino%20de%20Santiago/1-%20280-DSCF3302.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244103/Camino%20de%20Santiago/1-%20280-DSCF3302.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244104/Camino%20de%20Santiago/1-%20293-DSCF3315.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244104/Camino%20de%20Santiago/1-%20293-DSCF3315.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244107/Camino%20de%20Santiago/1-%20332-DSCF3354.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244107/Camino%20de%20Santiago/1-%20332-DSCF3354.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244109/Camino%20de%20Santiago/1-%20366-DSCF3388.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244109/Camino%20de%20Santiago/1-%20366-DSCF3388.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244111/Camino%20de%20Santiago/1-%20371-DSCF3393.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244111/Camino%20de%20Santiago/1-%20371-DSCF3393.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244113/Camino%20de%20Santiago/1-%20419-DSCF3441.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244113/Camino%20de%20Santiago/1-%20419-DSCF3441.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244114/Camino%20de%20Santiago/1-%2045-DSCF3068.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244114/Camino%20de%20Santiago/1-%2045-DSCF3068.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244116/Camino%20de%20Santiago/1-%2046-DSCF3069.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244116/Camino%20de%20Santiago/1-%2046-DSCF3069.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244118/Camino%20de%20Santiago/1-%20474-DSCF3496.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244118/Camino%20de%20Santiago/1-%20474-DSCF3496.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244120/Camino%20de%20Santiago/1-%20527-DSCF3549.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244120/Camino%20de%20Santiago/1-%20527-DSCF3549.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244121/Camino%20de%20Santiago/1-%20528-DSCF3550.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244121/Camino%20de%20Santiago/1-%20528-DSCF3550.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244123/Camino%20de%20Santiago/1-%20534-DSCF3556.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244123/Camino%20de%20Santiago/1-%20534-DSCF3556.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244125/Camino%20de%20Santiago/1-%20565-DSCF3587.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244125/Camino%20de%20Santiago/1-%20565-DSCF3587.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244127/Camino%20de%20Santiago/1-%20587-DSCF3609.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244127/Camino%20de%20Santiago/1-%20587-DSCF3609.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244129/Camino%20de%20Santiago/1-%20624-DSCF3646.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244129/Camino%20de%20Santiago/1-%20624-DSCF3646.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244131/Camino%20de%20Santiago/1-%20648-DSCF3670.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244131/Camino%20de%20Santiago/1-%20648-DSCF3670.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244133/Camino%20de%20Santiago/1-%20714-DSCF3736.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244133/Camino%20de%20Santiago/1-%20714-DSCF3736.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244134/Camino%20de%20Santiago/1-%20742-DSCF3764.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244134/Camino%20de%20Santiago/1-%20742-DSCF3764.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244136/Camino%20de%20Santiago/1-%20836-DSCF3858.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244136/Camino%20de%20Santiago/1-%20836-DSCF3858.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244138/Camino%20de%20Santiago/1-%20885-DSCF3907.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244138/Camino%20de%20Santiago/1-%20885-DSCF3907.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244139/Camino%20de%20Santiago/1-%20892-DSCF3914.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244139/Camino%20de%20Santiago/1-%20892-DSCF3914.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244142/Camino%20de%20Santiago/1-%20899-DSCF3921.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244142/Camino%20de%20Santiago/1-%20899-DSCF3921.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244143/Camino%20de%20Santiago/1-%20991-DSCF4013.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1789244143/Camino%20de%20Santiago/1-%20991-DSCF4013.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
 
 
 </body>

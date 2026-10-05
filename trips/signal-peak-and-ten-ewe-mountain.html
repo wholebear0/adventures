@@ -1,139 +1,771 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Signal Peak and Ten Ewe Mountain</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Signal Peak and Ten Ewe Mountain</h1>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Signal Peak and Ten Ewe Mountain
+        </h1>
+
+        <p class="trip-date">
+            02/15/2026
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/LY6G8jf.jpeg"
+    alt="Signal Peak and Ten Ewe Mountain"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                4.36 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                2,517 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                2,834 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Kofa Wilderness, AZ
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=33.36871,-114.06177"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=33.36871,-114.06177&amp;z=11&amp;output=embed"
+            title="Map of Signal Peak and Ten Ewe Mountain"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
 <p class="caption">
-    2/15/2026 - Signal Peak and Ten Ewe Mountain
+This was a fun outing for as short of a hike this was, but just getting to the start of the hike took some time. The road off Palm Canyon drive was decent at first then started to have dips where I unavoidably rubbed the front of the car against the ground a few times. After a mile I left the car and got on my bicycle, then headed towards the trailhead. It was about 1,200 ft elevation gain over nearly 6 miles to the trailhead. It was slow going and made even more tiring by the wash boarded road filled with loose rock. After nearly two hours I made it to the trailhead then hiked up through the scenic canyon to Signal Mountain. Gazing out at the endless peaks and ridges that extended to the horizon provided time to think about endless hiking routes and possibilities nearby. I had been wanting to come to the Kofa Wilderness for over one year and now here it did not disappoint. The view to the north east offered probably the best view but was partially obstructed by a lower rising peak nearby. I decided to head back down and then up an off-trail route to Ten Ewe Mountain where the view may be better. It was short but steep up to Ten Ewe but the views were indeed better I thought.
 </p>
+
 <p class="caption">
-    This was a fun outing for as short of a hike this was, but just getting to the start of the hike took some time. The road off Palm Canyon drive was decent at first then started to have dips where I unavoidably rubbed the front of the car against the ground a few times. After a mile I left the car and got on my bicycle, then headed towards the trailhead. It was about 1,200 ft elevation gain over nearly 6 miles of bike rattling bumpiness to the trailhead. It was slow going and made even more tiring by the wash boarded road filled with loose rock. After nearly two hours I made it to the trailhead then hiked up through the scenic canyon to Signal Mountain. Gazing out at the endless peaks and ridges that extended to the horizon provided time to think about endless hiking routes and possibilities nearby. I had been wanting to come to the Kofa Wilderness for over one year and now here it did not disappoint. The view to the north east offered probably the best view but was partially obstructed by a lower rising peak nearby. I decided to head back down and then up an off-trail route to Ten Ewe Mountain where the view may be better. It was short but steep up to Ten Ewe but the views were indeed better I thought. On the way back down I passed by one person who was the only one I saw hiking. Back at the trailhead I got back on the bicycle and had a much different experience than coming up. Instead of taking nearly two hours up, it took about 15 minutes down and I pedaled for no more than 2 minutes in total over the 6 miles back. It was a great way to end the day and it would be nice to return and explore further into the Kofa Wilderness.
+On the way back down I passed by one person who was the only one I saw hiking. Back at the trailhead I got back on the bicycle and had a much different experience than coming up. Instead of taking nearly two hours up, it took about 15 minutes down and I pedaled for no more than 2 minutes in total over the 6 miles back. It was a great way to end the day and it would be nice to return and explore further into the Kofa Wilderness.
 </p>
-<p class="caption">
-    Signal Peak the high point on right side. I parked and biked in to the trailhead from here.
-</p>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/ec42b471bf9e0347ed5e715d790ba0b2.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/ec42b471bf9e0347ed5e715d790ba0b2.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/c204b426cac09e49e7da3b011ee35af4.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/c204b426cac09e49e7da3b011ee35af4.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/a7bdc0ef251025b68b957fc2bcbe0835.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/a7bdc0ef251025b68b957fc2bcbe0835.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking back
-</p>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/99110bf71d137f93076baf4964416b4d.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/99110bf71d137f93076baf4964416b4d.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/6fa039712e3516379beb3f5830f46942.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/6fa039712e3516379beb3f5830f46942.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/3be0aeeb7eda65c6ccc7ae2fd54fdf2b.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/3be0aeeb7eda65c6ccc7ae2fd54fdf2b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    "Skull Rock"
-</p>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/ca47288ff656e1abfce7258e8d290266.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/ca47288ff656e1abfce7258e8d290266.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Starting the hike. Ten Ewe Mountain is the high point ahead. Signal Peak is to the right but hidden from view.
-</p>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/dd4b9ef59fa0f6c5516c61556770e60e.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/dd4b9ef59fa0f6c5516c61556770e60e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/393287a3b561d93f39d4bd27567b969a.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/393287a3b561d93f39d4bd27567b969a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/189fe29aeb645d02428885a755ae43f3.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/189fe29aeb645d02428885a755ae43f3.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/8177b223654c177c9064d0d7ce5de5e3.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/8177b223654c177c9064d0d7ce5de5e3.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/627af1575558f2e56b4f7ac4985284a5.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/627af1575558f2e56b4f7ac4985284a5.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/39128be11471caac59e67201907c6538.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/39128be11471caac59e67201907c6538.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/387a085fb42afc1767e101807975a6fa.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/387a085fb42afc1767e101807975a6fa.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/029c94b246f58b4da7094b5e86098b0d.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/029c94b246f58b4da7094b5e86098b0d.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/dc9661f82e39284877befe770cc9e416.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/dc9661f82e39284877befe770cc9e416.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/2f0abc264ee2792ec2db94736df72517.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/2f0abc264ee2792ec2db94736df72517.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/ef9ee0bf4a21118c288722ccceec8e8a.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/ef9ee0bf4a21118c288722ccceec8e8a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/092c4a320929040537846fbf76380822.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/092c4a320929040537846fbf76380822.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Atop Signal Peak, looking out over the road into Palm Canyon and near where I started biking from
-</p>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/efa01dc23dd45992ecfb6542593f42d7.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/efa01dc23dd45992ecfb6542593f42d7.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/83990e5d7df8a98e70428165ae8e783a.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/83990e5d7df8a98e70428165ae8e783a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Ten Ewe Mountain on far left side. I decided to hike it because there was a mountain blocking some of the view from here.
-</p>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/fc5699efb7727edf1fba4d2189fd9ef0.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/fc5699efb7727edf1fba4d2189fd9ef0.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Back down looking at the way up Ten Ewe: first cutting over then up and to the left up a narrow gully, then turning right and scrambling up. The true summit is hidden beyond sight from this photo.
-</p>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/62ec4785d3b1587966b7a1ad4edd95ed.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/62ec4785d3b1587966b7a1ad4edd95ed.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/130ec979fde1f04e8011dac507d89c2c.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/130ec979fde1f04e8011dac507d89c2c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/6589dda924ee6d542addd53fd7831f23.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/6589dda924ee6d542addd53fd7831f23.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/ac491760738440ee5b9c13be4b2a2137.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/ac491760738440ee5b9c13be4b2a2137.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/08eb68c3b3866370280412e928fe4202.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/08eb68c3b3866370280412e928fe4202.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/f79b5eee76bc97c8cfe6cbc92460c911.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/f79b5eee76bc97c8cfe6cbc92460c911.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking back over at Signal Peak
-</p>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/b8524f05119d3cd35814285e1375e500.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/b8524f05119d3cd35814285e1375e500.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Castle Dome, the box shaped peak in the distance, center. I climbed it the day before.
-</p>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/dcf14f93b6ad9e5cf2790c679cb5f660.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/dcf14f93b6ad9e5cf2790c679cb5f660.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/signal-peak-and-ten-ewe-mountain/a8413764909dfa164117e4dbe2040611.jpg"/>
+<img
+    src="../assets/images/signal-peak-and-ten-ewe-mountain/a8413764909dfa164117e4dbe2040611.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

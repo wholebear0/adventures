@@ -1,61 +1,631 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Niyodo River</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Niyodo River</h1>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Niyodo River
+        </h1>
+
+        <p class="trip-date">
+            06/10/2026
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/OV4TZpY.jpeg"
+    alt="Niyodo River"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Kayak
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                11.65 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                0 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                102 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Kochi, Japan
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=33.5749,133.30044"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=33.5749,133.30044&amp;z=11&amp;output=embed"
+            title="Map of Niyodo River"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
 <p class="caption">
-    6/10/26 - Niyodo River
+The Niyodo river is well known in Japan for it&#x27;s color and clarity, so much so that there is a color in the country called &quot;Niyodo blue&quot;. It&#x27;s an easily accessible river since a local bus runs along the river. I sped away from the hotel in Kochi city to more quiet and vibrant scenery and caught the 9:04 am bus. Shortly after boarding an older man got on and spoke to me. After replying that I didn&#x27;t understand Japanese, he said &quot;packraft-to&quot;, to which I replied &quot;yes&quot; and pointed to his bag and he nodded. He was carrying a packraft too and said he&#x27;d been down the river before. I got off the bus, road walked over a bridge, then about a mile, then got in. The river was generally calm and very clear with a couple class 2 spots but a nice float. I didn&#x27;t see anyone else on the river except at the take out where a guy was kayaking upriver but in place, presumably for exercise. By the takeout the river flow slowed down because of it nearing the sea. It was a very enjoyable float down river and one I would do again in a heartbeat.
 </p>
-<p class="caption">
-    The Niyodo river is well known in Japan for it's color and clarity, so much so that there is a color in the country called "Niyodo blue". It's an easily accessible river since a local bus runs along the river. I sped away from the hotel in Kochi city to more quiet and vibrant scenery and caught the 9:04 am bus. Shortly after boarding an older man got on and spoke to me. After replying that I didn't understand Japanese, he said "packraft-to", to which I replied "yes" and pointed to his bag and he nodded. He was carrying a packraft too and said he'd been down the river before. I got off the bus, road walked over a bridge, then about a mile, then got in. The river was generally calm and very clear with a couple class 2 spots but a nice float. I didn't see anyone else on the river except at the take out where a guy was kayaking upriver but in place, presumably for exercise. By the takeout the river flow slowed down because of it nearing the sea. It was a very enjoyable float down river and one I would do again in a heartbeat.
-</p>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/niyodo-river/77982ccb8211cd3ba90aa1431c8604b8.jpg"/>
+<img
+    src="../assets/images/niyodo-river/77982ccb8211cd3ba90aa1431c8604b8.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/niyodo-river/e780d435e7adb3ce5d084728508bcfc4.jpg"/>
+<img
+    src="../assets/images/niyodo-river/e780d435e7adb3ce5d084728508bcfc4.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/niyodo-river/e911d69eb3d7bddd21319373b67a89fa.jpg"/>
+<img
+    src="../assets/images/niyodo-river/e911d69eb3d7bddd21319373b67a89fa.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/niyodo-river/f77117fab80827f6b93f6c9d92edcc93.jpg"/>
+<img
+    src="../assets/images/niyodo-river/f77117fab80827f6b93f6c9d92edcc93.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/niyodo-river/43936e18611b6638b9a38a1394691c49.jpg"/>
+<img
+    src="../assets/images/niyodo-river/43936e18611b6638b9a38a1394691c49.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/niyodo-river/80f81180e838e51aa75b3f89a8fdbea1.jpg"/>
+<img
+    src="../assets/images/niyodo-river/80f81180e838e51aa75b3f89a8fdbea1.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/niyodo-river/eab36886bf331b8c4e16dec1c72009ed.jpg"/>
+<img
+    src="../assets/images/niyodo-river/eab36886bf331b8c4e16dec1c72009ed.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/niyodo-river/aeda0cdd3659ad6b2b1dcd3795f00b93.jpg"/>
+<img
+    src="../assets/images/niyodo-river/aeda0cdd3659ad6b2b1dcd3795f00b93.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/niyodo-river/ca416c452a94e7c00a6281fb95a37398.jpg"/>
+<img
+    src="../assets/images/niyodo-river/ca416c452a94e7c00a6281fb95a37398.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/niyodo-river/f243bb1cfc0ca7d987383bc65ddb1b48.jpg"/>
+<img
+    src="../assets/images/niyodo-river/f243bb1cfc0ca7d987383bc65ddb1b48.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/niyodo-river/b7a88b4cf0cc08e3ba692288c2e06b56.jpg"/>
+<img
+    src="../assets/images/niyodo-river/b7a88b4cf0cc08e3ba692288c2e06b56.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/niyodo-river/f24d5651f4f4ffc30e4fec1d708ac2b7.jpg"/>
+<img
+    src="../assets/images/niyodo-river/f24d5651f4f4ffc30e4fec1d708ac2b7.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/niyodo-river/eeea0e2c6c4caacb18d26a812c605304.jpg"/>
+<img
+    src="../assets/images/niyodo-river/eeea0e2c6c4caacb18d26a812c605304.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/niyodo-river/88b87a136d94352f8179f495953d7e02.jpg"/>
+<img
+    src="../assets/images/niyodo-river/88b87a136d94352f8179f495953d7e02.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

@@ -1,97 +1,627 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Bluff to Mexican Hat</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Bluff to Mexican Hat</h1>
-<p class="caption">
-    4/29/23 - San Juan River Trip
-</p>
-<p class="caption">
-    This past winter was one of the highest snowpack years on record in the UT and AZ area and I failed to connect the dots between that and river flow rates, not to mention being completely unfamiliar with the San Juan. I was eyeing this river trip and saw that a permit was needed but that all were taken, so I sent a short email to the park service asking for a permit and was granted one. A ranger called me and asked about my experience and I told him that I have kayaked calm rivers and lakes in the past. I asked if there were many rapids and he said a few but they would be no problem. Great, sounds good! That Friday afternoon I hightailed it out of Tucson and drove past Phoenix, Flagstaff, and into the Navajo reservation. It wasnt easy driving through the Phoeniux rush hour with the kayak inside the car blocking the right side mirror but all was well. I got up to the camp area late Friday night and found it quite full so I parked near the boat dock despite the no camping sign, hell, there was simply nowhere else to go. Another party was camping on the boat ramp itself, not sure how that worked out being sloped and all. The next morning the car shuttle service showed up and I handed over the keys. At that point my kayak was all packed with belongings inside dry bags stowed away inside the kayak. The lady asked if that was all I was taking. Everyone else nearby were taking pack rafts and busy loading crate after crate of items and crap into their raft. I set out and immediately the flow rate was high. Without paddling I went along at between 5-7mph in the chocolate brown water, but the river was calm and without rapids.
-</p>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Bluff to Mexican Hat
+        </h1>
+
+        <p class="trip-date">
+            04/29/2023
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/dQvDD3n.jpeg"
+    alt="Bluff to Mexican Hat"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Kayak
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                27 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                200 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                4,291 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                San Juan River, UT
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=37.26169,-109.61192"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=37.26169,-109.61192&amp;z=11&amp;output=embed"
+            title="Map of Bluff to Mexican Hat"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/bluff-to-mexican-hat/df3fb47bd9c2e7ce267690a5474e5943.jpg"/>
+<img
+    src="../assets/images/bluff-to-mexican-hat/df3fb47bd9c2e7ce267690a5474e5943.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    The river just after launch
-</p>
+
 <figure>
-<img src="../assets/images/bluff-to-mexican-hat/6d81015f5ea7a00826c840ae9534831a.jpg"/>
+<img
+    src="../assets/images/bluff-to-mexican-hat/6d81015f5ea7a00826c840ae9534831a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    I stopped at a panel of petroglyphs which turned out to be like 100 ft long and have hundreds if not a thousand on them. Bummer that I misssed "river house", a dwelling that is oen of the largest in Utah.
-</p>
+
 <figure>
-<img src="../assets/images/bluff-to-mexican-hat/24362f59fcd72be2bf90d64306e8afbb.jpg"/>
+<img
+    src="../assets/images/bluff-to-mexican-hat/24362f59fcd72be2bf90d64306e8afbb.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/bluff-to-mexican-hat/a11b3e11f48173dd731e3392a1077d6d.jpg"/>
+<img
+    src="../assets/images/bluff-to-mexican-hat/a11b3e11f48173dd731e3392a1077d6d.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    The panel of petroglyphs looking westward along the river
-</p>
+
 <figure>
-<img src="../assets/images/bluff-to-mexican-hat/a845b26986f80b68248ed6638963976c.jpg"/>
+<img
+    src="../assets/images/bluff-to-mexican-hat/a845b26986f80b68248ed6638963976c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    A dwelling within the Chinle Creek complex
-</p>
+
 <figure>
-<img src="../assets/images/bluff-to-mexican-hat/2609ac884be9b19fe7232d88afce437f.jpg"/>
+<img
+    src="../assets/images/bluff-to-mexican-hat/2609ac884be9b19fe7232d88afce437f.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    A dwelling high up from the creek jsut below the canyon rim.
-</p>
+
 <figure>
-<img src="../assets/images/bluff-to-mexican-hat/d9400b56e8109b778c617ab532f6eada.jpg"/>
+<img
+    src="../assets/images/bluff-to-mexican-hat/d9400b56e8109b778c617ab532f6eada.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Unusual carved out rock formations and alcoves. It would be cool to come back another time and check some of them out.
-</p>
+
 <figure>
-<img src="../assets/images/bluff-to-mexican-hat/24d133a3872a8ce54c020dc1a477fe85.jpg"/>
+<img
+    src="../assets/images/bluff-to-mexican-hat/24d133a3872a8ce54c020dc1a477fe85.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    My favorite petroglyph of the day, a pretty cool design.
-</p>
+
 <figure>
-<img src="../assets/images/bluff-to-mexican-hat/11589f4f12d15e7ef2260ad4c4cdfb00.jpg"/>
+<img
+    src="../assets/images/bluff-to-mexican-hat/11589f4f12d15e7ef2260ad4c4cdfb00.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Grain storage containers, still somewhat intact 50ft or so off the ground.
-</p>
+
 <figure>
-<img src="../assets/images/bluff-to-mexican-hat/4bbc23c6e346b70bc626ab68a5b5a757.jpg"/>
+<img
+    src="../assets/images/bluff-to-mexican-hat/4bbc23c6e346b70bc626ab68a5b5a757.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    The San Juan, definitely a lot more intense than photos can show.
-</p>
+
 <figure>
-<img src="../assets/images/bluff-to-mexican-hat/d3ae15cc45a604481711b28a54167f92.jpg"/>
+<img
+    src="../assets/images/bluff-to-mexican-hat/d3ae15cc45a604481711b28a54167f92.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Tent in the warm early morning sunrise.
-</p>
+
 <figure>
-<img src="../assets/images/bluff-to-mexican-hat/3c41e8fbee2b753711b87f57a233b726.jpg"/>
+<img
+    src="../assets/images/bluff-to-mexican-hat/3c41e8fbee2b753711b87f57a233b726.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    The rapids started right around this bend.
-</p>
+
 <figure>
-<img src="../assets/images/bluff-to-mexican-hat/84555ce0bf7adb952256bcee3fa13c74.jpg"/>
+<img
+    src="../assets/images/bluff-to-mexican-hat/84555ce0bf7adb952256bcee3fa13c74.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    The way back, through Monument Valley
-</p>
+
 <figure>
-<img src="../assets/images/bluff-to-mexican-hat/c0703158437fac50673b181e93e16bdf.jpg"/>
+<img
+    src="../assets/images/bluff-to-mexican-hat/c0703158437fac50673b181e93e16bdf.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

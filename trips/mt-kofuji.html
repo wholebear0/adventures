@@ -1,67 +1,647 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Mt Kofuji</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Mt Kofuji</h1>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Mt Kofuji
+        </h1>
+
+        <p class="trip-date">
+            06/06/2026
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/Mkq095m.jpeg"
+    alt="Mt Kofuji"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                1.37 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                926 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                8 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Ehime, Japan
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=33.88232,132.68035"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=33.88232,132.68035&amp;z=11&amp;output=embed"
+            title="Map of Mt Kofuji"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
 <p class="caption">
-    6/6/2026 - Mt Kofuji
+In Matsuyama I rented a bicycle for the day from the hotel I was staying downtown by the main train station for $1.50 and biked with no end goal in mind except to reach the coast. Six miles later i found myself cruising along blue water of the coast and eventually stopped at the Takahama train station, staring at the backside of a ferry that left moments before. The island it was headed to was small and not far and I had the bicycle. Why not go check it out? After waiting a few minutes for the ferry to return and paying a few yen for a ticket, I soon found myself aboard on the way to Gogo island, an island 2 miles long and .2 miles wide at its narrowest part. There was a rumble of an engine, a whiff of diesel, a soft maritime breeze, and we&#x27;re off. The ferry took no longer than 10 minutes and after reaching Tomari port and walking a minute through town, I started up the trail to Mt Kofuji which was steep and muddy but mostly maintained, passing by orange trees. At the top was an abandoned hut and partial but still nice views to the east of the Matsuyama area and to the west of numerous small islands.
 </p>
-<p class="caption">
-    In Matsuyama I rented a bicycle for the day from the hotel I was staying downtown by the main train station for $1.50 and biked with no end goal in mind except to reach the coast. Six miles later i found myself cruising along blue water of the coast and eventually stopped at the Takahama train station, staring at the backside of a ferry that left moments before. The island it was headed to was small and not far and I had the bicycle. Why not go check it out? After waiting a few minutes for the ferry to return and paying a few yen for a ticket, I soon found myself aboard on the way to Gogo island, an island 2 miles long and .2 miles wide at its narrowest part. There was a rumble of an engine, a whiff of diesel, a soft maritime breeze, and we're off. The ferry took no longer than 10 minutes and after reaching Tomari port and walking a minute through town, I started up the trail to Mt Kofuji which was steep and muddy but mostly maintained, passing by orange trees. At the top was an abandoned hut and partial but still nice views to the east of the Matsuyama area and to the west of numerous small islands.
-</p>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/mt-kofuji/a8fa86044c77e04d6700b2009855c8ea.jpg"/>
+<img
+    src="../assets/images/mt-kofuji/a8fa86044c77e04d6700b2009855c8ea.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-kofuji/653884f093b1ec1f3b3cb3b6a97b593d.jpg"/>
+<img
+    src="../assets/images/mt-kofuji/653884f093b1ec1f3b3cb3b6a97b593d.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-kofuji/376fcea1737e9cd4ca92e1b8c57ed0e8.jpg"/>
+<img
+    src="../assets/images/mt-kofuji/376fcea1737e9cd4ca92e1b8c57ed0e8.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-kofuji/3874a4f8d36469874b11f388eb2be7a6.jpg"/>
+<img
+    src="../assets/images/mt-kofuji/3874a4f8d36469874b11f388eb2be7a6.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-kofuji/f77f9da83794d1e1233010fbe0d3e789.jpg"/>
+<img
+    src="../assets/images/mt-kofuji/f77f9da83794d1e1233010fbe0d3e789.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-kofuji/ab3be597fdb10263643d93c7bf6a1ccb.jpg"/>
+<img
+    src="../assets/images/mt-kofuji/ab3be597fdb10263643d93c7bf6a1ccb.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-kofuji/29f77f915061253266d5c7ab908628eb.jpg"/>
+<img
+    src="../assets/images/mt-kofuji/29f77f915061253266d5c7ab908628eb.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-kofuji/c0cfd5be3647c4d8416949d4739fe9aa.jpg"/>
+<img
+    src="../assets/images/mt-kofuji/c0cfd5be3647c4d8416949d4739fe9aa.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-kofuji/79ce8eef77d11694045166f68e370a9a.jpg"/>
+<img
+    src="../assets/images/mt-kofuji/79ce8eef77d11694045166f68e370a9a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-kofuji/3aa2b06d319a05cf2eb7a7cf893fb25c.jpg"/>
+<img
+    src="../assets/images/mt-kofuji/3aa2b06d319a05cf2eb7a7cf893fb25c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-kofuji/573113785deb91c229f7648c5fac3caa.jpg"/>
+<img
+    src="../assets/images/mt-kofuji/573113785deb91c229f7648c5fac3caa.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-kofuji/411735cd1294b97ffbab7b87888f044b.jpg"/>
+<img
+    src="../assets/images/mt-kofuji/411735cd1294b97ffbab7b87888f044b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-kofuji/daf66ad87d536059a4467a286b7c4a18.jpg"/>
+<img
+    src="../assets/images/mt-kofuji/daf66ad87d536059a4467a286b7c4a18.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-kofuji/2481737d30db4fda3294683ab02d7f19.jpg"/>
+<img
+    src="../assets/images/mt-kofuji/2481737d30db4fda3294683ab02d7f19.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-kofuji/dd0ce5d9c357ec4e1decbdc3d7949e06.jpg"/>
+<img
+    src="../assets/images/mt-kofuji/dd0ce5d9c357ec4e1decbdc3d7949e06.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-kofuji/6860c00d116ddba319b91235c1139416.jpg"/>
+<img
+    src="../assets/images/mt-kofuji/6860c00d116ddba319b91235c1139416.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

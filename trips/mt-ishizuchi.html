@@ -1,133 +1,807 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Mt Ishizuchi</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Mt Ishizuchi</h1>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Mt Ishizuchi
+        </h1>
+
+        <p class="trip-date">
+            06/03/2026
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/Ub9OlTt.jpeg"
+    alt="Mt Ishizuchi"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Backpack
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                7 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                3,118 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                4,147 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Iya Valley, Japan
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=33.7954,133.13376"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=33.7954,133.13376&amp;z=11&amp;output=embed"
+            title="Map of Mt Ishizuchi"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
 <p class="caption">
-    6/3/26 - Mt Ishizuchi
+The previous day a typhoon rolled through the Shikoku, causing intense wind and rain the whole night. Early the next morning I saw patches of blue sky among a mostly cloudy sky and decided to hike Mt Ishizuchi. After a winding and slow one hour bus ride from Iyo-Saijo station which was right next to my hotel, I got to the ropeway which I rode up to save a thousand or so feet of elevation gain. There was only one other person onboard. Just before the top of the cable car we hit the clouds, then visibility dropped to like 50 feet. It continued like that for the rest of the day which was a bummer because the hike looked like it had great views and I was hoping the day would be clear after the storm. The hike up to the peak wasn&#x27;t long but very wet. Wind blew drops of rain down from trees as if it were rain and puddles and streams were everywhere. About a mile into the trail was a small cluster of buildings and shrines.
 </p>
+
 <p class="caption">
-    The previous day a typhoon rolled through the Shikoku, causing intense wind and rain the whole night. Early the next morning I saw patches of blue sky among a mostly cloudy sky and decided to hike Mt Ishizuchi. After a winding and slow one hour bus ride from Iyo-Saijo station which was right next to my hotel, I got to the ropeway which I rode up to save a thousand or so feet of elevation gain. There was only one other person onboard. Just before the top of the cable car we hit the clouds, then visibility dropped to like 50 feet. It continued like that for the rest of the day which was a bummer because the hike looked like it had great views and I was hoping the day would be clear after the storm. The hike up to the peak wasn't long but very wet. Wind blew drops of rain down from trees as if it were rain and puddles and streams were everywhere. About a mile into the trail was a small cluster of buildings and shrines. At the top there was no view at all, just clouds. There was one other group, a younger couple. I decided to continue the hike despite not seeing the mountain and walked about a quarter of a mile southeast to continue the loop hike. I realized the weather wouldn't improve and I might as well camp in the shelter hut, that way there is another chance at seeing the mountain tomorrow if conditions improved. After turning around I ran into the younger couple again. As we passed, the girl stopped and said something to me. I said that I didn't understand Japanese, but while doing so stepped off the trail a bit over the edge and caused some loose dirt to tumble down and myself to lose balance. The girl grabbed a hold of me for a few seconds and I laughed, finding it funny. She said something again but I had no idea what it was. I continued trudging back to the hut depressed with the weather conditions having wanted to see Mt Ishizuchi so much. Past the hut the lodge was half open and absent of any other customers, so I stayed there for an hour or two, eating two instant cup of noodles and staying warm and dry. In the late afternoon I headed back outside then down several hundred feet to the shelter, then set up in the second floor of it, with no one else around. The following morning the sky cleared up a small amount so after waking up at 4:30 am as lightness began illuminating the sky, I packed up and high tailed it up to the summit, making it there by 5:30 am. There was just enough time to see sunlight hit the mountains before the sun rose above the cloud base layer, disappearing for the rest of the day. The view was incredible with layers of mountains and the sea past it, with some clouds pooled up in the lower valleys. I made the short trek to the peak itself along a ridgeline and enjoyed the view. Back at the lodge there were drumbeats. The clock showed 6 am and the monk making the drumbeats there seemed to be starting his day, chanting quickly and going to the shrine to pray.
+At the top there was no view at all, just clouds. There was one other group, a younger couple. I decided to continue the hike despite not seeing the mountain and walked about a quarter of a mile southeast to continue the loop hike. I realized the weather wouldn&#x27;t improve and I might as well camp in the shelter hut, that way there is another chance at seeing the mountain tomorrow if conditions improved. After turning around I ran into the younger couple again. As we passed, the girl stopped and said something to me. I said that I didn&#x27;t understand Japanese, but while doing so stepped off the trail a bit over the edge and caused some loose dirt to tumble down and myself to lose balance. The girl grabbed a hold of me for a few seconds and I laughed, finding it funny. She said something again but I had no idea what it was. I continued trudging back to the hut depressed with the weather conditions having wanted to see Mt Ishizuchi so much. Past the hut the lodge was half open and absent of any other customers, so I stayed there for an hour or two, eating two instant cup of noodles and staying warm and dry. In the late afternoon I headed back outside then down several hundred feet to the shelter, then set up in the second floor of it, with no one else around.
 </p>
-<figure>
-<img src="../assets/images/mt-ishizuchi/7f803f7d065879d2286ba8100adc04d7.jpg"/>
-</figure>
-<figure>
-<img src="../assets/images/mt-ishizuchi/2b87e124858639b9b0efbc2f6e767dc0.jpg"/>
-</figure>
-<figure>
-<img src="../assets/images/mt-ishizuchi/a8c768ba2857a56e045307d46cbe7cc5.jpg"/>
-</figure>
-<figure>
-<img src="../assets/images/mt-ishizuchi/6fec14e1ed098170933f1153d924e702.jpg"/>
-</figure>
-<figure>
-<img src="../assets/images/mt-ishizuchi/19d6ee362eb11f794157d3a28e26ba8e.jpg"/>
-</figure>
-<figure>
-<img src="../assets/images/mt-ishizuchi/440cf8ec72d1499c558e881e33e11f3d.jpg"/>
-</figure>
-<figure>
-<img src="../assets/images/mt-ishizuchi/e3aeecf697e65e52aa24628611e46a41.jpg"/>
-</figure>
-<figure>
-<img src="../assets/images/mt-ishizuchi/8e80ee5a3bf513c41e7400350c6d139f.jpg"/>
-</figure>
-<figure>
-<img src="../assets/images/mt-ishizuchi/bf384acb5f7660db7cdc48ec8753bcb2.jpg"/>
-</figure>
-<figure>
-<img src="../assets/images/mt-ishizuchi/be6781056a162fd38348fe273f9ece01.jpg"/>
-</figure>
-<figure>
-<img src="../assets/images/mt-ishizuchi/e9c75f81acaa766ebc99d2d08365e534.jpg"/>
-</figure>
-<figure>
-<img src="../assets/images/mt-ishizuchi/8e66c495359cb147a47bfdf6e364638b.jpg"/>
-</figure>
-<figure>
-<img src="../assets/images/mt-ishizuchi/8b1a3561d55d8b9e578edc9d333e08a6.jpg"/>
-</figure>
-<figure>
-<img src="../assets/images/mt-ishizuchi/35a3bd76e39ceb9b3d801b00b5efa9a8.jpg"/>
-</figure>
+
 <p class="caption">
-    Next day
+The following morning the sky cleared up a small amount so after waking up at 4:30 am as lightness began illuminating the sky, I packed up and high tailed it up to the summit, making it there by 5:30 am. There was just enough time to see sunlight hit the mountains before the sun rose above the cloud base layer, disappearing for the rest of the day. The view was incredible with layers of mountains and the sea past it, with some clouds pooled up in the lower valleys. I made the short trek to the peak itself along a ridgeline and enjoyed the view. Back at the lodge there were drumbeats. The clock showed 6 am and the monk making the drumbeats there seemed to be starting his day, chanting quickly and going to the shrine to pray.
 </p>
-<p class="caption">
-    Small city of Saijo, looking NW
-</p>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/mt-ishizuchi/6fb50ee9039cc9aba4ac3bba8bbe3958.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/7f803f7d065879d2286ba8100adc04d7.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/22f8a6657bee6b51d19406b24d94ba1f.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/2b87e124858639b9b0efbc2f6e767dc0.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/2ad4d75f2b804dd5c5f982f464fda3d5.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/a8c768ba2857a56e045307d46cbe7cc5.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/229733ed32c592cfaad864dcd7784025.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/6fec14e1ed098170933f1153d924e702.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/7bde27b19228583f73bb1c4b3c902787.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/19d6ee362eb11f794157d3a28e26ba8e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/b0f0b5ed3b4ed777ccf1d562ad135253.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/440cf8ec72d1499c558e881e33e11f3d.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/83229b8406ebc69206cadccfbcac1360.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/e3aeecf697e65e52aa24628611e46a41.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/dcdcc6b11a151d8eb7f5f4d6fb3d79c0.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/8e80ee5a3bf513c41e7400350c6d139f.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/7e01d33a342e13ea56b7f0f6ca158923.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/bf384acb5f7660db7cdc48ec8753bcb2.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/e7b2f8463341fad0ca539cf23d193d36.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/be6781056a162fd38348fe273f9ece01.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/5e24b0bdb307335cc4067cb72049c3f2.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/e9c75f81acaa766ebc99d2d08365e534.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/9468b5f22d3603a5d8eec83601462326.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/8e66c495359cb147a47bfdf6e364638b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/a400dd71a3b5d2fbe63644b64c6b16bf.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/8b1a3561d55d8b9e578edc9d333e08a6.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/1c00cea228e979b3da31840cd65b755a.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/35a3bd76e39ceb9b3d801b00b5efa9a8.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/b1f959305b8f2399bc372d9720d5e3c6.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/6fb50ee9039cc9aba4ac3bba8bbe3958.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/9a90d4f3540feaffa895fb476ab103c0.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/22f8a6657bee6b51d19406b24d94ba1f.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/41649ad43406b2b0787cf11fbf698440.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/2ad4d75f2b804dd5c5f982f464fda3d5.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/859e3dfc2a900bbe26e19b070969e088.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/229733ed32c592cfaad864dcd7784025.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Heading down, looking back at the summit lodge.
-</p>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/1900b454b2a891daa8de9b8a4b8602d0.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/7bde27b19228583f73bb1c4b3c902787.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/fa83177e126aefd2ddda43be55ad091e.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/b0f0b5ed3b4ed777ccf1d562ad135253.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/mt-ishizuchi/5132b309ded939a8dffda2ce7d2927e9.jpg"/>
+<img
+    src="../assets/images/mt-ishizuchi/83229b8406ebc69206cadccfbcac1360.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+<figure>
+<img
+    src="../assets/images/mt-ishizuchi/dcdcc6b11a151d8eb7f5f4d6fb3d79c0.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+<img
+    src="../assets/images/mt-ishizuchi/7e01d33a342e13ea56b7f0f6ca158923.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+<img
+    src="../assets/images/mt-ishizuchi/e7b2f8463341fad0ca539cf23d193d36.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+<img
+    src="../assets/images/mt-ishizuchi/5e24b0bdb307335cc4067cb72049c3f2.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+<img
+    src="../assets/images/mt-ishizuchi/9468b5f22d3603a5d8eec83601462326.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+<img
+    src="../assets/images/mt-ishizuchi/a400dd71a3b5d2fbe63644b64c6b16bf.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+<img
+    src="../assets/images/mt-ishizuchi/1c00cea228e979b3da31840cd65b755a.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+<img
+    src="../assets/images/mt-ishizuchi/b1f959305b8f2399bc372d9720d5e3c6.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+<img
+    src="../assets/images/mt-ishizuchi/9a90d4f3540feaffa895fb476ab103c0.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+<img
+    src="../assets/images/mt-ishizuchi/41649ad43406b2b0787cf11fbf698440.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+<img
+    src="../assets/images/mt-ishizuchi/859e3dfc2a900bbe26e19b070969e088.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+<img
+    src="../assets/images/mt-ishizuchi/1900b454b2a891daa8de9b8a4b8602d0.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+<img
+    src="../assets/images/mt-ishizuchi/fa83177e126aefd2ddda43be55ad091e.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+<img
+    src="../assets/images/mt-ishizuchi/5132b309ded939a8dffda2ce7d2927e9.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

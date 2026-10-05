@@ -1,73 +1,667 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Toshibetsu River</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Toshibetsu River</h1>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Toshibetsu River
+        </h1>
+
+        <p class="trip-date">
+            06/16/2026
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/ro2yuG2.jpeg"
+    alt="Toshibetsu River"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Kayak
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                18.52 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                0 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                530 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Ashoro, Japan
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=43.39095,143.68337"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=43.39095,143.68337&amp;z=11&amp;output=embed"
+            title="Map of Toshibetsu River"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
 <p class="caption">
-    6/16/26 - Toshibetsu River
+It was both a fun and brutally frustrating day on the river. Calm and serene beauty of nature, birds, and geese combined with constant portaging and scraping of the packraft against 18 miles of off and on shallow waters made for a long day. But to back things up a bit, I originally heard about this route from the Hokkaidowilds website and planned to catch the bus from north of the town of Ashoro as they recommended, except when I got there I couldn&#x27;t find parking. I grabbed some snacks from a 711 and asked if there was anywhere to park for a few hours to which they replied there wasn&#x27;t. After driving around the tiny town and unable to find any place to park, I relented and returned to 711, parked in the corner next to what appeared to be a duplex or house, then caught the 8:12 am bus where I was the only rider.
 </p>
+
 <p class="caption">
-    It was both a fun and brutally frustrating day on the river. Calm and serene beauty of nature, birds, and geese combined with constant portaging and scraping of the packraft against 18 miles of off and on shallow waters made for a long day. But to back things up a bit, I originally heard about this route from the Hokkaidowilds website and planned to catch the bus from north of the town of Ashoro as they recommended, except when I got there I couldn't find parking. I grabbed some snacks from a 711 and asked if there was anywhere to park for a few hours to which they replied there wasn't. After driving around the tiny town and unable to find any place to park, I relented and returned to 711, parked in the corner next to what appeared to be a duplex or house, then caught the 8:12 am bus where I was the only rider. The put in was straightforward, down some steps near a bridge and into the water which was immediately shallow. This continued for pretty much the entire 18 miles. All effort was directed towards staring down into the water looking for rocks and gauging the depth, then springing up out of the boat to walk down rapids while pushing the inflatable raft, trying to avoid busting it. It was just so constant and by the end of the day I scraped my raft at least 50 times and left many noticeable streaks on the bottom of the raft. While frustrating, it was still a fun trip though I wouldn't do it again unless the water level was higher. There were many birds of all sizes and I got to see deer run across the river twice. For the most part there were no roads immediately along the river so there was definitely a feeling of being in the untouched wild, which was really nice. The take out was about a mile from the car so there was hiking out of the forest and a road walk back to the car.
+The put in was straightforward, down some steps near a bridge and into the water which was immediately shallow. This continued for pretty much the entire 18 miles. All effort was directed towards staring down into the water looking for rocks and gauging the depth, then springing up out of the boat to walk down rapids while pushing the inflatable raft, trying to avoid busting it. It was just so constant and by the end of the day I scraped my raft at least 50 times and left many noticeable streaks on the bottom of the raft. While frustrating, it was still a fun trip though I wouldn&#x27;t do it again unless the water level was higher. There were many birds of all sizes and I got to see deer run across the river twice. For the most part there were no roads immediately along the river so there was definitely a feeling of being in the untouched wild, which was really nice. The take out was about a mile from the car so there was hiking out of the forest and a road walk back to the car.
 </p>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/toshibetsu-river/cc01657e14208fe976d4ce338c93c63a.jpg"/>
+<img
+    src="../assets/images/toshibetsu-river/cc01657e14208fe976d4ce338c93c63a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/toshibetsu-river/6dbcd0e78da77d44e301f4981803ef8d.jpg"/>
+<img
+    src="../assets/images/toshibetsu-river/6dbcd0e78da77d44e301f4981803ef8d.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/toshibetsu-river/4b53109076744022bdfa50a498959198.jpg"/>
+<img
+    src="../assets/images/toshibetsu-river/4b53109076744022bdfa50a498959198.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/toshibetsu-river/0c1e75c1f81d2e681baa56b5e34b62ca.jpg"/>
+<img
+    src="../assets/images/toshibetsu-river/0c1e75c1f81d2e681baa56b5e34b62ca.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/toshibetsu-river/23255ec1685248ac24578ecc38512c56.jpg"/>
+<img
+    src="../assets/images/toshibetsu-river/23255ec1685248ac24578ecc38512c56.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/toshibetsu-river/5908bd5b000d7f1c41b356a31b2412bf.jpg"/>
+<img
+    src="../assets/images/toshibetsu-river/5908bd5b000d7f1c41b356a31b2412bf.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/toshibetsu-river/92213eb4c5247aa9de04bc70618fb14a.jpg"/>
+<img
+    src="../assets/images/toshibetsu-river/92213eb4c5247aa9de04bc70618fb14a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/toshibetsu-river/b0109121ffd2246ba84880485f3bc610.jpg"/>
+<img
+    src="../assets/images/toshibetsu-river/b0109121ffd2246ba84880485f3bc610.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/toshibetsu-river/782237c5e0bef0b93a644b67c96d97ff.jpg"/>
+<img
+    src="../assets/images/toshibetsu-river/782237c5e0bef0b93a644b67c96d97ff.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/toshibetsu-river/fd5c02722411bd216e917200a829874e.jpg"/>
+<img
+    src="../assets/images/toshibetsu-river/fd5c02722411bd216e917200a829874e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/toshibetsu-river/e2b16d19f01524b084b11d264fd6d47f.jpg"/>
+<img
+    src="../assets/images/toshibetsu-river/e2b16d19f01524b084b11d264fd6d47f.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/toshibetsu-river/a6b8316ef8bd3e0e117bac7d58dc2a38.jpg"/>
+<img
+    src="../assets/images/toshibetsu-river/a6b8316ef8bd3e0e117bac7d58dc2a38.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/toshibetsu-river/5625fcdb1d593ff52f8215db725c5fe9.jpg"/>
+<img
+    src="../assets/images/toshibetsu-river/5625fcdb1d593ff52f8215db725c5fe9.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/toshibetsu-river/e9dd4e640a018ae17dea8124c6b3301b.jpg"/>
+<img
+    src="../assets/images/toshibetsu-river/e9dd4e640a018ae17dea8124c6b3301b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/toshibetsu-river/dba4cbbbab3119230deb64a932e449fb.jpg"/>
+<img
+    src="../assets/images/toshibetsu-river/dba4cbbbab3119230deb64a932e449fb.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/toshibetsu-river/6c78987e4e437a1ddf415ccee207daad.jpg"/>
+<img
+    src="../assets/images/toshibetsu-river/6c78987e4e437a1ddf415ccee207daad.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/toshibetsu-river/96b897d336d892dd6ac64ad28dca5eb2.jpg"/>
+<img
+    src="../assets/images/toshibetsu-river/96b897d336d892dd6ac64ad28dca5eb2.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/toshibetsu-river/1c9bdd0d30ab434964f05248177eea61.jpg"/>
+<img
+    src="../assets/images/toshibetsu-river/1c9bdd0d30ab434964f05248177eea61.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

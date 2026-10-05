@@ -1,91 +1,659 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Cottonwood Wash</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Cottonwood Wash</h1>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Cottonwood Wash
+        </h1>
+
+        <p class="trip-date">
+            04/10/2026
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/TDOiHLM.jpeg"
+    alt="Cottonwood Wash"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                4.42 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                375 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                5,136 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Capitol Reef NP, UT
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=38.16546,-111.09024"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=38.16546,-111.09024&amp;z=11&amp;output=embed"
+            title="Map of Cottonwood Wash"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
 <p class="caption">
-    4/10/2026 - Cottonwood Wash
+The first mile and a half in is an uneventful walk through a sandy wash, but the canyon quickly narrows and the sand is replaced by slick rock and boulders. Along the way are a few minor chokestone obstacles which can be passed by basic stem moves up and over them. The canyon forks and taking a right follows the main trail. A short bit later there is a substantial chokestone which is shaped like a downward facing arrow. At first glance it seems unpassable but there was a somewhat thin and antique looking rope hanging down, though I found it to be a rope to nowhere as it didn&#x27;t help. The opening above was too far above and crowssing the gap to ascend through it was too wide. Perhaps a more advanced stem move could take one past. After closer inspection I noticed a different way but from below by first crouching down and going below the boulders. There was a tiny window 8 ft above just wide enough for a reasonable fit individual to fit through. There were a few rocks as footholds and I squeezed through the opening.
 </p>
+
 <p class="caption">
-    The first mile and a half in is an uneventful walk through a sandy wash, but the canyon quickly narrows and the sand is replaced by slick rock and boulders. Along the way are a few minor chokestone obstacles which can be passed by basic stem moves up and over them. The canyon forks and taking a right follows the main trail. A short bit later there is a substantial chokestone which is shaped like a downward facing arrow. At first glance it seems unpassable but there was a somewhat thin and antique looking rope hanging down, though I found it to be a rope to nowhere as it didn't help. The opening above was too far above and crowssing the gap to ascend through it was too wide. Perhaps a more advanced stem move could take one past. After closer inspection I noticed a different way but from below by first crouching down and going below the boulders. There was a tiny window 8 ft above just wide enough for a reasonable fit individual to fit through. There were a few rocks as footholds and I squeezed through the opening. Any adrenaline soon evaporated as just around the corner was a winding slot with a deep plunge pool filled with water. It has been a dry spring but  there was even a a bathtub ring 5ft above its current level  showing where the water had been. The water looked at least 6-8ft deep and was very cold. Not knowing how long it was and covered with open cuts on my legs and arms from the previous day navigating the Leprachaun slot, I persuaded myself to turn around, glancing over my shoulder back at the slot as I left. I believe this pool is known for having unpredictable depths, some people find it shallow or non existent, others find it very deep. I hope to return in the future more prepared with perhaps a small inner tube to float on and a dry bag to keep the camera and cell phone dry. Till next time!
+Any adrenaline soon evaporated as just around the corner was a winding slot with a deep plunge pool filled with water. It has been a dry spring but  there was even a a bathtub ring 5ft above its current level  showing where the water had been. The water looked at least 6-8ft deep and was very cold. Not knowing how long it was and covered with open cuts on my legs and arms from the previous day navigating the Leprachaun slot, I persuaded myself to turn around, glancing over my shoulder back at the slot as I left. I believe this pool is known for having unpredictable depths, some people find it shallow or non existent, others find it very deep. I hope to return in the future more prepared with perhaps a small inner tube to float on and a dry bag to keep the camera and cell phone dry. Till next time!
 </p>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/cottonwood-wash/631d4e472e4ec2af6239e2843433f9ca.jpg"/>
+<img
+    src="../assets/images/cottonwood-wash/631d4e472e4ec2af6239e2843433f9ca.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/cottonwood-wash/e148db6111821befb68f8b541c16cbee.jpg"/>
+<img
+    src="../assets/images/cottonwood-wash/e148db6111821befb68f8b541c16cbee.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/cottonwood-wash/75efff01993ecef11e9adddbf19712a4.jpg"/>
+<img
+    src="../assets/images/cottonwood-wash/75efff01993ecef11e9adddbf19712a4.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Canyon narrowing
-</p>
+
 <figure>
-<img src="../assets/images/cottonwood-wash/bcd115b58750a7a6bb6a7fa818122f53.jpg"/>
+<img
+    src="../assets/images/cottonwood-wash/bcd115b58750a7a6bb6a7fa818122f53.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/cottonwood-wash/11eb5bc26e6135f0abc98008be2f0767.jpg"/>
+<img
+    src="../assets/images/cottonwood-wash/11eb5bc26e6135f0abc98008be2f0767.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Some fun obstacles
-</p>
+
 <figure>
-<img src="../assets/images/cottonwood-wash/139317d4f574a9d6e667e9e2f2fca191.jpg"/>
+<img
+    src="../assets/images/cottonwood-wash/139317d4f574a9d6e667e9e2f2fca191.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/cottonwood-wash/2cc4d109b717f4c28a266873f6d8bbbb.jpg"/>
+<img
+    src="../assets/images/cottonwood-wash/2cc4d109b717f4c28a266873f6d8bbbb.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/cottonwood-wash/ad6404fc59c20696e450973fdfda577c.jpg"/>
+<img
+    src="../assets/images/cottonwood-wash/ad6404fc59c20696e450973fdfda577c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    The downwards arrow rock which is much bigger than it looks here. The opening on the right side of the tip was not possible since it sat maybe 5 ft back so there was no way to go both up and back. The bottom (darker in this photo) offered a way to crawl a few feet then climb up 10ft os so using one or two footholds, then climb through a small opening.
-</p>
+
 <figure>
-<img src="../assets/images/cottonwood-wash/c867b6a94b5ac041e19fd698b35c80c2.jpg"/>
+<img
+    src="../assets/images/cottonwood-wash/c867b6a94b5ac041e19fd698b35c80c2.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Checking out the top way before giving up on it and finding a way through the bottom.
-</p>
+
 <figure>
-<img src="../assets/images/cottonwood-wash/8089f391d14eb1a4bbb20e6ebb6e2884.jpg"/>
+<img
+    src="../assets/images/cottonwood-wash/8089f391d14eb1a4bbb20e6ebb6e2884.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    My foot was on a small rock and below that was a 5ft drop.
-</p>
+
 <figure>
-<img src="../assets/images/cottonwood-wash/afad12d27b0a25e2978b6d6f6167e459.jpg"/>
+<img
+    src="../assets/images/cottonwood-wash/afad12d27b0a25e2978b6d6f6167e459.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/cottonwood-wash/c84989a1f0bcbb40d469e1b53eb0b752.jpg"/>
+<img
+    src="../assets/images/cottonwood-wash/c84989a1f0bcbb40d469e1b53eb0b752.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Continuing on... then finding a deep pool of unknown length where i turned around.
-</p>
+
 <figure>
-<img src="../assets/images/cottonwood-wash/ed6d7368feb6067e2c22464bd402f9fe.jpg"/>
+<img
+    src="../assets/images/cottonwood-wash/ed6d7368feb6067e2c22464bd402f9fe.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/cottonwood-wash/2ea9bbfca432d3e13914fd49df9daf11.jpg"/>
+<img
+    src="../assets/images/cottonwood-wash/2ea9bbfca432d3e13914fd49df9daf11.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/cottonwood-wash/2d1c7d55f043237a234ff474c58441ad.jpg"/>
+<img
+    src="../assets/images/cottonwood-wash/2d1c7d55f043237a234ff474c58441ad.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Hiking back out.
-</p>
+
 <figure>
-<img src="../assets/images/cottonwood-wash/a2d7a25fbe3b7e440d09158be3a03010.jpg"/>
+<img
+    src="../assets/images/cottonwood-wash/a2d7a25fbe3b7e440d09158be3a03010.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/cottonwood-wash/6f9d8c0578457094b97a7b1d11caa91b.jpg"/>
+<img
+    src="../assets/images/cottonwood-wash/6f9d8c0578457094b97a7b1d11caa91b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

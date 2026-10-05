@@ -1,14 +1,324 @@
-
 <!DOCTYPE html>
+
 <html>
 
 <head>
 
-<meta charset="UTF-8">
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Granite and Open Canyons</title>
 
-<link rel="stylesheet" href="../assets/css/trip.css">
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -16,167 +326,396 @@
 <body>
 
 
-<h1>
-Granite and Open Canyons
-</h1>
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Granite and Open Canyons
+        </h1>
+
+        <p class="trip-date">
+            08/03/2026
+        </p>
+
+    </div>
 
 
 
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081930/Granite%20and%20Open%20Canyons/1-%20DSC05268.jpg"
+    alt="Granite and Open Canyons"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Backpack
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                24 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                4,367 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                6,373 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Grand Teton NP, WY
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=43.60714,-110.79336"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=43.60714,-110.79336&amp;z=11&amp;output=embed"
+            title="Map of Granite and Open Canyons"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
 <p class="caption">
-08/03/2026 - Granite and Open Canyons
+This was a quick one night backpack loop through Granite and Open canyons with a detour to Middle/South Fork and Marion Lake. The first 6 miles through Granite canyon were nice and followed along a roaring creek. To get to the Middle/South fork camping area I turned southwest and continued up for a few miles. The trail eventually merged with the Teton Crest trail and there were many people from this point on, probably because there is a tram that takes people up the mountain nearby. Remembering pack to my last visit to the park, I found I  enjoyed the scenery more in other canyons like Cascade and Paintbrush.
 </p>
 
 <p class="caption">
-This was a quick one night backpack loop through Granite and Open canyons with a detour to Middle/South Fork and Marion Lake. The first 6 miles through Granite canyon were nice and followed along a roaring creek. To get to the Middle/South fork camping area I turned southwest and continued up for a few miles. The trail eventually merged with the Teton Crest trail and there were many people from this point on, probably because there is a tram that takes people up the mountain nearby. Remembering pack to my last visit to the park, I found I  enjoyed the scenery more in other canyons like Cascade and Paintbrush. 
-
 After an early start the following morning I hiked up out of the little basin to a divide and while en route, heard crunching of branches. About 75 yards away behind some tall grass was a black bear. Views were limited so I watched for a few minutes then continued walking on the divide. Only but two or three minutes later there was another black bear very close, perhaps 75 ft. It was walking parallel to me. I snapped some photos and took a few steps towards it trying to get closer. It sensed this and stopped, turned, peered at me, then walked towards me. I took a few steps back and the bear turned back away from me and continued walking on. With this early morning high I made a side stop at Marion lake in no time then continued south. Instead of taking Granite canyon all the way back, I turned and took the Open canyon trail which climbed about 1,400 ft up to a divide below Mt Hunt. It was one of the most tiring hikes I can remember. There was only one other group but perhaps it was the steady climb combined with the elevation over 9,000 ft that made the trail so tiring. At the divide I headed down and the following miles breezed by and not before long I found myself already back at the trailhead.
 </p>
 
-<figure>
 
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081905/Granite%20and%20Open%20Canyons/1-%20DSC05219.jpg">
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
+<figure>
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081905/Granite%20and%20Open%20Canyons/1-%20DSC05219.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081907/Granite%20and%20Open%20Canyons/1-%20DSC05220.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081907/Granite%20and%20Open%20Canyons/1-%20DSC05220.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081909/Granite%20and%20Open%20Canyons/1-%20DSC05224.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081909/Granite%20and%20Open%20Canyons/1-%20DSC05224.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081911/Granite%20and%20Open%20Canyons/1-%20DSC05226.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081911/Granite%20and%20Open%20Canyons/1-%20DSC05226.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081914/Granite%20and%20Open%20Canyons/1-%20DSC05227.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081914/Granite%20and%20Open%20Canyons/1-%20DSC05227.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081916/Granite%20and%20Open%20Canyons/1-%20DSC05230.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081916/Granite%20and%20Open%20Canyons/1-%20DSC05230.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081918/Granite%20and%20Open%20Canyons/1-%20DSC05232.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081918/Granite%20and%20Open%20Canyons/1-%20DSC05232.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081920/Granite%20and%20Open%20Canyons/1-%20DSC05234.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081920/Granite%20and%20Open%20Canyons/1-%20DSC05234.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081922/Granite%20and%20Open%20Canyons/1-%20DSC05235.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081922/Granite%20and%20Open%20Canyons/1-%20DSC05235.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081924/Granite%20and%20Open%20Canyons/1-%20DSC05242.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081924/Granite%20and%20Open%20Canyons/1-%20DSC05242.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081925/Granite%20and%20Open%20Canyons/1-%20DSC05249.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081925/Granite%20and%20Open%20Canyons/1-%20DSC05249.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081927/Granite%20and%20Open%20Canyons/1-%20DSC05254.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081927/Granite%20and%20Open%20Canyons/1-%20DSC05254.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081928/Granite%20and%20Open%20Canyons/1-%20DSC05255.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081928/Granite%20and%20Open%20Canyons/1-%20DSC05255.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081930/Granite%20and%20Open%20Canyons/1-%20DSC05268.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081930/Granite%20and%20Open%20Canyons/1-%20DSC05268.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<figcaption class="caption">
-Marion Lake
-</figcaption>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081932/Granite%20and%20Open%20Canyons/1-%20DSC05270.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081932/Granite%20and%20Open%20Canyons/1-%20DSC05270.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081933/Granite%20and%20Open%20Canyons/1-%20DSC05271.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081933/Granite%20and%20Open%20Canyons/1-%20DSC05271.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081935/Granite%20and%20Open%20Canyons/1-%20DSC05275%202.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081935/Granite%20and%20Open%20Canyons/1-%20DSC05275%202.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<figcaption class="caption">
-Starting on the Open Canyon trail
-</figcaption>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081937/Granite%20and%20Open%20Canyons/1-%20DSC05281.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081937/Granite%20and%20Open%20Canyons/1-%20DSC05281.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081940/Granite%20and%20Open%20Canyons/1-%20DSC05288.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081940/Granite%20and%20Open%20Canyons/1-%20DSC05288.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081942/Granite%20and%20Open%20Canyons/1-%20DSC05295.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081942/Granite%20and%20Open%20Canyons/1-%20DSC05295.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<figcaption class="caption">
-Looking down at Granite Canyon 1,000 ft below
-</figcaption>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081944/Granite%20and%20Open%20Canyons/1-%20DSC05296.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081944/Granite%20and%20Open%20Canyons/1-%20DSC05296.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<figcaption class="caption">
-Mt Hunt divide
-</figcaption>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081948/Granite%20and%20Open%20Canyons/1-%20DSC05299.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081948/Granite%20and%20Open%20Canyons/1-%20DSC05299.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<figcaption class="caption">
-Open Canyon
-</figcaption>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081950/Granite%20and%20Open%20Canyons/1-%20DSC05300.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081950/Granite%20and%20Open%20Canyons/1-%20DSC05300.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081953/Granite%20and%20Open%20Canyons/1-%20DSC05303.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081953/Granite%20and%20Open%20Canyons/1-%20DSC05303.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081955/Granite%20and%20Open%20Canyons/1-%20DSC05306.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1787081955/Granite%20and%20Open%20Canyons/1-%20DSC05306.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
 
 
 </body>

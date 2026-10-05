@@ -1,14 +1,324 @@
-
 <!DOCTYPE html>
+
 <html>
 
 <head>
 
-<meta charset="UTF-8">
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Teshio River, Nayoro to Otoineppu</title>
 
-<link rel="stylesheet" href="../assets/css/trip.css">
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -16,140 +326,432 @@
 <body>
 
 
-<h1>
-Teshio River, Nayoro to Otoineppu
-</h1>
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Teshio River, Nayoro to Otoineppu
+        </h1>
+
+        <p class="trip-date">
+            06/28/2026
+        </p>
+
+    </div>
 
 
 
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419441/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/X.jpg"
+    alt="Teshio River, Nayoro to Otoineppu"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Kayak
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                58.95 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                0 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                298 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Hokkaido, Japan
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=44.3619,142.4437"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=44.3619,142.4437&amp;z=11&amp;output=embed"
+            title="Map of Teshio River, Nayoro to Otoineppu"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
 <p class="caption">
-06/28/2026 - Teshio River, Nayoro to Otoineppu
+The Teshio river in Hokkiado runs for nearly 160 miles north then northwest to the sea. I paddled two and a half days or about 59 miles, first putting in at Nayoro then taking out in Otoineppu. For the most part the flow was good along with the water level. There were occasional ledges that ran diagonal across river which required reading the river sometimes guesswork to avoid hitting rocks or scraping the boat. The weather wasnt great. The previous day rained nearly non-stop which I waited out in a hotel, then the following day it cleared up some but was very cloudy so I started the trip. Mid way it rained for an hour or two which wasnt the most fun way of paddling down a river. Each town along the way has a canoe port which has a little ramada and river access along with a flat area people can camp in. Late in the day I got to the town of Bifuka and packed up the raft and everything else and walked to an onsen in town to warm up. I grabbed some groceries and rushed back to the canoe port area because it looked like it was going to rain which it soon it did. After quickly setting up the tent I heated up water and under the ramada had a half cooked instant Yakisoba, cold fried shrimp from the store, a rice ball bought purchased that morning, and a little cake pastry. As it rained some large spiders dropped down from the top of the inside of the ramada onto the bench near my stuff as I was eating so I ate standing up. There were no other people camping so it was quiet.
 </p>
 
 <p class="caption">
-The Teshio river in Hokkiado runs for nearly 160 miles north then northwest to the sea. I paddled two and a half days or about 59 miles, first putting in at Nayoro then taking out in Otoineppu. For the most part the flow was good along with the water level. There were occasional ledges that ran diagonal across river which required reading the river sometimes guesswork to avoid hitting rocks or scraping the boat. The weather wasnt great. The previous day rained nearly non-stop which I waited out in a hotel, then the following day it cleared up some but was very cloudy so I started the trip. Mid way it rained for an hour or two which wasnt the most fun way of paddling down a river. Each town along the way has a canoe port which has a little ramada and river access along with a flat area people can camp in. Late in the day I got to the town of Bifuka and packed up the raft and everything else and walked to an onsen in town to warm up. I grabbed some groceries and rushed back to the canoe port area because it looked like it was going to rain which it soon it did. After quickly setting up the tent I heated up water and under the ramada had a half cooked instant Yakisoba, cold fried shrimp from the store, a rice ball bought purchased that morning, and a little cake pastry. As it rained some large spiders dropped down from the top of the inside of the ramada onto the bench near my stuff as I was eating so I ate standing up. There were no other people camping so it was quiet.
-
 It rained a few hours in the night and in the morning the tent was soaked inside and out. Back on the river there were a couple low water spots with scraping like the previous day but there was more route finding around obstacles and class 2 rapids which were really fun. It rained for a bit so I put the poncho on but finally in the later afternoon a bit of sun broke through the low clouds. It wasn&#x27;t much but it was oh so nice. In the air a sweet aroma like that of late spring filled the air. I made it to camping area which was right behind an onsen around 4:30 and quickly set up the tent so it could dry,  then went for a bath. Walking towards the onsen and near the entrance a middle aged guy came out and walked enthusiastically towards me. When he saw me he grinned then said something in Japanese to which I replied I didn&#x27;t understand. Then in English he said he saw me earlier today roaming around Bifuka. I laughed and said oh yeah  but sadly didn&#x27;t remember him. The onsen was fantastic, had the place to myself and sat in the outdoors tub, then had dinner at the restaurant, ordering at the same vending machine ticket thing I bought the onsen ticket to. After a soy sauce ramen I bought two Sapporo beers from a different vending machine and drank them in an unlit recreation room while sitting cross legged on the floor and gazing out the window.
+</p>
 
+<p class="caption">
 It was an early start next morning and in the river at 6:30 am. I wanted to make the train from a town a few miles down river and there were only two or three running the whole day. The rafting was great and the 5 miles went so fast that they were finished in maybe 45 minutes, thanks to a slight headwind, some class 2 rapids, and following a speedy bank side current. I made it to the takeout in Otoineppu and packed up my stuff and made the small one car train, with time to spare.
 </p>
 
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419378/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04764.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419378/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04764.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419379/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04767.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419379/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04767.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419381/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04770.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419381/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04770.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419384/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04771.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419384/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04771.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419386/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04773.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419386/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04773.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419388/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04774.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419388/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04774.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419390/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04775.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419390/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04775.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419392/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04780.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419392/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04780.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419393/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04781.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419393/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04781.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419395/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04782.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419395/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04782.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419397/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04787.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419397/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04787.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419399/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04799.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419399/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04799.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419401/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04803.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419401/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04803.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419403/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04805.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419403/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04805.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419405/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04811.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419405/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04811.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419407/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04813.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419407/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04813.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419409/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04814.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419409/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04814.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419412/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04817.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419412/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04817.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419413/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04819.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419413/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04819.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419414/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04823.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419414/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04823.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419416/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04825.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419416/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04825.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419417/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04828.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419417/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04828.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419420/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04831.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419420/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04831.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419432/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04835.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419432/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04835.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419433/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04837.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419433/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04837.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419434/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04838.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419434/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04838.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419435/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04840.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419435/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04840.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419437/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04842.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419437/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04842.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
 <figure>
-<img src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419439/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04843.jpg">
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1784419439/Teshio%20River%2C%20Nayoro%20to%20Otoineppu/compressed-DSC04843.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
 
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
 
 
 </body>

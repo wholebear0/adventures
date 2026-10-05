@@ -1,127 +1,675 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>North Guardian Angel and West Northgate Peak</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>North Guardian Angel and West Northgate Peak</h1>
-<p class="caption">
-    8/10/2025 - North Guardian Angel and West Northgate Peak
-</p>
-<p class="caption">
-    I had been wanting to do these two peaks for some time. The climb up North Guardian Angel had some exposure in spots and just one or two class 4 sections, but solid handholds. I'd say its more of a Class 3 climb, especially if going on the northern side of the ridge. West Northgate Peaks was a nice walk up and had similar views as North Guardian Angel. It was as nice 5 hour hike.
-</p>
-<p class="caption">
-    Flat forest walking for about 2 miles before the overlook
-</p>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            North Guardian Angel and West Northgate Peak
+        </h1>
+
+        <p class="trip-date">
+            08/10/2025
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/LaIe5Dj.jpeg"
+    alt="North Guardian Angel and West Northgate Peak"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                7.4 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                1,589 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                6,980 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Zion NP, UT
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=37.34033,-113.07549"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=37.34033,-113.07549&amp;z=11&amp;output=embed"
+            title="Map of North Guardian Angel and West Northgate Peak"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/2065befeee48ff7469d675bebca7a2cf.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/2065befeee48ff7469d675bebca7a2cf.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/9cd2ab438f8b711ae6a9fe5a2243c29e.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/9cd2ab438f8b711ae6a9fe5a2243c29e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    North Guardian Angel in the center, West Northgate Peak (slope) partially pictured to the right. I climbed up the left side of North Guardian Angel to the flat saddle area, then along the ridge to the peak on the right side.
-</p>
+
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/73eeb5441d0c761d0175d767af05d633.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/73eeb5441d0c761d0175d767af05d633.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Making way over to the peak
-</p>
+
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/14020e75f4c0b4e53373c9318816f01b.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/14020e75f4c0b4e53373c9318816f01b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/3cc44b8c34a8f0a26ded41f836c5c159.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/3cc44b8c34a8f0a26ded41f836c5c159.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking back down
-</p>
+
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/9b537ca0005c5ad58c7cbd62e5d89a99.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/9b537ca0005c5ad58c7cbd62e5d89a99.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Saddle area looking south
-</p>
+
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/4a6d48adebf26cf07c484c533ac60eb1.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/4a6d48adebf26cf07c484c533ac60eb1.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking up, the true summit was past this visible peak.
-</p>
+
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/080a306e2200adfa095a2f884d2f4971.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/080a306e2200adfa095a2f884d2f4971.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Starting up and looking back down
-</p>
+
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/69547a9623e5d223bffb5f6a976c68aa.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/69547a9623e5d223bffb5f6a976c68aa.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    The center was a little too steep so I headed to the left and did a shrot class 4 section at the rock outcropping, top left. The right side looked too exposed from viewing upwards, but I ultimately came down that way and it was easier.
-</p>
+
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/78f214b5e7cafa4feb998162a031ced4.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/78f214b5e7cafa4feb998162a031ced4.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking straight up, stemmed through a little vertical tunnel to gain the ridge. There was exposure looking down but there were solid handholds so it wasnt that bad.
-</p>
+
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/2ef8cef82551f5c6888ead216b42486e.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/2ef8cef82551f5c6888ead216b42486e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    After the false summit was a narrow ridge and true summit just past it.
-</p>
+
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/c78c4e1d0e0f5ca8e5dc050fbd0d8689.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/c78c4e1d0e0f5ca8e5dc050fbd0d8689.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking west towards the Left Fork (Subway route) canyon and Kolob Terrace
-</p>
+
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/6856d61520981349b481e0f6b8c2d54e.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/6856d61520981349b481e0f6b8c2d54e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/601f9e27725f8aaa71cf30bc61b5ea57.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/601f9e27725f8aaa71cf30bc61b5ea57.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking back east
-</p>
+
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/d4d0400962570bf40615b0621f8270a9.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/d4d0400962570bf40615b0621f8270a9.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/ee3b61dca916dc35d9d1595cf5316468.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/ee3b61dca916dc35d9d1595cf5316468.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    View of West Northgate Peak on the left, which I climbed right after.
-</p>
+
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/aab855c405acddf4094c7e7311fc9232.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/aab855c405acddf4094c7e7311fc9232.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Down from the peak, near West Northgate. Some light bushwhacking
-</p>
+
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/0832eb4434ea3d734752c3e57583ff0b.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/0832eb4434ea3d734752c3e57583ff0b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Starting the walk up
-</p>
+
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/99ec377b53a6cde43ff72a7e7f007799.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/99ec377b53a6cde43ff72a7e7f007799.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    View from the peak of North Guardian Angel
-</p>
+
 <figure>
-<img src="../assets/images/north-guardian-angel-and-west-northgate-peak/13a1bc2c7ee01e10a579b1f00df74678.jpg"/>
+<img
+    src="../assets/images/north-guardian-angel-and-west-northgate-peak/13a1bc2c7ee01e10a579b1f00df74678.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>

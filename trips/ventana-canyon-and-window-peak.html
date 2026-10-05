@@ -1,184 +1,827 @@
-
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
 <title>Ventana Canyon and Window Peak</title>
 
-<link href="../assets/css/trip.css" rel="stylesheet"/></head>
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+    .trip-map {
+        height: 190px;
+    }
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
 <body>
-<h1>Ventana Canyon and Window Peak</h1>
-<p class="caption">
-    11/23/2025 - Ventana Canyon and Window Peak
-</p>
-<p class="caption">
-    The hike up through Ventana Canyon to the Window (rock formation) and Window Peak requires a bit of work, about 4,500 ft of elevation gain. But it is on a clearly marked trail so it’s not bad though slightly overgrown on the upper portions. Near Window Peak there are tons of really cool rock formations like pinnacles, windows between rocks, spires, and formations looking like fingers, and even a towering person looking out over the canyon. As with other hikes in the area, this one starts at city level surrounded by Saguaros then climbs through different ecosystems like forests and riparian, and eventually up to pine trees. This was a really cool hike made even better by clouds and flowing water from the previous three days of rain. The sound of flowing water was pretty much everywhere along the trail cascading hundreds of feet down rocky slopes or down along the creek. The views are nice throughout the trail but get even better once atop the ridge at the junction with the Esperero trail. From there affords a view west of Oro Valley and east towards the cragly spires near Window Peak. I had been lucky the few hours up to now as the clouds seem ot have lifted as I hiked, but intensified as I hiked up from the ridge. The trail wrapped around the base of Window Peak so I went off trail and followed a cairned route up to the summit, eventually wedging myself between a small tree and rock to push myself up to the actual summit. At this point I was mostly clouded out with limited visibility but could still make out great views in all directions. I was about 5 hours in and though wishing to stay much longer to explore the area, headed back down, eventually hiking through an hour of complete darkness. Afterwards, in looking at the map, there could be a nice loop route by taking the Ventana Trail up to Window Peak and down the Esperero Trail into Sabino Canyon though this would require a car shuttle to get back to the Ventana Trailhead.
-</p>
-<p class="caption">
-    Start of the trail near parking lot. Clouds were low but mostly lifted by the time I got to higher elevations.
-</p>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Ventana Canyon and Window Peak
+        </h1>
+
+        <p class="trip-date">
+            11/23/2025
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://i.imgur.com/N3KctcI.jpeg"
+    alt="Ventana Canyon and Window Peak"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                13.6 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                4,520 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                3,011 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Pusch Ridge Wilderness, AZ
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=32.32793,-110.85297"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=32.32793,-110.85297&amp;z=11&amp;output=embed"
+            title="Map of Ventana Canyon and Window Peak"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
+
+</section>
+
+
+
+<!-- ==========================================
+     EXISTING PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/52c9e2a78e68d2b65b01f7c4d6fa3ed0.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/52c9e2a78e68d2b65b01f7c4d6fa3ed0.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/ca495f186939c9414b505615fbd7f6ed.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/ca495f186939c9414b505615fbd7f6ed.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/e87cb7d27cf7609239ce315a8dfc22ba.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/e87cb7d27cf7609239ce315a8dfc22ba.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/688318bddef18ae268df87aabab924ec.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/688318bddef18ae268df87aabab924ec.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    A look back through the canyon after gaining elevation.
-</p>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/a056c3bea26cd3e87ccbaadbcb403d1c.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/a056c3bea26cd3e87ccbaadbcb403d1c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/d1065acec6feb833c6c03c90c7a85c79.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/d1065acec6feb833c6c03c90c7a85c79.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/f16110ff64d8df85aa74f3709bef724c.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/f16110ff64d8df85aa74f3709bef724c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/1b72f8bdb926a90251f58da60a12ecfa.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/1b72f8bdb926a90251f58da60a12ecfa.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/ba505a044c74ef10f6cd1246423cc4fe.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/ba505a044c74ef10f6cd1246423cc4fe.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/0f1fb3da3455e1cd3b79ee8a2a82e9a1.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/0f1fb3da3455e1cd3b79ee8a2a82e9a1.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/38cbc1faf8f79b1429e44bf13ed2d72b.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/38cbc1faf8f79b1429e44bf13ed2d72b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/732b08f9b6a9dfd134e5757d73119876.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/732b08f9b6a9dfd134e5757d73119876.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Hiking up out of a bowl in the canyon towards the ridge and junction with the Esperero trail.
-</p>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/cc01be03aeead9362196a7fa33571c2c.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/cc01be03aeead9362196a7fa33571c2c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Flatter walking for a few minutes along ridge.
-</p>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/63c1662768645fffbb6d2b1cca56b7e8.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/63c1662768645fffbb6d2b1cca56b7e8.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Looking back the way I came.
-</p>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/d7dddf1e34ab07641f48219dac1452de.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/d7dddf1e34ab07641f48219dac1452de.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    View up towards Cathedral Peak- a hike for another day.
-</p>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/e26801b4fbc53f579756d8fd2cfedea3.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/e26801b4fbc53f579756d8fd2cfedea3.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/87efba27f1f6140cf3569d7d7f296568.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/87efba27f1f6140cf3569d7d7f296568.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Headed up towards these pinnacles. Atop WIndow Peak would offer a view down at these.
-</p>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/2bef442761f16d90379413ac09c4611c.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/2bef442761f16d90379413ac09c4611c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Window Rock
-</p>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/e2000c19e2bb5072b319fa1af3e39a1d.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/e2000c19e2bb5072b319fa1af3e39a1d.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    View of Ventana Canyon from Window Rock
-</p>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/63632081a769c3c4ec1dc3a6cb4245b1.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/63632081a769c3c4ec1dc3a6cb4245b1.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/e1d413129c1adc49e6f67b0d12043d9d.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/e1d413129c1adc49e6f67b0d12043d9d.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Just below the summit block, a little "room" area. I had to wedge myself against tree and rock to ascend the last few feet, hidden from view on the right past the trees.
-</p>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/8e71270f5a6c4bdeca8e79de5eb2d97f.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/8e71270f5a6c4bdeca8e79de5eb2d97f.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    A look back down.
-</p>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/759cb10430e6435dddff40d557a3a893.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/759cb10430e6435dddff40d557a3a893.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    At the summit- a hand formation?
-</p>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/2a519f60a677f11190645ab81628da91.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/2a519f60a677f11190645ab81628da91.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/e143c2309c3aaa10842fbff6ac1a9e1b.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/e143c2309c3aaa10842fbff6ac1a9e1b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/69614bf5bf983fa035b9cc9473949a05.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/69614bf5bf983fa035b9cc9473949a05.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/cdc647d01326070b0655a4724dec6246.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/cdc647d01326070b0655a4724dec6246.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/f279f59f4fc7228ae73f309b898e3ea3.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/f279f59f4fc7228ae73f309b898e3ea3.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/7babfd8c83f20263ce07fc2668736c9e.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/7babfd8c83f20263ce07fc2668736c9e.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Down from the summit slightly the weather cleared a bit, looking east towards Peak 7395 in the near distance, right side.
-</p>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/ebd0f528f074bfc353f55b0331332da0.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/ebd0f528f074bfc353f55b0331332da0.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/e1a93e597c5fb9fcf93fc2de3c39938c.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/e1a93e597c5fb9fcf93fc2de3c39938c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/1d3337663426f190663155122264da05.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/1d3337663426f190663155122264da05.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/159a106ca3a077706bd362a49835a59a.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/159a106ca3a077706bd362a49835a59a.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Human with left arm outstretched looking out over canyon?
-</p>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/86c7bc009c82265ec0a39305667f8132.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/86c7bc009c82265ec0a39305667f8132.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/d1b2c99486e2048616ca7d30f7e20c2b.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/d1b2c99486e2048616ca7d30f7e20c2b.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Back down in canyon hiking quickly trying to avoid darkness.
-</p>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/c4ba07194c8063b4e277a55766f3bf5c.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/c4ba07194c8063b4e277a55766f3bf5c.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/7c375f27cd3fd33d395b18bad4726c76.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/7c375f27cd3fd33d395b18bad4726c76.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/2bfb70e24b785b9e2cd1bdc8ab6dc20d.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/2bfb70e24b785b9e2cd1bdc8ab6dc20d.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
-<p class="caption">
-    Hiking quickly as darkness fell. All was still and quiet except for owls hoots echoing through the canyon.
-</p>
+
 <figure>
-<img src="../assets/images/ventana-canyon-and-window-peak/56e430184765c36533a5249119694e77.jpg"/>
+<img
+    src="../assets/images/ventana-canyon-and-window-peak/56e430184765c36533a5249119694e77.jpg"
+    loading="lazy"
+    alt=""
+>
 </figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
 </body>
+
 </html>
