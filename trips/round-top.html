@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Round Top</title>
+
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+
+   Five evenly distributed POSITIONS:
+   0% / 25% / 50% / 75% / 100%
+
+   This is intentionally FLEX rather than
+   a five-column grid.
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+
+/* TYPE sits directly on left edge */
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+
+/* WHERE sits directly on right edge */
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+
+    /*
+       Mobile switches summary back to a
+       simple two-column grid so the labels
+       have enough room.
+    */
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+
+    .trip-map {
+        height: 190px;
+    }
+
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Round Top
+        </h1>
+
+        <p class="trip-date">
+            09/25/2026
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791225106/Round%20Top/X.jpg"
+    alt="Round Top"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                6.55 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                2,189 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                8,185 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Mokelumne Wilderness, CA
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=38.69331,-120.00848"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=38.69331,-120.00848&amp;z=11&amp;output=embed"
+            title="Map of Round Top"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
+<p class="caption">
+The plan was to start at the Woods Lake trailhead in the Mokelumne Wilderness and hike up to Round Top peak, then cross the saddle just below it and ascend Sisters peak, then finish by heading up Fourth of July peak. But it ended up being a very cold and windy day, gusting up to about 50-60 mph up at the saddle so I only visited Round Top.
+</p>
+
+<p class="caption">
+Despite the area being a wilderness area in a national forest, the Woods Lake trailhead required a $10 fee and did not honor federal park passes. Dismayed, I fled the area and much to my delight found a random parking spot across the street by a bridge that appeared to be a dispersed camp site, and parked gratis, only adding less than a mile to the hike.
+</p>
+
+<p class="caption">
+The day was clear and temperature pretty good but it was extremely windy. After a couple miles I made it to Round Top lake just below the peak and the wind was intense, so much so that there were small whitecaps on the lake. After pressing on I made it to the saddle between Round Top and the Sisters and had difficulty hiking forward into the wind coming from the south. Fortunately the route up to round top is on the peaks north side so much of the wind was blocked, however it reappeared after I scrambled up to the top. There was another high point a few hundred feet to the east that seemed taller so that may be the actual summit but there was no way I was going to continue or even visit the other peaks in this amount of wind and cold. My nose was running quite a bit and because of the wind would run, turn in mid air, and blow straight up onto my glasses. Guess there&#x27;s a first time for anything. Since I wasn&#x27;t going to visit the other peaks I took a loop to Winnemuca lake then headed back to the car. All in all it was a nice loop hike with a couple lakes and nice peaks though visiting the others would have been fun.
+</p>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791225076/Round%20Top/1-%20DSC06129.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791225078/Round%20Top/1-%20DSC06130.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791225080/Round%20Top/1-%20DSC06132.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<figcaption class="caption">
+Round Top lake
+</figcaption>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791225081/Round%20Top/1-%20DSC06136.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<figcaption class="caption">
+Heading up to the saddle between Round Top (left) and the Sisters (Right)
+</figcaption>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791225083/Round%20Top/1-%20DSC06140.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<figcaption class="caption">
+Looking back down
+</figcaption>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791225085/Round%20Top/1-%20DSC06142.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<figcaption class="caption">
+Screen slopes below Round Top
+</figcaption>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791225087/Round%20Top/1-%20DSC06143.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<figcaption class="caption">
+Nearing the summit looking back down
+</figcaption>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791225088/Round%20Top/1-%20DSC06144.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<figcaption class="caption">
+Views from the top
+</figcaption>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791225090/Round%20Top/1-%20DSC06147.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791225092/Round%20Top/1-%20DSC06148.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791225094/Round%20Top/1-%20DSC06149.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<figcaption class="caption">
+Round Top lake below
+</figcaption>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791225097/Round%20Top/1-%20DSC06151.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791225098/Round%20Top/1-%20DSC06154.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791225100/Round%20Top/1-%20DSC06158.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<figcaption class="caption">
+Winnemuca Lake
+</figcaption>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791225103/Round%20Top/1-%20DSC06161.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791225104/Round%20Top/1-%20DSC06162.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
+</body>
+
+</html>
