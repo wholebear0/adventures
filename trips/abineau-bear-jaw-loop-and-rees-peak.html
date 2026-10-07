@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Abineau-Bear Jaw Loop and Rees Peak</title>
+
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+
+   Five evenly distributed POSITIONS:
+   0% / 25% / 50% / 75% / 100%
+
+   This is intentionally FLEX rather than
+   a five-column grid.
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+
+/* TYPE sits directly on left edge */
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+
+/* WHERE sits directly on right edge */
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+
+    /*
+       Mobile switches summary back to a
+       simple two-column grid so the labels
+       have enough room.
+    */
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+
+    .trip-map {
+        height: 190px;
+    }
+
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Abineau-Bear Jaw Loop and Rees Peak
+        </h1>
+
+        <p class="trip-date">
+            10/04/2026
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791392046/Abineau-Bear%20Jaw%20Loop%20and%20Rees%20Peak/X.jpg"
+    alt="Abineau-Bear Jaw Loop and Rees Peak"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                8.32 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                3,556 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                8,523 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Kachina Peaks Wilderness, AZ
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=35.38651,-111.67704"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=35.38651,-111.67704&amp;z=11&amp;output=embed"
+            title="Map of Abineau-Bear Jaw Loop and Rees Peak"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
+<p class="caption">
+The first two weeks of October is a nice time to be in Flagstaff with aspen trees turning color. This hike is on the north side of the San Francisco mountains and goes through nice corridors of vibrant yellow aspen trees and pines along the Abineau-Bearjaw loop trail. I made a side trip up to Rees Peak to get a glimpse of the inner basin and saw a lightly snow covered Humphrey&#x27;s Peak to the west.
+</p>
+
+<p class="caption">
+Later back at the trailhead and wondering why I saw no one else up at the peak, there a posting on the trailhead info board saying hiking off trail above 11,400 is no longer allowed through at least the end of 2029. The map the forest service shows has the area from Agassiz peak to the south up to Humphreys Peak, then east to Abineau peak as an all red/restricted area. But Rees peak is not red despite the highest point on the summit being a touch over 11,400 at 11,450 ft. Had I known I probably would not have hiked up there but according to the forest services map it is allowed (from the best I can tell).
+</p>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791392011/Abineau-Bear%20Jaw%20Loop%20and%20Rees%20Peak/1-%20DSC06504.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791392014/Abineau-Bear%20Jaw%20Loop%20and%20Rees%20Peak/1-%20DSC06505.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791392017/Abineau-Bear%20Jaw%20Loop%20and%20Rees%20Peak/1-%20DSC06506.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791392019/Abineau-Bear%20Jaw%20Loop%20and%20Rees%20Peak/1-%20DSC06508.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791392021/Abineau-Bear%20Jaw%20Loop%20and%20Rees%20Peak/1-%20DSC06512.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791392023/Abineau-Bear%20Jaw%20Loop%20and%20Rees%20Peak/1-%20DSC06541.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791392025/Abineau-Bear%20Jaw%20Loop%20and%20Rees%20Peak/1-%20DSC06545.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791392027/Abineau-Bear%20Jaw%20Loop%20and%20Rees%20Peak/1-%20DSC06546.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<figcaption class="caption">
+Humphrey&#x27;s Peak with some snow
+</figcaption>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791392029/Abineau-Bear%20Jaw%20Loop%20and%20Rees%20Peak/1-%20DSC06548.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<figcaption class="caption">
+Steep dirt slopes below Rees peak
+</figcaption>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791392031/Abineau-Bear%20Jaw%20Loop%20and%20Rees%20Peak/1-%20DSC06549.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791392033/Abineau-Bear%20Jaw%20Loop%20and%20Rees%20Peak/1-%20DSC06551.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791392037/Abineau-Bear%20Jaw%20Loop%20and%20Rees%20Peak/1-%20DSC06560.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791392040/Abineau-Bear%20Jaw%20Loop%20and%20Rees%20Peak/1-%20DSC06562.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791392042/Abineau-Bear%20Jaw%20Loop%20and%20Rees%20Peak/1-%20DSC06564.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791392044/Abineau-Bear%20Jaw%20Loop%20and%20Rees%20Peak/9-IMG_20261003_134838142.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
+</body>
+
+</html>
