@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Mammoth Crest Loop</title>
+
+<link
+    rel="stylesheet"
+    href="../assets/css/trip.css"
+>
+
+
+<style>
+
+/* ==========================================
+   TRIP SUMMARY
+========================================== */
+
+.trip-summary {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.trip-heading {
+    margin-bottom: 25px;
+}
+
+.trip-heading h1 {
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.trip-date {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* ==========================================
+   COVER PHOTO
+========================================== */
+
+.trip-cover-container {
+    width: 100%;
+    margin: 0;
+}
+
+.trip-cover {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TRIP DETAILS SUMMARY
+
+   Five evenly distributed POSITIONS:
+   0% / 25% / 50% / 75% / 100%
+
+   This is intentionally FLEX rather than
+   a five-column grid.
+========================================== */
+
+.trip-details {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+}
+
+
+.trip-detail {
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border: none;
+
+    text-align: center;
+}
+
+
+/* TYPE sits directly on left edge */
+
+.trip-detail:first-child {
+    text-align: left;
+}
+
+
+/* WHERE sits directly on right edge */
+
+.trip-detail:last-child {
+    text-align: right;
+}
+
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+
+.detail-value {
+    display: block;
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    color: #222;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.trip-map-link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    margin-top: 12px;
+
+    color: #222;
+    text-decoration: none;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trip-map {
+    width: 100%;
+    height: 220px;
+
+    background: #ddd;
+}
+
+.trip-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    pointer-events: none;
+}
+
+.trip-map-label {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    padding: 8px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .94
+    );
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+}
+
+
+/* ==========================================
+   TRIP DETAILS / WRITE-UP
+========================================== */
+
+.trip-story {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 65px;
+    padding: 0;
+}
+
+.trip-story h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0 0 12px;
+
+    font-size: 28px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-story .caption {
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 20px;
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+.trip-story .caption:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.trip-photos {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ccc;
+}
+
+.trip-photos figure:first-child {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .trip-heading h1 {
+        font-size: 34px;
+    }
+
+
+    .trip-summary {
+        margin-bottom: 45px;
+    }
+
+
+    .trip-cover {
+        max-height: 450px;
+    }
+
+
+    /*
+       Mobile switches summary back to a
+       simple two-column grid so the labels
+       have enough room.
+    */
+
+    .trip-details {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        width: 100%;
+    }
+
+
+    .trip-detail,
+    .trip-detail:first-child,
+    .trip-detail:last-child {
+        width: auto;
+
+        padding: 14px 0;
+
+        text-align: left;
+    }
+
+
+    .trip-detail:nth-child(even) {
+        text-align: right;
+    }
+
+
+    .trip-detail:nth-child(5) {
+        text-align: left;
+    }
+
+
+    .detail-value {
+        font-size: 15px;
+
+        white-space: normal;
+    }
+
+
+    .trip-map {
+        height: 190px;
+    }
+
+
+    .trip-story {
+        margin-bottom: 45px;
+    }
+
+
+    .trip-story h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     TRIP SUMMARY
+========================================== -->
+
+<section class="trip-summary">
+
+
+    <div class="trip-heading">
+
+        <h1>
+            Mammoth Crest Loop
+        </h1>
+
+        <p class="trip-date">
+            09/27/2026
+        </p>
+
+    </div>
+
+
+
+    <!-- COVER PHOTO -->
+
+    <div class="trip-cover-container">
+
+        
+<img
+    class="trip-cover"
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240220/Mammoth%20Crest%20Loop/X.jpg"
+    alt="Mammoth Crest Loop"
+>
+
+
+    </div>
+
+
+
+    <!-- TRIP SUMMARY DETAILS -->
+
+    <div class="trip-details">
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Type
+            </span>
+
+            <span class="detail-value">
+                Hike
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Miles
+            </span>
+
+            <span class="detail-value">
+                13.57 mi
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Elevation Gain
+            </span>
+
+            <span class="detail-value">
+                2,859 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Starting Elevation
+            </span>
+
+            <span class="detail-value">
+                9,026 ft
+            </span>
+
+        </div>
+
+
+        <div class="trip-detail">
+
+            <span class="detail-label">
+                Where
+            </span>
+
+            <span class="detail-value">
+                Inyo National Forest, CA
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    
+<a
+    class="trip-map-link"
+    href="https://www.google.com/maps/search/?api=1&amp;query=37.60315,-119.01068"
+    target="_blank"
+    rel="noopener"
+>
+
+    <div class="trip-map">
+
+        <iframe
+            src="https://www.google.com/maps?q=37.60315,-119.01068&amp;z=11&amp;output=embed"
+            title="Map of Mammoth Crest Loop"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+        ></iframe>
+
+    </div>
+
+    <div class="trip-map-label">
+        View in Google Maps →
+    </div>
+
+</a>
+
+
+
+</section>
+
+
+
+<!-- ==========================================
+     TRIP DETAILS / WRITE-UP
+========================================== -->
+
+<section class="trip-story">
+
+    <h2>
+        Trip Details
+    </h2>
+
+    
+<p class="caption">
+I knew little about the Mammoth Lakes area aside from looking at a topographic map and piecing together a loop hike past small lakes and along a crest. The town is a few miles west off the main highway through the Sierra area, 395, and is pretty nice. Nestled among tall pine trees with paved bike trails, it has actual stores and restaurants to resupply. Continuing further several miles west into the mountains past town is Lake George where I parked for this loop hike.
+</p>
+
+<p class="caption">
+The first few miles were through forest and trees and gradually I gained elevation, passing numerous lakes, first lake George, then TJ lake, Skelton lake, Emerald lake, and Barney lake. I gazed up at the peaks along the ridgeline and got excited for what was to come later in the hike after the trail wrapped up and around onto the crest. By this point there were many day hikers and quite a few backpackers, maybe because today is Sunday and they are wrapping up their hikes.
+</p>
+
+<p class="caption">
+The last hike before going up to Duck pass and higher elevations was Barney lake which was overcrowded with group campers, dayhikers, and fishermen. For this reason it resembled Lonesome Lake in the Wind River range in some ways, nice but very crowded. After ascending switchbacks up to Duck Pass most of the crowd vanished. On the other side of this pass was a new set of views of quieter areas, like deep blue Duck and Pika lakes. The trail made one more ascent over Deer Pass to a surprisingly flat area. Across this field was a jagged Peak 11,430 that seemed to have some prominence over the valley below. Curious, I headed over and climbed some talus up 250 ft or so, gazing down at lakes to the west. The peak basically ended on a point and being windy and on loose rock I took in the views and turned around a couple feet from the top.
+</p>
+
+<p class="caption">
+Back on trail there was a descent to even more lakes, Lower, Middle, and Upper Deer Lakes, and an open and nearly unimpeded view to more desolate lands to the west. I found myself constantly stopping to take photos, enjoying the wide panoramas and solitude. The next few miles followed along the crest with views north to the Minarets, an area I&#x27;d like to hike in the future. Late in the afternoon and already 7 hours into the hike, I started hiking downhill with the afternoon sunlight illuminating the valley I had walked in earlier below.  After the hike I visited the nearby Whitmore Hot Springs that has many wild and remote hot springs, and soaked in the rock tub hot spring, camping a few minutes walk away. It was a good way to end the day
+</p>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     PHOTOS
+========================================== -->
+
+<section class="trip-photos">
+
+    
+<figure>
+
+<figcaption class="caption">
+Lake George
+</figcaption>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240151/Mammoth%20Crest%20Loop/1-%20DSC06267.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240153/Mammoth%20Crest%20Loop/1-%20DSC06268.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240156/Mammoth%20Crest%20Loop/1-%20DSC06272.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<figcaption class="caption">
+Emerald Lake
+</figcaption>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240157/Mammoth%20Crest%20Loop/1-%20DSC06273.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<figcaption class="caption">
+Skelton Lake
+</figcaption>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240161/Mammoth%20Crest%20Loop/1-%20DSC06276.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240163/Mammoth%20Crest%20Loop/1-%20DSC06277.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240165/Mammoth%20Crest%20Loop/1-%20DSC06278.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<figcaption class="caption">
+View back the way I came. Skelton Lake below
+</figcaption>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240167/Mammoth%20Crest%20Loop/1-%20DSC06280.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240169/Mammoth%20Crest%20Loop/1-%20DSC06281.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240171/Mammoth%20Crest%20Loop/1-%20DSC06282.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<figcaption class="caption">
+Continuing up to Deer Pass
+</figcaption>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240174/Mammoth%20Crest%20Loop/1-%20DSC06286.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240176/Mammoth%20Crest%20Loop/1-%20DSC06290.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<figcaption class="caption">
+Peak 11430
+</figcaption>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240178/Mammoth%20Crest%20Loop/1-%20DSC06291.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240180/Mammoth%20Crest%20Loop/1-%20DSC06292.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<figcaption class="caption">
+I climbed the lower peak on the left then the one on the right
+</figcaption>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240182/Mammoth%20Crest%20Loop/1-%20DSC06293.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240184/Mammoth%20Crest%20Loop/1-%20DSC06295.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240186/Mammoth%20Crest%20Loop/1-%20DSC06296.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<figcaption class="caption">
+Deer Lakes
+</figcaption>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240188/Mammoth%20Crest%20Loop/1-%20DSC06297.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<figcaption class="caption">
+The shorters way back to trail was straight down a steep gulley but I found it easier to backtrack and rejoin the trail even though it was longer
+</figcaption>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240190/Mammoth%20Crest%20Loop/1-%20DSC06300.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240192/Mammoth%20Crest%20Loop/1-%20DSC06304.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240194/Mammoth%20Crest%20Loop/1-%20DSC06307.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240196/Mammoth%20Crest%20Loop/1-%20DSC06308.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240198/Mammoth%20Crest%20Loop/1-%20DSC06310.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240200/Mammoth%20Crest%20Loop/1-%20DSC06311.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240202/Mammoth%20Crest%20Loop/1-%20DSC06314.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240204/Mammoth%20Crest%20Loop/1-%20DSC06315.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240206/Mammoth%20Crest%20Loop/1-%20DSC06317.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240208/Mammoth%20Crest%20Loop/1-%20DSC06322.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240209/Mammoth%20Crest%20Loop/1-%20DSC06325.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240211/Mammoth%20Crest%20Loop/1-%20DSC06328.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240213/Mammoth%20Crest%20Loop/1-%20DSC06332.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240215/Mammoth%20Crest%20Loop/1-%20DSC06335.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+<figure>
+
+<img
+    src="https://res.cloudinary.com/dudbxqaxs/image/upload/v1791240218/Mammoth%20Crest%20Loop/1-%20DSC06337.jpg"
+    loading="lazy"
+    alt=""
+>
+</figure>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="site-footer">
+
+    © 2026 WholeBear. All rights reserved.
+
+</footer>
+
+
+</body>
+
+</html>
